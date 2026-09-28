@@ -231,7 +231,9 @@
   .detail > div { overflow: hidden; }
   .detail-in { display: grid; grid-template-columns: 60px minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; padding: 26px 12px 34px; }
   .detail-in p { margin: 0; color: var(--dim); max-width: 56ch; grid-column: 2; }
-  .detail-in ul { margin: 0; padding: 0; list-style: none; grid-column: 3; display: grid; gap: 6px; font-size: 12px; }
+  .detail-in .txt { grid-column: 2; display: grid; gap: 14px; max-width: 62ch; }
+  .detail-in .txt p { grid-column: auto; max-width: none; line-height: 1.6; }
+  .detail-in ul { margin: 0; padding: 0; list-style: none; grid-column: 3; display: grid; gap: 6px; align-self: start; align-content: start; font-size: 12px; }
   .detail-in li::before { content: "+ "; color: var(--lime); }
 
   /* FOOTER */
@@ -377,7 +379,7 @@
     .rowx > button { grid-template-columns: 40px minmax(0, 1fr) 24px; }
     .rowx .c, .rowx .y, .rowx .s { display: none; }
     .detail-in { grid-template-columns: 1fr; }
-    .detail-in p, .detail-in ul { grid-column: 1; }
+    .detail-in p, .detail-in ul, .detail-in .txt { grid-column: 1; }
     .hero-side { display: none; }
     .hero { height: auto; min-height: 100svh; padding-bottom: 72px; }
     .tile { --tw: 250px; }
@@ -644,15 +646,15 @@
       { t: "BP Lions SC", c: "Arculat · Social · Web", y: "2026", s: "Folyamatban",
         d: "Egy kickbox klub online jelenlétének újragondolása: Instagram-audittal indultunk, erre épült a növekedési terv, a weboldal-wireframe és a teljes vizuális arculat.",
         l: ["Instagram-audit és növekedési roadmap", "Versenytárs-benchmark európai prémium termek alapján", "Weboldal-wireframe", "Logófrissítés, színrendszer, print"] },
-      { t: "VAYA Kopi Luwak", c: "Arculat · Csomagolás · Social", y: "2025–26", s: "Kész",
-        d: "Iskolai brandfeladat: egy prémium indonéz kávémárka teljes arculata. A vörös, organikus mintázat és a térképes illusztrációk az utazás és a rituálé élményét hozzák.",
-        l: ["Logó és mintázatrendszer", "Csomagolás és dobozterv", "Social posztok, bannerek, Facebook-oldal", "Névjegy, merch, vászontáska"] },
+      { t: "VAYA Kopi Luwak", c: "Arculat · Csomagolás", y: "2025–26", s: "Kész",
+        d: ["A Vaya márka arculatának tervezésekor a kiindulópont egy szűk, tudatos fogyasztói réteget megszólító prémium kávétermék identitásának megteremtése volt. A koncepció három pillérre épül: a termék indonéz eredetének, a készítési folyamat kulcsszereplőjének – a cibetmacskának – és a különlegesség kommunikációjának vizuális egységbe foglalására.", "A cibetmacska mintázata az arculat generatív elemeként jelenik meg: belőle vezethető le a logó vonalvezetése is, amelynek tudatosan lágy, organikus karaktere biztosítja a vizuális koherenciát az összképen belül. A színpaletta Indonézia jellegzetes színárnyalatait idézi, így a kromatikus identitás és az állatmotívum együttesen egy hiteles, eredethez kötött márkanarratívát épít fel, amely természetközeliséget, egzotikumot és prémium minőséget kommunikál.", "A csomagolás formai koncepciója a funkcionalitást helyezi előtérbe: az egyszerű dobozos kivitel a gyártás, szállítás és tárolás logisztikai szempontjait optimalizálja, miközben minimális anyagfelhasználással és csökkentett papírhulladékkal dolgozik. A grafikai megjelenés a főbb arculati elemeket integrálja, így a csomagolás önálló kommunikációs felületként is működik, első találkozásra is kellő rálátást biztosítva a márka identitására."],
+        l: ["Logó és arculat", "Cibetmacska-mintázat mint generatív elem", "Indonéz színpaletta", "Csomagolás és grafika"] },
       { t: "Dorian Gray arcképe", c: "Könyvtervezés · Borító", y: "2025–26", s: "Kész",
-        d: "Oscar Wilde klasszikusának teljes könyvterve: borító, gerinc, hátsó borító és belív. A kettéváló, olvadó rózsa a regény kettősségét mutatja meg.",
-        l: ["Borító- és gerincterv", "Belív-tipográfia", "Könyv mockupok"] },
+        d: ["A könyvborító koncepciójának középpontjában a szépség és a romlás paradoxonja áll. A rózsa itt nem pusztán dekoratív elem, hanem a főszereplő morális hanyatlását megtestesítő szimbólum. Ez egy vizuális metafora arra, hogy a felszín és a mögöttes valóság között áthidalhatatlan ellentét feszül. A kompozíció azt a töréspontot rögzíti, amelyben az esztétikai tökéletesség önmaga ellentétébe fordul: a romlás nem kívülről, hanem belülről történik, immanens folyamatként bontakozik ki.", "A kivitelezés során egy valódi rózsa (egyszerre ép és roncsolt állapotban dokumentált) fotografikus alapanyagát vektorizáltam, így az organikus részletgazdagság megőrzése mellett egy stilizált, festői karakterű illusztráció jött létre. Ez a technikai megközelítés egyúttal tartalmi utalás is: tudatosan reflektál a regény központi motívumára, ahol a festmény, mint médium és a valóság viszonya maga a mű tétje."],
+        l: ["Borítókoncepció", "Vektorizált rózsa-illusztráció", "Borító, gerinc, belív"] },
       { t: "JΛNKOVICS", c: "Saját arculat", y: "2025–26", s: "Kész",
-        d: "Saját arculatom, amelyet ez az oldal is használ: fekete alap, #D6E031 neon zöld, a Λ mint visszatérő jel.",
-        l: ["Logótípia a Λ karakterrel", "Fekete / fehér / neon zöld színrendszer", "Instagram-megjelenés", "Portfólió weboldal"] }
+        d: ["A saját brand tervezésénél az volt az elsődleges szempont, hogy mind a formavilág, mind a színhasználat a személyiségemet tükrözze. A logotípia és az embléma vonalvezetése egyszerre lágy és éles, ami az identitás kettősségére hivatott referálni.", "A brand fiatalos, energikus karakterét az élénk, neonos színek közvetítik, a komolyságot és a céltudatosságot pedig a fekete erőteljes jelenléte horgonyozza le. A firkaszerű grafikai elemek lazaságot és játékosságot visznek az összképbe, megakadályozva, hogy a design túl statikussá váljon."],
+        l: ["Logotípia és embléma", "Neon színek fekete alapon", "Firkaszerű grafikai elemek", "Portfólió weboldal"] }
     ];
     const rows = document.getElementById("rows");
     rows.innerHTML = work.map((w, k) => `
@@ -661,7 +663,7 @@
           <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t}</span>
           <span class="c">${w.c}</span><span class="y">${w.y}</span><span class="s">[${w.s}]</span><span class="x" aria-hidden="true">+</span>
         </button>
-        <div class="detail" id="wd-${k}"><div><div class="detail-in"><p>${w.d}</p><ul>${w.l.map(x => `<li>${x}</li>`).join("")}</ul></div></div></div>
+        <div class="detail" id="wd-${k}"><div><div class="detail-in"><div class="txt">${[].concat(w.d).map(p => `<p>${p}</p>`).join("")}</div><ul>${w.l.map(x => `<li>${x}</li>`).join("")}</ul></div></div></div>
       </div>`).join("");
     rows.addEventListener("click", e => {
       const b = e.target.closest("button"); if (!b) return;
