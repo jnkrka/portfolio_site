@@ -627,7 +627,14 @@
     track.addEventListener("transitionend", e => { if (e.target === track) normalize(); });
     // click the centre card to turn it over; click a side card to bring it to the centre
     const flipped = () => cards.some(c => c.classList.contains("flipped"));
-    function flip(c) { c.classList.toggle("flipped"); restart(); }
+    // a turned card gives ~32 s to read the back, then turns itself over and the carousel moves on
+    const READ_MS = 32000; let backT;
+    function flip(c) {
+      const turned = c.classList.toggle("flipped");
+      clearTimeout(backT);
+      if (turned) backT = setTimeout(() => { c.classList.remove("flipped"); restart(); }, READ_MS);
+      restart();
+    }
     track.addEventListener("click", e => {
       const c = e.target.closest(".scard"); if (!c) return;
       const n = cards.indexOf(c);
