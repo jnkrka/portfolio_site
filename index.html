@@ -352,12 +352,13 @@
   .scard .art { position: absolute; inset: -10%; z-index: -2; transition: transform 6s ease; }
   .scard.on .art { transform: scale(1.08) rotate(2deg); }
   .scard .front::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8,8,10,.78) 0%, rgba(8,8,10,.25) 55%, rgba(8,8,10,.1) 100%); }
-  .scard .no { position: absolute; top: 14px; right: 16px; font-size: 12px; font-weight: 600; letter-spacing: .1em; color: rgba(241,241,236,.8); font-variant-numeric: tabular-nums; }
+  .scard .no { position: absolute; top: 4.5cqh; right: 7cqw; font-family: var(--display); font-size: 9cqh; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: rgba(241,241,236,.9); font-variant-numeric: tabular-nums; }
   /* title turned 90°, reading bottom-to-top along the left edge */
   .scard .front h3 { position: absolute; left: 7cqw; bottom: 6cqh; margin: 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
     font-family: var(--display); font-weight: 700; font-size: 13.5cqh; line-height: .9; letter-spacing: -0.025em; color: var(--ink); }
   .scard .hint { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); opacity: 0; transition: opacity .5s ease .3s; }
   .scard.on .hint { opacity: 1; }
+  .scard .front-hint { right: 7cqw; bottom: 4.5cqh; font-size: 7cqh; line-height: 1; letter-spacing: 0; }
   .scard .back { display: flex; flex-direction: column; padding: clamp(20px, 2.2vw, 30px) clamp(16px, 1.8vw, 24px); gap: clamp(14px, 1.6vw, 22px);
     background: radial-gradient(90% 60% at 100% 0%, rgba(96,72,200,.45), transparent 70%), radial-gradient(70% 50% at 0% 100%, rgba(214,224,49,.14), transparent 70%), #0c0a18; }
   .scard .back h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(26px, 2.6vw, 38px); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
@@ -600,7 +601,7 @@
     const cardHTML = (sv, k, copy) => `
       <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: kattints a részletekért">
         <div class="flip">
-          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint">Fordítsd meg ↻</span></div>
+          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">↻</span></div>
           <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Vissza</span></div>
         </div>
       </article>`;
