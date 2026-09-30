@@ -175,10 +175,12 @@
   /* SHIFT TEXT + SCRATCH */
   .shift { position: relative; padding-block: clamp(52px, 7vw, 100px); margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); overflow: hidden; }
   .shift-lines { position: relative; z-index: 1; pointer-events: none; display: grid; gap: .12em; font-size: clamp(30px, 6.4vw, 104px); line-height: 1.2; font-weight: 700; text-transform: uppercase; letter-spacing: -.02em; font-stretch: 87.5%; }
-  .shift-lines span { display: block; white-space: nowrap; transition: transform .8s cubic-bezier(.2,.8,.2,1); will-change: transform; }
-  .shift-lines .l2 { padding-left: 12%; }
-  .shift-lines .l3 { padding-left: 4%; color: var(--lime); }
-  .shift-lines .l4 { padding-left: 22%; }
+  .shift-lines > span { display: block; white-space: nowrap; line-height: 1; }
+  .shift-lines .l3 { color: var(--lime); }
+  .shift-lines .fit { display: inline-block; white-space: nowrap; }
+  .shift-lines .w { display: inline-block; white-space: nowrap; }
+  .shift-lines .ch { display: inline-block; will-change: transform; }
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .shift-meta { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 40px; margin-top: clamp(40px, 6vw, 72px); pointer-events: none; }
   .shift-meta p { margin: 0; max-width: 46ch; color: var(--dim); }
   .shift-meta p b { color: var(--ink); font-weight: 500; }
@@ -390,7 +392,7 @@
     .deck-track, .scard, .scard .art, .scard li { transition: none !important; }
     .scrollcue i, .reel-track, .mrow { animation: none; }
     .reel { overflow-x: auto; }
-    .shift-lines span, .card .body, .gate { transition: none; }
+    .card .body, .gate { transition: none; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -461,7 +463,8 @@
   </header>
 
   <section class="shift" id="shift" aria-label="Bemutatkozás">
-    <div class="shift-lines" id="lines">
+    <p class="sr-only">Minden márkának van egy hangja. Én felhangosítom, hogy megmaradjon.</p>
+    <div class="shift-lines" id="lines" aria-hidden="true">
       <span class="l1" data-k="-1">Minden márkának</span>
       <span class="l2" data-k="1.4">van egy hangja.</span>
       <span class="l3" data-k="-2">Én felhangosítom,</span>
@@ -748,15 +751,87 @@
     else { let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(fit, 100); }); }
   })();
 
-  /* ---------- Intro lines shift with the cursor ---------- */
+  /* ---------- Intro lines: each line fills the full width; letters burst apart around the cursor ---------- */
   (() => {
-    const sec = document.getElementById("shift"); if (!sec || reduce) return;
-    const lines = [...document.querySelectorAll("#lines span")];
-    sec.addEventListener("pointermove", e => {
-      const r = sec.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - 0.5;
-      lines.forEach(l => l.style.transform = `translateX(${nx * 60 * +l.dataset.k}px)`);
+    const sec = document.getElementById("shift"), box = document.getElementById("lines");
+    if (!sec || !box) return;
+    const lines = [...box.children];
+    const chars = [];
+    lines.forEach(line => {
+      const words = line.textContent.trim().split(/\s+/);
+      line.textContent = "";
+      const fit = document.createElement("span"); fit.className = "fit";
+      words.forEach((w, i) => {
+        if (i) fit.appendChild(document.createTextNode(" "));
+        const ws = document.createElement("span"); ws.className = "w";
+        [...w].forEach(c => {
+          const ch = document.createElement("span"); ch.className = "ch"; ch.textContent = c;
+          const o = { el: ch, cx: 0, cy: 0, x: 0, y: 0, r: 0, vx: 0, vy: 0, vr: 0,
+                      spin: (Math.random() * 2 - 1), lift: Math.random() * .6 + .7 };
+          chars.push(o); ws.appendChild(ch);
+        });
+        fit.appendChild(ws);
+      });
+      line.appendChild(fit);
     });
-    sec.addEventListener("pointerleave", () => lines.forEach(l => l.style.transform = ""));
+
+    /* size every line so its text spans the full content width */
+    function fitLines() {
+      const W = box.clientWidth;
+      lines.forEach(line => {
+        line.style.fontSize = "100px";
+        const w = line.firstChild.getBoundingClientRect().width;
+        line.style.fontSize = (100 * W / w * 0.995) + "px";
+      });
+      measure();
+    }
+    /* cache each letter's resting centre relative to the section */
+    function measure() {
+      const sr = sec.getBoundingClientRect();
+      chars.forEach(o => { o.el.style.transform = ""; });
+      chars.forEach(o => {
+        const r = o.el.getBoundingClientRect();
+        o.cx = r.left + r.width / 2 - sr.left; o.cy = r.top + r.height / 2 - sr.top; o.fs = r.height;
+      });
+      chars.forEach(o => { if (o.x || o.y || o.r) o.el.style.transform = `translate(${o.x}px,${o.y}px) rotate(${o.r}deg)`; });
+    }
+    fitLines();
+    addEventListener("resize", fitLines);
+    if (document.fonts) document.fonts.ready.then(fitLines);
+    if (reduce) return;
+
+    let px = -1e4, py = -1e4, running = false, tapT = 0;
+    function frame() {
+      const R = Math.max(90, Math.min(220, box.clientWidth * .14));
+      let moving = false;
+      chars.forEach(o => {
+        const dx = o.cx - px, dy = o.cy - py, d = Math.hypot(dx, dy) || 1;
+        let tx = 0, ty = 0, tr = 0;
+        if (d < R) {
+          const f = Math.pow(1 - d / R, 1.6) * R * 0.9 * o.lift;
+          tx = dx / d * f; ty = dy / d * f; tr = o.spin * 70 * (1 - d / R);
+        }
+        o.vx = (o.vx + (tx - o.x) * .14) * .74; o.vy = (o.vy + (ty - o.y) * .14) * .74; o.vr = (o.vr + (tr - o.r) * .14) * .74;
+        o.x += o.vx; o.y += o.vy; o.r += o.vr;
+        if (Math.abs(o.x) + Math.abs(o.y) + Math.abs(o.r) > .05 || Math.abs(o.vx) + Math.abs(o.vy) > .05) moving = true;
+        else { o.x = o.y = o.r = 0; }
+        o.el.style.transform = (o.x || o.y || o.r) ? `translate(${o.x.toFixed(2)}px,${o.y.toFixed(2)}px) rotate(${o.r.toFixed(2)}deg)` : "";
+      });
+      if (moving || px > -1e3) requestAnimationFrame(frame); else running = false;
+    }
+    function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
+    sec.addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse" && !tapT) return;
+      const sr = sec.getBoundingClientRect(); px = e.clientX - sr.left; py = e.clientY - sr.top; kick();
+    });
+    sec.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { px = py = -1e4; kick(); } });
+    /* touch: a tap bursts the letters under the finger, then they fall back */
+    sec.addEventListener("pointerdown", e => {
+      if (e.pointerType === "mouse") return;
+      const sr = sec.getBoundingClientRect(); px = e.clientX - sr.left; py = e.clientY - sr.top; kick();
+      clearTimeout(tapT); tapT = setTimeout(() => { tapT = 0; px = py = -1e4; kick(); }, 650);
+    });
+    addEventListener("scroll", () => { if (px > -1e3 && !tapT) { px = py = -1e4; kick(); } }, { passive: true });
   })();
 
   /* ---------- Hero project strip: JS-driven marquee; touching/hovering a card glides it to the exact centre and lifts it ---------- */
