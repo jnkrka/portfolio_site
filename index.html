@@ -775,13 +775,22 @@
       line.appendChild(fit);
     });
 
-    /* size every line so its text spans the full content width */
+    /* every line spans the full content width: the size that would fill it, made ~18px smaller,
+       with the leftover width shared out as letter-spacing so the edges stay flush */
     function fitLines() {
       const W = box.clientWidth;
       lines.forEach(line => {
+        const fit = line.firstChild, n = fit.textContent.length;
+        line.style.letterSpacing = ""; fit.style.marginRight = "";
         line.style.fontSize = "100px";
-        const w = line.firstChild.getBoundingClientRect().width;
-        line.style.fontSize = (100 * W / w * 0.995) + "px";
+        const full = 100 * W / fit.getBoundingClientRect().width;
+        const fs = full - Math.min(18, full * 0.14);
+        line.style.fontSize = fs + "px";
+        const base = parseFloat(getComputedStyle(line).letterSpacing) || 0;
+        const w0 = fit.getBoundingClientRect().width;
+        const ls = base + (W - w0) / Math.max(1, n - 1);
+        line.style.letterSpacing = ls + "px";
+        fit.style.marginRight = -ls + "px";   /* the last letter's trailing spacing hangs outside */
       });
       measure();
     }
