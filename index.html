@@ -356,9 +356,14 @@
   /* title turned 90°, reading bottom-to-top along the left edge */
   .scard .front h3 { position: absolute; left: 7cqw; bottom: 6cqh; margin: 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
     font-family: var(--display); font-weight: 700; font-size: 13.5cqh; line-height: .9; letter-spacing: -0.025em; color: var(--ink); }
-  .scard .hint { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); opacity: 0; transition: opacity .5s ease .3s; }
-  .scard.on .hint { opacity: 1; }
-  .scard .front-hint { right: 7cqw; bottom: 4.5cqh; font-size: 7cqh; line-height: 1; letter-spacing: 0; }
+  /* flip button: lime disc with a turn-over arrow, like the pill buttons in the nav */
+  .scard .hint { position: absolute; right: 6cqw; bottom: 4cqh; width: clamp(38px, 10.5cqh, 54px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+    background: var(--lime); color: #0b0b0d; box-shadow: 0 6px 24px rgba(214,224,49,.28); opacity: 0; transform: scale(.6); transition: opacity .45s ease .25s, transform .6s cubic-bezier(.3,1.5,.5,1) .25s; }
+  .scard .hint svg { width: 52%; height: 52%; transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+  .scard.on .hint { opacity: 1; transform: none; }
+  .scard.on:hover .front .hint svg { transform: rotate(180deg); }
+  .scard .back .hint svg { transform: scaleX(-1); }
+  .scard.on:hover .back .hint svg { transform: scaleX(-1) rotate(180deg); }
   .scard .back { display: flex; flex-direction: column; padding: clamp(20px, 2.2vw, 30px) clamp(16px, 1.8vw, 24px); gap: clamp(14px, 1.6vw, 22px);
     background: radial-gradient(90% 60% at 100% 0%, rgba(96,72,200,.45), transparent 70%), radial-gradient(70% 50% at 0% 100%, rgba(214,224,49,.14), transparent 70%), #0c0a18; }
   .scard .back h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(26px, 2.6vw, 38px); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
@@ -368,7 +373,6 @@
   .scard.flipped li { opacity: 1; transform: none; }
   .scard.flipped li:nth-child(1) { transition-delay: .35s; } .scard.flipped li:nth-child(2) { transition-delay: .43s; }
   .scard.flipped li:nth-child(3) { transition-delay: .51s; } .scard.flipped li:nth-child(4) { transition-delay: .59s; }
-  .scard .back .hint { margin-top: auto; position: static; opacity: 1; align-self: flex-end; }
   .scard:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
   .art-a { background: radial-gradient(60% 45% at 30% 30%, #d6e031 0%, rgba(214,224,49,0) 70%), radial-gradient(70% 60% at 80% 70%, #5b48c9 0%, rgba(91,72,201,0) 70%), radial-gradient(50% 40% at 20% 85%, #2a1d6b 0%, rgba(42,29,107,0) 70%), #0c0a18; filter: blur(8px); }
   .art-b { background: conic-gradient(from 200deg at 60% 40%, #1a1440, #6a55e0, #d6e031, #1a1440 70%), #0c0a18; filter: blur(22px) saturate(1.1); }
@@ -601,8 +605,8 @@
     const cardHTML = (sv, k, copy) => `
       <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: kattints a részletekért">
         <div class="flip">
-          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">↻</span></div>
-          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Vissza</span></div>
+          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20.5 3.5v4.9h-4.9"/></svg></span></div>
+          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20.5 3.5v4.9h-4.9"/></svg></span></div>
         </div>
       </article>`;
     let html = ""; for (let c = 0; c < COPIES; c++) svcs.forEach((sv, k) => html += cardHTML(sv, k, c));
