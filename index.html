@@ -601,8 +601,8 @@
     const cardHTML = (sv, k, copy) => `
       <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: kattints a részletekért">
         <div class="flip">
-          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">↻</span></div>
-          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Vissza</span></div>
+          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">→</span></div>
+          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">← Vissza</span></div>
         </div>
       </article>`;
     let html = ""; for (let c = 0; c < COPIES; c++) svcs.forEach((sv, k) => html += cardHTML(sv, k, c));
