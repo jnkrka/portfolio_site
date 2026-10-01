@@ -443,6 +443,7 @@
   }
 
   /* "Minden márkának…": a narrow centred column, tight type, the intro text as its description */
+  .hero + .shift { padding-top: clamp(16px, 2.2vw, 32px); }
   .shift-lines, .shift-meta { max-width: min(100%, 560px); margin-inline: auto; }
   .shift-lines { gap: .04em; }
   .shift-meta { margin-top: clamp(26px, 3.4vw, 44px); display: grid; gap: 14px; justify-content: stretch; }
@@ -556,12 +557,6 @@
 <section class="contact" id="kapcsolat" aria-labelledby="contact-title">
   <div class="contact-info">
     <h2 id="contact-title" class="sec-title ctitle"><span>Új márkát indítasz?</span> <em>Dolgozzunk együtt.</em></h2>
-    <p class="contact-lead">Írd le pár mondatban, mit szeretnél. Nem kell kész brief: a részleteket az első beszélgetésen közösen tisztázzuk.</p>
-    <ol class="steps">
-      <li><b>01</b><span><strong>Üzenet</strong>Kitöltöd az űrlapot vagy írsz e-mailt.</span></li>
-      <li><b>02</b><span><strong>Egyeztetés</strong>Rövid hívás vagy brief-kérdőív a céljaidról.</span></li>
-      <li><b>03</b><span><strong>Ajánlat</strong>Ütemezett árajánlatot küldök a projektre.</span></li>
-    </ol>
   </div>
 
   <form class="cform" id="cform" novalidate>
@@ -600,7 +595,6 @@
 </section>
 
 <footer class="foot">
-  <p class="mega">A jövő arculatait építjük.</p>
   <div class="foot-bar"><span class="foot-brand"><a href="#top" class="foot-logo" aria-label="JΛNKOVICS – vissza a tetejére"><span class="logo-mark" style="height:34px"></span></a></span><span>© 2026 JΛNKOVICS · Minden jog fenntartva</span><a class="totop" href="#top" aria-label="Vissza az oldal tetejére">↑</a></div>
 </footer>
 
@@ -818,6 +812,8 @@
       // safety: never wider than the box
       const over = span.getBoundingClientRect().width - target - lead * k;
       if (over > 1) el.style.fontSize = (100 * k * target / (target + over)) + "px";
+      // never larger than 40px
+      if (parseFloat(el.style.fontSize) > 40) { el.style.fontSize = "40px"; span.style.marginLeft = (lead * 0.4) + "px"; }
     }
     fit();
     if (document.fonts) {
