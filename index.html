@@ -18,7 +18,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@300..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Figtree:wght@300..900&display=swap">
 <style>
   :root {
     color-scheme: dark;
@@ -33,7 +33,7 @@
     --maxw: 1280px;
     --gut: max(var(--edge), calc((100vw - var(--maxw)) / 2));
     --mono: "Figtree", "Helvetica Neue", Arial, sans-serif;
-    --display: "Bricolage Grotesque", "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --display: "Big Shoulders Display", "Figtree", "Helvetica Neue", Arial, sans-serif;
   }
   @media (min-width: 600px) { :root { --edge: 24px; } }
   @media (min-width: 1024px) { :root { --edge: 40px; } }
@@ -266,17 +266,20 @@
   .foot-logo:hover { color: var(--lime); }
   .foot-bar { align-items: center; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
 
-  /* DISPLAY HEADINGS: Bricolage Grotesque Bold */
+  /* DISPLAY HEADINGS: Big Shoulders Display — condensed, squared letterforms in the spirit of the JΛNKOVICS logotype */
   .hero-copy h1, .shift-lines, .sec-title, .card h3, .rowx .t, .foot h2 {
-    font-family: var(--display); font-weight: 700; font-optical-sizing: auto;
+    font-family: var(--display); font-weight: 800; font-optical-sizing: auto;
     font-kerning: normal; font-feature-settings: "kern" 1, "liga" 1; text-rendering: optimizeLegibility;
   }
-  .hero-copy h1 { letter-spacing: -0.03em; line-height: 1.0; }
-  .shift-lines { letter-spacing: -0.012em; line-height: 1.1; }
-  .sec-title { letter-spacing: -0.012em; line-height: 1.1; }
-  .card h3 { letter-spacing: -0.015em; line-height: 1.05; }
-  .rowx .t { letter-spacing: -0.008em; line-height: 1.15; }
-  .foot h2 { letter-spacing: -0.012em; line-height: 1.1; }
+  .hero-copy h1 { letter-spacing: 0; line-height: .92; font-size: min(clamp(64px, 11.5vw, 196px), 17svh); }
+  .shift-lines { letter-spacing: .01em; line-height: 1; }
+  .sec-title { letter-spacing: .005em; line-height: 1; font-size: clamp(44px, 6.4vw, 96px); }
+  .card h3 { letter-spacing: 0; line-height: 1; }
+  .rowx .t { letter-spacing: .01em; line-height: 1.1; font-size: clamp(24px, 3.4vw, 46px); }
+  .foot h2 { letter-spacing: .005em; line-height: 1; font-size: clamp(42px, 7vw, 108px); }
+  .mega, .scard .no, .scard .front h3, .scard .back h3, .shot h3, .steps b { font-weight: 800; letter-spacing: 0; }
+  .scard .front h3 { font-size: 16cqh; }
+  .shot h3 { font-size: clamp(26px, 2.7vw, 40px); }
 
   /* CONTACT PAGE */
   .contact { margin-inline: calc(-1 * var(--gut)); padding: clamp(48px, 6vw, 88px) var(--gut); display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 5vw, 64px); align-items: start; scroll-margin-top: 60px; }
@@ -790,7 +793,7 @@
     }
     fit();
     if (document.fonts) {
-      document.fonts.load('700 100px "Bricolage Grotesque"').then(fit, fit);
+      document.fonts.load('800 100px "Big Shoulders Display"').then(fit, fit);
       document.fonts.ready.then(fit);
     }
     if ("ResizeObserver" in window) new ResizeObserver(fit).observe(box);
