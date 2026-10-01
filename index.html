@@ -277,6 +277,8 @@
   .card h3 { letter-spacing: 0; line-height: 1; }
   .rowx .t { letter-spacing: .01em; line-height: 1.1; font-size: clamp(24px, 3.4vw, 46px); }
   .foot h2 { letter-spacing: .005em; line-height: 1; font-size: clamp(42px, 7vw, 108px); }
+  /* the display face has no Greek Λ: an upside-down V in the same font gives the logo's Λ */
+  .lam { display: inline-block; transform: translateY(-.087em) scaleY(-1); }
   .mega, .scard .no, .scard .front h3, .scard .back h3, .shot h3, .steps b { font-weight: 800; letter-spacing: 0; }
   .scard .front h3 { font-size: 16cqh; }
   .shot h3 { font-size: clamp(26px, 2.7vw, 40px); }
@@ -712,7 +714,7 @@
     rows.innerHTML = work.map((w, k) => `
       <div class="rowx">
         <button type="button" id="work-${k}" aria-expanded="false" aria-controls="wd-${k}">
-          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t}</span>
+          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t.replace(/Λ/g, '<span class="lam" aria-hidden="true">V</span><span class="sr-only">Λ</span>')}</span>
           <span class="c">${w.c}</span><span class="y">${w.y}</span><span class="s">[${w.s}]</span><span class="x" aria-hidden="true">+</span>
         </button>
         <div class="detail" id="wd-${k}"><div><div class="detail-in"><div class="txt">${[].concat(w.d).map(p => `<p>${p}</p>`).join("")}</div><ul>${w.l.map(x => `<li>${x}</li>`).join("")}</ul></div></div></div>
