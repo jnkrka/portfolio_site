@@ -421,14 +421,14 @@
   @media (prefers-reduced-motion: reduce) {
     .deck-track, .scard, .scard .art, .scard li, .scard .flip { transition: none !important; }
     .scrollcue i, .reel-track, .mrow { animation: none; }
-    .reel:not(.cf) { overflow-x: auto; }
+    .reel { overflow-x: auto; }
     .card .body, .gate { transition: none; }
     html { scroll-behavior: auto; }
   }
 
 
   /* ---------- HERO: the big title on its own ---------- */
-  .hero { justify-content: center; gap: 0; padding-bottom: clamp(28px, 4vw, 48px); }
+  .hero { justify-content: center; gap: clamp(36px, 5vw, 64px); padding-bottom: clamp(28px, 4vw, 48px); }
   .hero-copy { flex: none; z-index: 2; pointer-events: none; padding: 0; justify-items: center; }
   .hero-copy h1 { width: max-content; max-width: 100%; text-align: left; }
   .hero-copy h1 .l1, .hero-copy h1 .l2 { display: block; }
@@ -476,6 +476,34 @@
   <header class="hero" id="top">
     <div class="hero-copy">
       <h1 lang="en"><span class="l1">Let’s make</span><span class="l2">some <span class="lime">noise.</span></span></h1>
+    </div>
+    <div class="reel" aria-label="Projektek">
+      <div class="reel-track">
+        <a class="tile" href="#munkak" aria-label="BP Lions SC projekt">
+          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="BP Lions Sport Club logó neon zöld színben, kék alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Arculat · Logó</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-label="VAYA Kopi Luwak projekt">
+          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="VAYA Kopi Luwak kávésdobozok bordó háttér előtt" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Arculat · Csomagolás</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-label="Dorian Gray arcképe projekt">
+          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="Oscar Wilde: Dorian Gray arcképe, könyvborító szemből" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Dorian Gray arcképe</h3><span class="cat">Könyvborító</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-label="Saját arculat projekt">
+          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="JΛNKOVICS logó és jel neon zöld színben, sötét alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
+          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Arculat · Logó</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
+          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Arculat · Csomagolás</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
+          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Dorian Gray arcképe</h3><span class="cat">Könyvborító</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
+          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -892,6 +920,115 @@
     addEventListener("scroll", () => { if (px > -1e3 && !tapT) { px = py = -1e4; kick(); } }, { passive: true });
   })();
 
+  /* ---------- Hero project strip: JS-driven marquee; touching/hovering a card glides it to the exact centre and lifts it ---------- */
+  (() => {
+    const reel = document.querySelector(".reel"), track = reel && reel.querySelector(".reel-track");
+    if (!reel || !track || reduce) return;
+    reel.classList.add("js");
+    const tiles = [...track.querySelectorAll(".tile")];
+    const N = tiles.length / 2;
+    let half = 0, pos = 0, speed = 0, mode = "run", focused = null, tween = null, last = performance.now();
+    let needBase = false, base = null;
+    function measure() {
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      half = tiles[N].offsetLeft - tiles[0].offsetLeft;          // width of one full copy incl. its trailing gap
+      speed = half / 40;                                         // same pace as before: one copy per 40 s
+      if (pos <= -half) pos += half; if (pos > 0) pos -= half;
+    }
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    function targetFor(tile) {
+      const c = tile.offsetLeft + tile.offsetWidth / 2, mid = reel.clientWidth / 2;
+      let t = mid - c;
+      const cands = [t - half, t, t + half].filter(x => x <= 0 && x >= -half);
+      if (!cands.length) cands.push(Math.min(0, Math.max(-half, t)));
+      return cands.reduce((a, b) => Math.abs(b - pos) < Math.abs(a - pos) ? b : a);
+    }
+    function focus(tile) {
+      if (!tile) return;
+      if (focused && focused !== tile) focused.classList.remove("lift");
+      focused = tile; tile.classList.add("lift"); reel.classList.add("holding");
+      tween = { from: pos, to: targetFor(tile), t0: performance.now(), dur: 650 };
+      needBase = true; base = null;
+      mode = "hold";
+    }
+    function release() {
+      if (focused) focused.classList.remove("lift");
+      focused = null; reel.classList.remove("holding"); tween = null; mode = "run";
+    }
+    function frame(now) {
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (mode === "run") { pos -= speed * dt; if (pos <= -half) pos += half; }
+      else if (tween) { const k = Math.min(1, (now - tween.t0) / tween.dur); pos = tween.from + (tween.to - tween.from) * ease(k); if (k >= 1) tween = null; }
+      track.style.transform = `translate3d(${pos}px, 0, 0)`;
+      if (onScreen) requestAnimationFrame(frame); else looping = false;
+    }
+    /* stop the loop while the strip is scrolled out of view (saves the phone's CPU for the rest of the page) */
+    let onScreen = true, looping = true;
+    if ("IntersectionObserver" in window) new IntersectionObserver(([en]) => {
+      onScreen = en.isIntersecting;
+      if (onScreen && !looping) { looping = true; requestAnimationFrame(t => { last = t; frame(t); }); }
+    }).observe(reel);
+    const gliding = () => tween && performance.now() - tween.t0 < tween.dur;
+    // mouse / trackpad: hover a card → it glides to the centre and lifts; leaving the strip resumes the run
+    reel.addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse") return;
+      const t = e.target.closest(".tile"); if (!t || gliding()) return;
+      // after a glide the strip has moved under a still cursor: the card now under it becomes the baseline,
+      // so only a deliberate move onto another card re-centres (no runaway chasing)
+      if (needBase) { base = t; needBase = false; return; }
+      if (t === focused || t === base) return;
+      focus(t);
+    });
+    reel.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") release(); });
+    // touch: first tap centres + lifts the card, a second tap on the same card opens it; tapping elsewhere resumes
+    reel.addEventListener("click", e => {
+      const t = e.target.closest(".tile"); if (!t) return;
+      if (t !== focused) { e.preventDefault(); focus(t); }
+    });
+    document.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse" && focused && !reel.contains(e.target)) release(); });
+    // keyboard focus behaves like hover (focus that comes from a tap/click is ignored, so the first tap only centres)
+    let lastPress = 0;
+    reel.addEventListener("pointerdown", () => { lastPress = performance.now(); }, true);
+    reel.addEventListener("focusin", e => { if (performance.now() - lastPress < 800) return; const t = e.target.closest(".tile"); if (t) focus(t); });
+    reel.addEventListener("focusout", e => { if (performance.now() - lastPress < 800) return; if (!reel.contains(e.relatedTarget)) release(); });
+    // ---- swipe / drag: step one card left or right (the new card glides to the centre and lifts) ----
+    function nearest() {
+      const mid = reel.getBoundingClientRect().left + reel.clientWidth / 2;
+      return tiles.reduce((a, t) => { const r = t.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); return d < a.d ? { t, d } : a; }, { t: tiles[0], d: Infinity }).t;
+    }
+    function stepReel(d) {
+      if (gliding()) return;
+      const cur = focused || nearest(), i = tiles.indexOf(cur);
+      focus(tiles[(i + d + tiles.length) % tiles.length]);
+    }
+    tiles.forEach(t => t.setAttribute("draggable", "false"));
+    // Mac trackpad / Magic Mouse: one horizontal two-finger swipe = one card
+    let acc = 0, spent = false, idleT;
+    reel.addEventListener("wheel", e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;          // vertical scroll keeps scrolling the page
+      e.preventDefault();
+      clearTimeout(idleT); idleT = setTimeout(() => { acc = 0; spent = false; }, 220);
+      if (spent) return;
+      acc += e.deltaX;
+      if (Math.abs(acc) > 40) { spent = true; stepReel(acc > 0 ? 1 : -1); }
+    }, { passive: false });
+    // finger (touch) or mouse drag
+    let dx0 = null, dy0 = null, dragged = false;
+    reel.addEventListener("pointerdown", e => { if (e.button > 0) return; dx0 = e.clientX; dy0 = e.clientY; dragged = false; });
+    reel.addEventListener("pointermove", e => {
+      if (dx0 === null || dragged) return;
+      const dx = e.clientX - dx0, dy = e.clientY - dy0;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) { dragged = true; stepReel(dx < 0 ? 1 : -1); }
+    });
+    const endDrag = () => { dx0 = null; };
+    reel.addEventListener("pointerup", endDrag); reel.addEventListener("pointercancel", endDrag);
+    // a drag must not also count as a tap/click on the card under the finger
+    reel.addEventListener("click", e => { if (dragged) { e.preventDefault(); e.stopImmediatePropagation(); dragged = false; } }, true);
+
+    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { measure(); if (focused) { pos = targetFor(focused); tween = null; } }, 120); });
+    measure(); requestAnimationFrame(t => { last = t; frame(t); });
+    if (document.fonts) document.fonts.ready.then(measure);
+  })();
 </script>
 </body>
 </html>
