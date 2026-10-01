@@ -394,14 +394,18 @@
     transform-style: preserve-3d; -webkit-transform-style: preserve-3d; -webkit-user-drag: none; -webkit-touch-callout: none; filter: none;
     will-change: transform; }
   /* opacity lives on the faces: on the 3D card itself it would flatten it and break the two-sided turn */
-  .reel.cf .face { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; opacity: var(--op, 1); }
+  .reel.cf .face { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: opacity .95s ease; }
   .reel.cf .face.front { transform: translateZ(.6px); }
   .reel.cf .face.back { display: block; transform: rotateY(180deg) translateZ(.6px); }
   .reel.cf .tile .shot { opacity: 1; }
   .reel.cf .tile.c .shot { border-color: rgba(214,224,49,.55); }
   .reel.cf .tile.c:hover .pic { transform: scale(1.05); }
   /* depth shade so the cards further back sit behind */
-  .reel.cf .face::before { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: #05050a; opacity: var(--shade, 0); pointer-events: none; }
+  .reel.cf .face::before { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: #05050a; opacity: 0; transition: opacity .95s ease; pointer-events: none; }
+  /* depth shade + fade are switched per resting slot (data-o) and eased by CSS, so the per-frame work is transforms only */
+  .reel.cf .tile[data-o="1"] .face::before, .reel.cf .tile[data-o="-1"] .face::before { opacity: .1; }
+  .reel.cf .tile[data-o="2"] .face::before, .reel.cf .tile[data-o="-2"] .face::before { opacity: .38; }
+  .reel.cf .tile[data-o="3"] .face, .reel.cf .tile[data-o="-3"] .face, .reel.cf .tile[data-o="-4"] .face, .reel.cf .tile[data-o="4"] .face { opacity: 0; }
   /* card backs */
   .face.back { --r: clamp(16px, 1.6vw, 24px); border-radius: var(--r); overflow: hidden; isolation: isolate; container-type: size;
     clip-path: inset(0 round var(--r)); -webkit-clip-path: inset(0 round var(--r)); border: 1px solid rgba(255,255,255,.12); color: var(--ink); }
@@ -449,7 +453,7 @@
   @media (prefers-reduced-motion: reduce) {
     .deck-track, .scard, .scard .art, .scard li, .scard .flip { transition: none !important; }
     .scrollcue i, .reel-track, .mrow { animation: none; }
-    .reel.cf .tile, .reel.cf .face, .reel.cf .face::before { transition: none; }
+    .reel.cf .face, .reel.cf .face::before { transition: none; }
     .reel:not(.cf) { overflow-x: auto; }
     .card .body, .gate { transition: none; }
     html { scroll-behavior: auto; }
@@ -950,28 +954,33 @@
       const ang = a <= 1 ? a * 142 : 142 + (a - 1) * 8;
       const x = a <= 1 ? .84 * Math.pow(a, 1.8) : .84 + (a - 1) * .5;
       const z = a <= 1 ? .48 * Math.pow(a, 1.4) : .48 + (a - 1) * .3;     /* deep enough that the angled side card never pokes through the front one */
-      return { t: `translate3d(${(s * x * w).toFixed(1)}px,0,${(-z * w).toFixed(1)}px) rotateY(${(-s * ang).toFixed(2)}deg)`,
-               sh: (a <= 1 ? .1 * a : .1 + (a - 1) * .28).toFixed(3), op: Math.max(0, Math.min(1, 3 - a)).toFixed(3), a };
+      return `translate3d(${(s * x * w).toFixed(1)}px,0,${(-z * w).toFixed(1)}px) rotateY(${(-s * ang).toFixed(2)}deg)`;
     }
-    function place() {
-      const w = tiles[0].offsetWidth, c = cur();
+    /* per frame: only the transforms change (cheap, compositor work) */
+    let W = 0;
+    function place() { tiles.forEach((t, i) => { t.style.transform = pose(wrap(i - pos), W); }); }
+    /* once per step: which slot each card is heading for (shade / fade / focus) */
+    function slots(target, settled) {
+      const c = ((Math.round(target) % N) + N) % N;
       tiles.forEach((t, i) => {
-        const p = pose(wrap(i - pos), w);
-        t.style.transform = p.t; t.style.setProperty("--op", p.op); t.style.setProperty("--shade", p.sh);
-        t.classList.toggle("c", i === c && !anim);
+        const o = Math.round(wrap(i - target));
+        if (t.dataset.o !== String(o)) t.dataset.o = o;
+        t.classList.toggle("c", settled && i === c);
         t.tabIndex = i === c && i < base.length ? 0 : -1;
-        t.style.pointerEvents = p.a <= 2 ? "" : "none";
+        t.style.pointerEvents = Math.abs(o) <= 2 ? "" : "none";
       });
     }
+    function measureW() { W = tiles[0].offsetWidth; }
     const ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
     function go(d) {
       if (anim || !d) return;
-      if (reduce) { pos = Math.round(pos) + d; place(); return; }
+      if (reduce) { pos = Math.round(pos) + d; slots(pos, true); place(); return; }
       anim = { from: pos, to: Math.round(pos) + d, t0: performance.now(), dur: 950 + 250 * (Math.abs(d) - 1) };
+      slots(anim.to, false);
       const tick = now => {
         const k = Math.min(1, (now - anim.t0) / anim.dur);
         pos = anim.from + (anim.to - anim.from) * ease(k);
-        if (k >= 1) { pos = ((anim.to % N) + N) % N; anim = null; }
+        if (k >= 1) { pos = ((anim.to % N) + N) % N; anim = null; slots(pos, true); }
         place();
         if (anim) requestAnimationFrame(tick);
       };
@@ -1015,8 +1024,8 @@
     const end = () => { x0 = null; };
     reel.addEventListener("pointerup", end); reel.addEventListener("pointercancel", end);
     reel.addEventListener("click", e => { if (dragged) { e.preventDefault(); e.stopImmediatePropagation(); dragged = false; } }, true);
-    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(place, 120); });
-    place(); restart();
+    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { measureW(); place(); }, 120); });
+    measureW(); slots(pos, true); place(); restart();
   })();
 </script>
 </body>
