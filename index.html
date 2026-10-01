@@ -409,15 +409,10 @@
   .face.back .bn { position: absolute; z-index: 1; left: 7cqw; top: 9cqh; right: 7cqw; font-family: var(--display); font-weight: 800; font-size: 14cqh; line-height: .95; letter-spacing: .005em; text-transform: uppercase; }
   .face.back .bc { position: absolute; z-index: 1; left: 7cqw; bottom: 9cqh; font-size: max(10px, 4.6cqh); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
   .face.back .bno { position: absolute; z-index: 1; right: 7cqw; bottom: 6cqh; font-family: var(--display); font-weight: 800; font-size: 24cqh; line-height: 1; }
-  .b-bp { background: #0f2f86; color: #e4f76a; }
-  .b-bp .sheen { background: radial-gradient(70% 90% at 85% 15%, rgba(56,120,255,.95), transparent 60%), radial-gradient(60% 70% at 10% 100%, rgba(10,22,70,.9), transparent 70%), linear-gradient(135deg, #1846c0, #0b2366); }
-  .b-vaya { background: #5c0f1b; color: #f6d4b4; }
-  .b-vaya .sheen { background: radial-gradient(70% 90% at 85% 15%, rgba(214,72,86,.85), transparent 60%), radial-gradient(60% 70% at 10% 100%, rgba(40,4,10,.9), transparent 70%), linear-gradient(135deg, #8e1a2c, #4a0b15); }
-  .b-jnk { background: #d6e031; color: #13131f; border-color: rgba(0,0,0,.15); }
-  .b-jnk .sheen { background: radial-gradient(70% 90% at 85% 15%, rgba(250,255,190,.95), transparent 60%), radial-gradient(70% 80% at 0% 100%, rgba(150,160,20,.55), transparent 70%), linear-gradient(135deg, #e3ec4f, #c3cd1c); }
-  .b-dorian { background: #f3f0ea; color: #b3121c; border-color: rgba(0,0,0,.1); }
-  .b-dorian .sheen { background: radial-gradient(70% 90% at 85% 15%, #ffffff, transparent 60%), radial-gradient(70% 80% at 0% 100%, rgba(179,18,28,.18), transparent 70%), linear-gradient(135deg, #faf8f4, #e5ded3); }
-  .b-dorian .bn { font-family: Georgia, "Times New Roman", serif; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  /* backs use the same blurred lime / violet art as the service cards; order keeps neighbours different */
+  .face.back { background: #0c0a18; color: var(--ink); }
+  .face.back .sheen { inset: -10%; }
+  .face.back::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8,8,10,.55) 0%, rgba(8,8,10,.15) 60%, rgba(8,8,10,0) 100%); }
   /* hero reel tiles share the service-card look */
   .tile { grid-template-rows: auto; }
   .shot { --r: clamp(16px, 1.6vw, 24px); border-radius: var(--r); border: 1px solid rgba(241,241,236,.08); isolation: isolate; background: #0c0a18;
@@ -487,19 +482,19 @@
       <div class="reel-track">
         <a class="tile" href="#munkak" aria-label="BP Lions SC projekt">
           <div class="shot face front"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="BP Lions Sport Club logó neon zöld színben, kék alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Arculat · Logó</span></div></div>
-          <div class="face back b-bp" aria-hidden="true"><span class="sheen"></span><b class="bn">BP Lions SC</b><span class="bc">Arculat · Logó</span><span class="bno">01</span></div>
+          <div class="face back b-bp" aria-hidden="true"><span class="sheen art art-a"></span><b class="bn">BP Lions SC</b><span class="bc">Arculat · Logó</span><span class="bno">01</span></div>
         </a>
         <a class="tile" href="#munkak" aria-label="VAYA Kopi Luwak projekt">
           <div class="shot face front"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="VAYA Kopi Luwak kávésdobozok bordó háttér előtt" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Arculat · Csomagolás</span></div></div>
-          <div class="face back b-vaya" aria-hidden="true"><span class="sheen"></span><b class="bn">VAYA Kopi Luwak</b><span class="bc">Arculat · Csomagolás</span><span class="bno">02</span></div>
+          <div class="face back b-vaya" aria-hidden="true"><span class="sheen art art-b"></span><b class="bn">VAYA Kopi Luwak</b><span class="bc">Arculat · Csomagolás</span><span class="bno">02</span></div>
         </a>
         <a class="tile" href="#munkak" aria-label="Saját arculat projekt">
           <div class="shot face front"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="JΛNKOVICS logó és jel neon zöld színben, sötét alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
-          <div class="face back b-jnk" aria-hidden="true"><span class="sheen"></span><b class="bn">J<span class="lam" aria-hidden="true">V</span><span class="sr-only">Λ</span>NKOVICS</b><span class="bc">Saját arculat</span><span class="bno">03</span></div>
+          <div class="face back b-jnk" aria-hidden="true"><span class="sheen art art-c"></span><b class="bn">J<span class="lam" aria-hidden="true">V</span><span class="sr-only">Λ</span>NKOVICS</b><span class="bc">Saját arculat</span><span class="bno">03</span></div>
         </a>
         <a class="tile" href="#munkak" aria-label="Dorian Gray arcképe projekt">
           <div class="shot face front"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="Oscar Wilde: Dorian Gray arcképe, könyvborító szemből" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Dorian Gray arcképe</h3><span class="cat">Könyvborító</span></div></div>
-          <div class="face back b-dorian" aria-hidden="true"><span class="sheen"></span><b class="bn">Dorian Gray arcképe</b><span class="bc">Könyvborító</span><span class="bno">04</span></div>
+          <div class="face back b-dorian" aria-hidden="true"><span class="sheen art art-d"></span><b class="bn">Dorian Gray arcképe</b><span class="bc">Könyvborító</span><span class="bno">04</span></div>
         </a>
       </div>
     </div>
