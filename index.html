@@ -431,11 +431,15 @@
   .hero { justify-content: center; gap: clamp(36px, 5vw, 64px); padding-bottom: clamp(28px, 4vw, 48px); }
   .hero-copy { flex: none; z-index: 2; pointer-events: none; padding: 0; justify-items: center; }
   .hero-copy h1 { width: max-content; max-width: 100%; text-align: left; }
+  .hero-stack { display: grid; gap: clamp(20px, 2.4vw, 32px); width: max-content; max-width: 100%; }
+  .hero-stack .hero-row { width: 0; min-width: 100%; pointer-events: auto; align-items: center; }
+  .hero-stack .btn { flex: none; }
   .hero-copy h1 .l1, .hero-copy h1 .l2 { display: block; }
   .hero-copy h1 .l2 { padding-left: 1.05em; }
   @media (max-width: 700px) {
     .hero-copy h1 { font-size: 15.5vw; }
     .hero-copy h1 .l2 { padding-left: .55em; }
+    .hero-stack { width: 100%; }
   }
 
   /* "Minden márkának…": a narrow centred column, tight type, the intro text as its description */
@@ -475,7 +479,13 @@
 <main>
   <header class="hero" id="top">
     <div class="hero-copy">
-      <h1 lang="en"><span class="l1">Let’s make</span><span class="l2">some <span class="lime">noise.</span></span></h1>
+      <div class="hero-stack">
+        <h1 lang="en"><span class="l1">Let’s make</span><span class="l2">some <span class="lime">noise.</span></span></h1>
+        <div class="hero-row">
+          <p>Szia, Réka vagyok, grafikus. Arculatot, csomagolást, social media és print anyagokat tervezek olyan márkáknak, amelyek nem akarnak csendben maradni.</p>
+          <a class="btn primary" href="#kapcsolat">Dolgozzunk együtt <b aria-hidden="true">→</b></a>
+        </div>
+      </div>
     </div>
     <div class="reel" aria-label="Projektek">
       <div class="reel-track">
@@ -516,7 +526,6 @@
       <span class="l4" data-k="1">hogy megmaradjon.</span>
     </div>
     <div class="shift-meta">
-      <p class="lead">Szia, Réka vagyok, grafikus. Arculatot, csomagolást, social media és print anyagokat tervezek olyan márkáknak, amelyek nem akarnak csendben maradni.</p>
       <p><b>Arculat, social media és print</b>, üzleti szemlélettel. Vezetőként tanultam meg, mit akar az ügyfél; grafikusként megmutatom neki.</p>
     </div>
   </section>
