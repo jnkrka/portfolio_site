@@ -471,6 +471,12 @@
   .shift-lines { gap: .04em; }
   .shift-meta { margin-top: clamp(26px, 3.4vw, 44px); display: grid; gap: 14px; justify-content: stretch; }
   .shift-meta p { max-width: 60ch; }
+  /* two columns side by side on wider screens: the big lines left, the intro text right */
+  @media (min-width: 900px) {
+    .shift { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 380px); justify-content: center; align-items: end; column-gap: clamp(40px, 5vw, 88px); }
+    .shift-lines, .shift-meta { max-width: none; margin: 0; }
+    .shift-meta { padding-bottom: .4em; }
+  }
   .shift-meta .lead { color: var(--ink); font-size: clamp(16px, 1.4vw, 20px); line-height: 1.42; }
 </style>
 </head>
