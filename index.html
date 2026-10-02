@@ -18,7 +18,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Figtree:wght@300..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@300..900&display=swap">
 <style>
   :root {
     color-scheme: dark;
@@ -33,7 +33,7 @@
     --maxw: 1280px;
     --gut: max(var(--edge), calc((100vw - var(--maxw)) / 2));
     --mono: "Figtree", "Helvetica Neue", Arial, sans-serif;
-    --display: "Big Shoulders Display", "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --display: "Bricolage Grotesque", "Figtree", "Helvetica Neue", Arial, sans-serif;
   }
   @media (min-width: 600px) { :root { --edge: 24px; } }
   @media (min-width: 1024px) { :root { --edge: 40px; } }
@@ -104,7 +104,7 @@
   .nav .cta:hover b { transform: rotate(-45deg); }
 
   /* HERO */
-  .hero { position: relative; min-height: 100svh; margin-inline: calc(-1 * var(--gut)); overflow: hidden; display: flex; flex-direction: column; gap: clamp(28px, 4vw, 56px); padding: clamp(96px, 9vw, 130px) var(--gut) 36px; }
+  .hero { position: relative; min-height: 100svh; margin-inline: calc(-1 * var(--gut)); overflow: hidden; display: flex; flex-direction: column; gap: clamp(28px, 4vw, 56px); padding: clamp(96px, 9vw, 130px) var(--gut) 56px; }
   .reel { position: relative; flex: none; margin-inline: calc(-1 * var(--gut)); overflow: hidden; display: flex;
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
   .reel-track { display: flex; align-items: flex-start; gap: 16px; width: max-content; will-change: transform; }
@@ -266,22 +266,17 @@
   .foot-logo:hover { color: var(--lime); }
   .foot-bar { align-items: center; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
 
-  /* DISPLAY HEADINGS: Big Shoulders Display — condensed, squared letterforms in the spirit of the JΛNKOVICS logotype */
+  /* DISPLAY HEADINGS: Bricolage Grotesque Bold */
   .hero-copy h1, .shift-lines, .sec-title, .card h3, .rowx .t, .foot h2 {
-    font-family: var(--display); font-weight: 800; font-optical-sizing: auto;
+    font-family: var(--display); font-weight: 700; font-optical-sizing: auto;
     font-kerning: normal; font-feature-settings: "kern" 1, "liga" 1; text-rendering: optimizeLegibility;
   }
-  .hero-copy h1 { text-transform: uppercase; letter-spacing: .005em; line-height: .92; font-size: min(clamp(68px, 13vw, 240px), 20svh); }
-  .shift-lines { letter-spacing: -.012em; line-height: .96; }
-  .sec-title { letter-spacing: .005em; line-height: 1; font-size: clamp(44px, 6.4vw, 96px); }
-  .card h3 { letter-spacing: 0; line-height: 1; }
-  .rowx .t { letter-spacing: .01em; line-height: 1.1; font-size: clamp(24px, 3.4vw, 46px); }
-  .foot h2 { letter-spacing: .005em; line-height: 1; font-size: clamp(42px, 7vw, 108px); }
-  /* the display face has no Greek Λ: an upside-down V in the same font gives the logo's Λ */
-  .lam { display: inline-block; transform: translateY(-.087em) scaleY(-1); }
-  .mega, .scard .no, .scard .front h3, .scard .back h3, .shot h3, .steps b { font-weight: 800; letter-spacing: 0; }
-  .scard .front h3 { font-size: 16cqh; }
-  .shot h3 { font-size: clamp(26px, 2.7vw, 40px); }
+  .hero-copy h1 { letter-spacing: -0.03em; line-height: 1.0; }
+  .shift-lines { letter-spacing: -0.012em; line-height: 1.1; }
+  .sec-title { letter-spacing: -0.012em; line-height: 1.1; }
+  .card h3 { letter-spacing: -0.015em; line-height: 1.05; }
+  .rowx .t { letter-spacing: -0.008em; line-height: 1.15; }
+  .foot h2 { letter-spacing: -0.012em; line-height: 1.1; }
 
   /* CONTACT PAGE */
   .contact { margin-inline: calc(-1 * var(--gut)); padding: clamp(48px, 6vw, 88px) var(--gut); display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 5vw, 64px); align-items: start; scroll-margin-top: 60px; }
@@ -377,13 +372,12 @@
   .scard:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
   .art-a { background: radial-gradient(60% 45% at 30% 30%, #d6e031 0%, rgba(214,224,49,0) 70%), radial-gradient(70% 60% at 80% 70%, #5b48c9 0%, rgba(91,72,201,0) 70%), radial-gradient(50% 40% at 20% 85%, #2a1d6b 0%, rgba(42,29,107,0) 70%), #0c0a18; filter: blur(8px); }
   .art-b { background: conic-gradient(from 200deg at 60% 40%, #1a1440, #6a55e0, #d6e031, #1a1440 70%), #0c0a18; filter: blur(22px) saturate(1.1); }
-  .art-c { background: radial-gradient(55% 40% at 70% 22%, #d6e031 0%, rgba(214,224,49,0) 70%), radial-gradient(65% 55% at 25% 65%, #6a55e0 0%, rgba(106,85,224,0) 70%), radial-gradient(45% 35% at 80% 90%, #2a1d6b 0%, rgba(42,29,107,0) 70%), #0c0a18; filter: blur(14px); }
+  .art-c { background: repeating-radial-gradient(circle at 70% 25%, #d6e031 0 6px, #231a55 6px 22px, #0e0b1f 22px 40px); filter: blur(2px); }
   .art-d { background: linear-gradient(160deg, #0e0b1f 10%, #49479d 45%, #b8a6ff 60%, #0e0b1f 85%), radial-gradient(40% 30% at 70% 30%, #d6e031, transparent); background-blend-mode: screen; filter: blur(10px); }
   .deck-nav { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; max-width: 560px; width: 100%; justify-self: center; }
   .deck-nav button { background: none; border: 0; cursor: pointer; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 6px 0; color: var(--ink); }
   .deck-nav button:hover { color: var(--lime); }
   .deck-count { font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
-
 
   /* hero reel tiles share the service-card look */
   .tile { grid-template-rows: auto; }
@@ -413,7 +407,7 @@
     .detail-in { grid-template-columns: 1fr; }
     .detail-in p, .detail-in ul, .detail-in .txt { grid-column: 1; }
     .hero-side { display: none; }
-    .hero { height: auto; min-height: 100svh; padding-bottom: 40px; }
+    .hero { height: auto; min-height: 100svh; padding-bottom: 72px; }
     .tile { --tw: 250px; }
     .nav ul { display: none; }
     .nav { grid-template-columns: 1fr auto; }
@@ -425,39 +419,6 @@
     .card .body, .gate { transition: none; }
     html { scroll-behavior: auto; }
   }
-
-
-  /* ---------- HERO: the big title on its own ---------- */
-  .hero { justify-content: center; gap: clamp(36px, 5vw, 64px); padding-bottom: clamp(28px, 4vw, 48px); }
-  .hero-copy { flex: none; z-index: 2; pointer-events: none; padding: 0; justify-items: center; }
-  .hero-copy h1 { width: max-content; max-width: 100%; text-align: left; }
-  .hero-stack { display: grid; gap: clamp(20px, 2.4vw, 32px); width: max-content; max-width: 100%; }
-  .hero-stack .hero-row { width: 0; min-width: 100%; pointer-events: auto; align-items: center; }
-  .hero-stack .btn { flex: none; }
-  .hero-copy h1 .l1, .hero-copy h1 .l2 { display: block; }
-  .hero-copy h1 .l2 { padding-left: 1.05em; }
-  @media (max-width: 700px) {
-    .hero-copy h1 { font-size: 15.5vw; }
-    .hero-copy h1 .l2 { padding-left: .55em; }
-    .hero-stack { width: 100%; }
-  }
-
-  /* "Minden márkának…": a narrow centred column, tight type, the intro text as its description */
-  .hero + .shift { padding-top: clamp(16px, 2.2vw, 32px); }
-  .shift-lines, .shift-meta { max-width: min(100%, 560px); margin-inline: auto; }
-  .shift-lines { gap: .04em; }
-  .shift-meta { margin-top: clamp(26px, 3.4vw, 44px); display: grid; gap: 14px; }
-  .shift-meta p { max-width: 60ch; }
-  /* wider screens: two equal columns — "Minden márkának / van egy hangja." left,
-     "Én felhangosítom, / hogy megmaradjon." right with the description under it */
-  @media (min-width: 900px) {
-    .shift { --cg: clamp(40px, 5vw, 88px); }
-    .shift-lines, .shift-meta { max-width: min(100%, 1120px); }
-    .shift-lines { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; column-gap: var(--cg); }
-    /* the description runs the full width of the block, under both columns */
-    .shift-meta p { max-width: none; font-size: clamp(16px, 1.5vw, 21px); line-height: 1.42; }
-  }
-  .shift-meta .lead { color: var(--ink); font-size: clamp(16px, 1.4vw, 20px); line-height: 1.42; }
 </style>
 </head>
 <body>
@@ -482,15 +443,6 @@
 
 <main>
   <header class="hero" id="top">
-    <div class="hero-copy">
-      <div class="hero-stack">
-        <h1 lang="en"><span class="l1">Let’s make</span><span class="l2">some <span class="lime">noise.</span></span></h1>
-        <div class="hero-row">
-          <p>Szia, Réka vagyok, grafikus. Arculatot, csomagolást, social media és print anyagokat tervezek olyan márkáknak, amelyek nem akarnak csendben maradni.</p>
-          <a class="btn primary" href="#kapcsolat">Dolgozzunk együtt <b aria-hidden="true">→</b></a>
-        </div>
-      </div>
-    </div>
     <div class="reel" aria-label="Projektek">
       <div class="reel-track">
         <a class="tile" href="#munkak" aria-label="BP Lions SC projekt">
@@ -518,6 +470,19 @@
           <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
         </a>
       </div>
+    </div>
+    <div class="hero-copy">
+      <h1 lang="en">Let’s make<br>some <span class="lime">noise.</span></h1>
+      <div class="hero-row">
+        <p>Szia, Réka vagyok, grafikus. Arculatot, csomagolást, social media és print anyagokat tervezek olyan márkáknak, amelyek nem akarnak csendben maradni.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#munkak">Projektek <b aria-hidden="true">→</b></a>
+          <a class="btn ghost" href="#kapcsolat">Írj nekem <b aria-hidden="true">→</b></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <span class="scrollcue" style="margin-left:auto">Scroll for more<i></i></span>
     </div>
   </header>
 
@@ -560,6 +525,7 @@
 <section class="contact" id="kapcsolat" aria-labelledby="contact-title">
   <div class="contact-info">
     <h2 id="contact-title" class="sec-title ctitle"><span>Új márkát indítasz?</span> <em>Dolgozzunk együtt.</em></h2>
+    <p class="contact-lead">Írd le pár mondatban, mit szeretnél. Nem kell kész brief: a részleteket az első beszélgetésen közösen tisztázzuk.</p>
     <ol class="steps">
       <li><b>01</b><span><strong>Üzenet</strong>Kitöltöd az űrlapot vagy írsz e-mailt.</span></li>
       <li><b>02</b><span><strong>Egyeztetés</strong>Rövid hívás vagy brief-kérdőív a céljaidról.</span></li>
@@ -603,6 +569,7 @@
 </section>
 
 <footer class="foot">
+  <p class="mega">A jövő arculatait építjük.</p>
   <div class="foot-bar"><span class="foot-brand"><a href="#top" class="foot-logo" aria-label="JΛNKOVICS – vissza a tetejére"><span class="logo-mark" style="height:34px"></span></a></span><span>© 2026 JΛNKOVICS · Minden jog fenntartva</span><a class="totop" href="#top" aria-label="Vissza az oldal tetejére">↑</a></div>
 </footer>
 
@@ -634,8 +601,8 @@
     const cardHTML = (sv, k, copy) => `
       <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: kattints a részletekért">
         <div class="flip">
-          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">→</span></div>
-          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">← Vissza</span></div>
+          <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">↻</span></div>
+          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Vissza</span></div>
         </div>
       </article>`;
     let html = ""; for (let c = 0; c < COPIES; c++) svcs.forEach((sv, k) => html += cardHTML(sv, k, c));
@@ -742,7 +709,7 @@
     rows.innerHTML = work.map((w, k) => `
       <div class="rowx">
         <button type="button" id="work-${k}" aria-expanded="false" aria-controls="wd-${k}">
-          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t.replace(/Λ/g, '<span class="lam" aria-hidden="true">V</span><span class="sr-only">Λ</span>')}</span>
+          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t}</span>
           <span class="c">${w.c}</span><span class="y">${w.y}</span><span class="s">[${w.s}]</span><span class="x" aria-hidden="true">+</span>
         </button>
         <div class="detail" id="wd-${k}"><div><div class="detail-in"><div class="txt">${[].concat(w.d).map(p => `<p>${p}</p>`).join("")}</div><ul>${w.l.map(x => `<li>${x}</li>`).join("")}</ul></div></div></div>
@@ -820,12 +787,10 @@
       // safety: never wider than the box
       const over = span.getBoundingClientRect().width - target - lead * k;
       if (over > 1) el.style.fontSize = (100 * k * target / (target + over)) + "px";
-      // never larger than 40px
-      if (parseFloat(el.style.fontSize) > 40) { el.style.fontSize = "40px"; span.style.marginLeft = (lead * 0.4) + "px"; }
     }
     fit();
     if (document.fonts) {
-      document.fonts.load('800 100px "Big Shoulders Display"').then(fit, fit);
+      document.fonts.load('700 100px "Bricolage Grotesque"').then(fit, fit);
       document.fonts.ready.then(fit);
     }
     if ("ResizeObserver" in window) new ResizeObserver(fit).observe(box);
@@ -859,14 +824,19 @@
     /* every line spans the full content width: the size that would fill it, made ~18px smaller,
        with the leftover width shared out as letter-spacing so the edges stay flush */
     function fitLines() {
+      const W = box.clientWidth;
       lines.forEach(line => {
-        const W = line.clientWidth;          /* each line fills its own column */
         const fit = line.firstChild, n = fit.textContent.length;
         line.style.letterSpacing = ""; fit.style.marginRight = "";
-        /* tight tracking; the font size alone makes each line fill the (narrow) column */
         line.style.fontSize = "100px";
         const full = 100 * W / fit.getBoundingClientRect().width;
-        line.style.fontSize = (full * 0.995) + "px";
+        const fs = full - Math.min(18, full * 0.14);
+        line.style.fontSize = fs + "px";
+        const base = parseFloat(getComputedStyle(line).letterSpacing) || 0;
+        const w0 = fit.getBoundingClientRect().width;
+        const ls = base + (W - w0) / Math.max(1, n - 1);
+        line.style.letterSpacing = ls + "px";
+        fit.style.marginRight = -ls + "px";   /* the last letter's trailing spacing hangs outside */
       });
       measure();
     }
