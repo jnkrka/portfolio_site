@@ -439,6 +439,17 @@
   /* the About description matches the hero sub-text: light weight, slightly open tracking, same size */
   .shift-meta p, .services .lead, .contact-lead { max-width: 40ch; color: var(--dim); font-size: clamp(20px, 2vw, 28px); line-height: 1.3; font-weight: 300; letter-spacing: .03em; }
   .shift-meta p b { font-weight: 300; color: var(--ink); }
+
+  .services .lead { max-width: min(100%, 64ch); text-wrap: balance; }
+
+  .shift-meta p { max-width: min(100%, 88ch); text-wrap: balance; }
+
+  /* About headline: two rows on wider screens (four stacked lines on phones) */
+  .shift-lines .srow { display: flex; flex-wrap: nowrap; width: max-content; column-gap: .24em; }
+  .shift-lines .srow > span { display: block; white-space: nowrap; line-height: .96; }
+  @media (max-width: 700px) { .shift-lines .srow { flex-direction: column; } }
+
+  .hero-copy .hero-row p { max-width: min(100%, 62ch); text-wrap: balance; }
 </style>
 </head>
 <body>
@@ -501,18 +512,13 @@
         </div>
       </div>
     </div>
-    <div class="hero-foot">
-      <span class="scrollcue" style="margin-left:auto">Scroll for more<i></i></span>
-    </div>
   </header>
 
   <section class="shift" id="shift" aria-label="About">
     <p class="sr-only">Every brand has a voice. I turn it up, so it stays with you.</p>
     <div class="shift-lines" id="lines" aria-hidden="true">
-      <span class="l1" data-k="-1">Every brand</span>
-      <span class="l2" data-k="1.4">has a voice.</span>
-      <span class="l3" data-k="-2">I turn it up,</span>
-      <span class="l4" data-k="1">so it stays with you.</span>
+      <div class="srow"><span class="l1" data-k="-1">Every brand</span><span class="l2" data-k="1.4">has a voice.</span></div>
+      <div class="srow"><span class="l3" data-k="-2">I turn it up,</span><span class="l4" data-k="1">so it stays with you.</span></div>
     </div>
     <div class="shift-meta">
       <p><b>Identity, social media and print</b>, with a business mindset. As a manager I learned what clients want; as a designer I show it to them.</p>
@@ -815,7 +821,7 @@
   (() => {
     const sec = document.getElementById("shift"), box = document.getElementById("lines");
     if (!sec || !box) return;
-    const lines = [...box.children];
+    const lines = [...box.querySelectorAll("span[data-k]")], rows = [...box.querySelectorAll(".srow")];
     const chars = [];
     lines.forEach(line => {
       const words = line.textContent.trim().split(/\s+/);
@@ -842,7 +848,7 @@
       const hero = h1 ? parseFloat(getComputedStyle(h1).fontSize) : 96;
       box.style.fontSize = hero + "px";
       lines.forEach(line => { line.style.letterSpacing = ""; line.style.fontSize = ""; line.firstChild.style.marginRight = ""; });
-      const widest = Math.max(...lines.map(l => l.firstChild.getBoundingClientRect().width));
+      const widest = Math.max(...rows.map(r => r.getBoundingClientRect().width));
       if (widest > box.clientWidth) box.style.fontSize = (hero * box.clientWidth / widest * 0.995) + "px";
       measure();
     }
