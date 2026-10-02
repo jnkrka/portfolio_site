@@ -450,6 +450,9 @@
   @media (max-width: 700px) { .shift-lines .srow { flex-direction: column; } }
 
   .hero-copy .hero-row p { max-width: min(100%, 62ch); text-wrap: balance; }
+
+  .shift-lines .srow { line-height: .92; }
+  .shift-lines .srow > span { line-height: inherit; }
 </style>
 </head>
 <body>
@@ -843,13 +846,16 @@
 
     /* one modest size for all four lines, tight display tracking and leading (set in CSS) */
     function fitLines() {
-      /* same size as the hero title; only shrinks when the longest line would not fit the width */
-      const h1 = document.querySelector(".hero-copy h1");
-      const hero = h1 ? parseFloat(getComputedStyle(h1).fontSize) : 96;
-      box.style.fontSize = hero + "px";
+      /* two rows, each sized so it runs exactly from edge to edge (on phones the four stacked lines share one size) */
+      const W = box.clientWidth;
       lines.forEach(line => { line.style.letterSpacing = ""; line.style.fontSize = ""; line.firstChild.style.marginRight = ""; });
-      const widest = Math.max(...rows.map(r => r.getBoundingClientRect().width));
-      if (widest > box.clientWidth) box.style.fontSize = (hero * box.clientWidth / widest * 0.995) + "px";
+      box.style.fontSize = "100px"; rows.forEach(r => r.style.fontSize = "");
+      if (matchMedia("(max-width: 700px)").matches) {
+        const widest = Math.max(...rows.map(r => r.getBoundingClientRect().width));
+        box.style.fontSize = (100 * W / widest * 0.995) + "px";
+      } else {
+        rows.forEach(r => { r.style.fontSize = (100 * W / r.getBoundingClientRect().width * 0.997) + "px"; });
+      }
       measure();
     }
     /* cache each letter's resting centre relative to the section */
