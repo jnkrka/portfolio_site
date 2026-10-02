@@ -446,13 +446,16 @@
   .hero + .shift { padding-top: clamp(16px, 2.2vw, 32px); }
   .shift-lines, .shift-meta { max-width: min(100%, 560px); margin-inline: auto; }
   .shift-lines { gap: .04em; }
-  .shift-meta { margin-top: clamp(26px, 3.4vw, 44px); display: grid; gap: 14px; justify-content: stretch; }
+  .shift-meta { margin-top: clamp(26px, 3.4vw, 44px); display: grid; gap: 14px; }
   .shift-meta p { max-width: 60ch; }
-  /* two columns side by side on wider screens: the big lines left, the intro text right */
+  /* wider screens: two equal columns — "Minden márkának / van egy hangja." left,
+     "Én felhangosítom, / hogy megmaradjon." right with the description under it */
   @media (min-width: 900px) {
-    .shift { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 380px); justify-content: center; align-items: end; column-gap: clamp(40px, 5vw, 88px); }
-    .shift-lines, .shift-meta { max-width: none; margin: 0; }
-    .shift-meta { padding-bottom: .4em; }
+    .shift { --cg: clamp(40px, 5vw, 88px); }
+    .shift-lines, .shift-meta { max-width: min(100%, 1120px); }
+    .shift-lines { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; column-gap: var(--cg); }
+    /* the description runs the full width of the block, under both columns */
+    .shift-meta p { max-width: none; font-size: clamp(16px, 1.5vw, 21px); line-height: 1.42; }
   }
   .shift-meta .lead { color: var(--ink); font-size: clamp(16px, 1.4vw, 20px); line-height: 1.42; }
 </style>
@@ -856,8 +859,8 @@
     /* every line spans the full content width: the size that would fill it, made ~18px smaller,
        with the leftover width shared out as letter-spacing so the edges stay flush */
     function fitLines() {
-      const W = box.clientWidth;
       lines.forEach(line => {
+        const W = line.clientWidth;          /* each line fills its own column */
         const fit = line.firstChild, n = fit.textContent.length;
         line.style.letterSpacing = ""; fit.style.marginRight = "";
         /* tight tracking; the font size alone makes each line fill the (narrow) column */
