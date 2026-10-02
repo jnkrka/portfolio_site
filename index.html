@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>JΛNKOVICS Portfólió</title>
-<meta name="description" content="Jankovics Réka grafikus portfóliója: arculattervezés, social media, print és web kis- és közepes vállalkozásoknak.">
+<title>JΛNKOVICS Portfolio</title>
+<meta name="description" content="Portfolio of graphic designer Réka Jankovics: brand identity, social media, print and web for small and medium-sized businesses.">
 <meta name="theme-color" content="#080808">
 <meta property="og:type" content="website">
-<meta property="og:title" content="JΛNKOVICS · Jankovics Réka portfólió">
-<meta property="og:description" content="Jankovics Réka grafikus portfóliója: arculattervezés, social media, print és web kis- és közepes vállalkozásoknak.">
+<meta property="og:title" content="JΛNKOVICS · Réka Jankovics portfolio">
+<meta property="og:description" content="Portfolio of graphic designer Réka Jankovics: brand identity, social media, print and web for small and medium-sized businesses.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080808'/%3E%3Cpath d='M32 12 L52 52 H42 L32 30 L22 52 H12 Z' fill='%23d6e031'/%3E%3C/svg%3E">
 <style>
   /* base reset (the Claude viewer used to add this automatically) */
@@ -18,7 +18,8 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@300..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Figtree:wght@300..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@400..800&display=swap">
 <style>
   :root {
     color-scheme: dark;
@@ -32,8 +33,8 @@
     --edge: 16px;
     --maxw: 1280px;
     --gut: max(var(--edge), calc((100vw - var(--maxw)) / 2));
-    --mono: "Figtree", "Helvetica Neue", Arial, sans-serif;
-    --display: "Bricolage Grotesque", "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Big Shoulders Text", "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --display: "Big Shoulders Display", "Big Shoulders Text", "Figtree", "Helvetica Neue", Arial, sans-serif;
   }
   @media (min-width: 600px) { :root { --edge: 24px; } }
   @media (min-width: 1024px) { :root { --edge: 40px; } }
@@ -42,7 +43,7 @@
   html, body { overflow-x: clip; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--mono); font-size: 16px; line-height: 1.42; font-weight: 400;
+    font-family: var(--mono); font-size: 19px; line-height: 1.36; font-weight: 500; letter-spacing: .012em;
     padding-inline: var(--gut); -webkit-font-smoothing: antialiased;
   }
   section { scroll-margin-top: 80px; }
@@ -70,7 +71,7 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .br { color: var(--dim); }
   .br::before { content: "["; } .br::after { content: "]"; }
-  .tag { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .tag { font-size: 14.1px; letter-spacing: .08em; text-transform: uppercase; }
   .lime { color: var(--lime); }
 
   /* INTRO GATE */
@@ -83,8 +84,8 @@
   .gate-logo { font-size: clamp(34px, 6vw, 72px); font-weight: 800; font-stretch: 75%; letter-spacing: -.02em; line-height: 1; }
   .gate-bar { width: min(220px, 60vw); height: 1px; background: var(--line); position: relative; }
   .gate-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--lime); transition: width .08s linear; }
-  .gate-count { position: absolute; right: var(--gut); top: 20px; font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; letter-spacing: .08em; }
-  .gate .enter { background: none; border: 0; cursor: pointer; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; padding: 10px 16px; }
+  .gate-count { position: absolute; right: var(--gut); top: 20px; font-size: 14.1px; color: var(--dim); font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+  .gate .enter { background: none; border: 0; cursor: pointer; font-size: 17.9px; letter-spacing: .1em; text-transform: uppercase; padding: 10px 16px; }
   .gate .enter:hover { color: var(--lime); }
   .gate .enter .br { color: inherit; }
 
@@ -96,9 +97,9 @@
   }
   .logo { display: inline-flex; align-items: center; font-weight: 800; font-size: 16px; text-decoration: none; letter-spacing: .02em; font-stretch: 112.5%; }
   .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(12px, 3vw, 40px); }
-  .nav ul a { text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .nav ul a { text-decoration: none; font-size: 16.6px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
   .nav ul a:hover { text-decoration: underline; text-underline-offset: 5px; }
-  .nav .cta { justify-self: end; display: inline-flex; align-items: center; gap: 10px; background: var(--lime); color: var(--bg); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 10px 12px 10px 18px; border-radius: 999px; transition: background .2s ease, transform .2s ease; }
+  .nav .cta { justify-self: end; display: inline-flex; align-items: center; gap: 10px; background: var(--lime); color: var(--bg); text-decoration: none; font-size: 16.6px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 10px 12px 10px 18px; border-radius: 999px; transition: background .2s ease, transform .2s ease; }
   .nav .cta b { width: 24px; height: 24px; border-radius: 50%; background: var(--bg); color: var(--lime); display: grid; place-items: center; font-weight: 400; transition: transform .3s ease; }
   .nav .cta:hover { background: var(--ink); transform: translateY(-1px); }
   .nav .cta:hover b { transform: rotate(-45deg); }
@@ -131,17 +132,17 @@
   .shot .word { position: absolute; left: 7%; bottom: 9%; font-weight: 800; text-transform: uppercase; line-height: .86; letter-spacing: -.03em; font-size: 13cqi; color: var(--ink); text-shadow: 0 6px 40px rgba(0,0,0,.7); }
   .shot .word.dark { color: #111; text-shadow: none; }
   .shot .word .logo-mark { height: 11cqi; color: var(--lime); }
-  .shot .ph { position: absolute; right: 8px; top: 8px; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink); background: rgba(8,8,8,.75); padding: 4px 8px; }
-  .tile figcaption, .tile .cap { white-space: nowrap; overflow: hidden; display: flex; justify-content: space-between; gap: 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
+  .shot .ph { position: absolute; right: 8px; top: 8px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink); background: rgba(8,8,8,.75); padding: 4px 8px; }
+  .tile figcaption, .tile .cap { white-space: nowrap; overflow: hidden; display: flex; justify-content: space-between; gap: 12px; font-size: 14.1px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
   .tile .cap b { color: var(--ink); font-weight: 600; }
   .tile .cap span { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .tile .cap span:last-child { flex: none; max-width: 45%; }
   .hero-copy { order: -1; position: relative; flex: 1; display: grid; align-content: center; gap: clamp(20px, 2.4vw, 32px); padding-block: 12px 24px; }
-  .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--lime); display: flex; align-items: center; gap: 10px; }
+  .hero-eyebrow { font-size: 15.4px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--lime); display: flex; align-items: center; gap: 10px; }
   .hero-eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--lime); }
   .hero-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 14px 16px 14px 22px; border-radius: 999px; border: 1px solid var(--lime); transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 17.9px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 14px 16px 14px 22px; border-radius: 999px; border: 1px solid var(--lime); transition: background .2s ease, color .2s ease, border-color .2s ease; }
   .btn b { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 400; transition: transform .3s ease; }
   .btn.primary { background: var(--lime); color: var(--bg); }
   .btn.primary b { background: var(--bg); color: var(--lime); }
@@ -151,9 +152,9 @@
   .btn.ghost:hover { border-color: var(--lime); color: var(--lime); }
   .btn:hover b { transform: rotate(-45deg); }
   .hero-copy h1 { margin: 0; font-size: min(clamp(52px, 9vw, 150px), 13svh); line-height: 1.4; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
-  .hero-copy p { margin: 0; color: var(--dim); max-width: 46ch; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.42; }
-  .hero-side { position: absolute; right: var(--gut); top: 96px; max-width: 26ch; text-align: right; font-size: 12px; color: var(--dim); pointer-events: none; }
-  .hero-foot { position: absolute; left: var(--gut); right: var(--gut); bottom: 22px; display: flex; justify-content: space-between; gap: 16px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; pointer-events: none; }
+  .hero-copy p { margin: 0; color: var(--dim); max-width: 40ch; font-size: clamp(20px, 2vw, 28px); line-height: 1.3; }
+  .hero-side { position: absolute; right: var(--gut); top: 96px; max-width: 26ch; text-align: right; font-size: 15.4px; color: var(--dim); pointer-events: none; }
+  .hero-foot { position: absolute; left: var(--gut); right: var(--gut); bottom: 22px; display: flex; justify-content: space-between; gap: 16px; font-size: 14.1px; text-transform: uppercase; letter-spacing: .08em; pointer-events: none; }
   .hero-foot .mid { color: var(--dim); }
   .scrollcue { display: inline-flex; gap: 10px; align-items: center; color: var(--lime); font-weight: 700; }
   .scrollcue i { width: 1px; height: 22px; background: var(--lime); animation: cue 1.6s ease-in-out infinite; transform-origin: top; }
@@ -193,7 +194,7 @@
   .shift-meta { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 40px; margin-top: clamp(40px, 6vw, 72px); pointer-events: none; }
   .shift-meta p { margin: 0; max-width: 46ch; color: var(--dim); }
   .shift-meta p b { color: var(--ink); font-weight: 500; }
-  .hint { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .hint { font-size: 14.1px; text-transform: uppercase; letter-spacing: .08em; }
 
   /* SERVICES */
   .services { padding-block: clamp(44px, 5.5vw, 76px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 40px clamp(32px, 6vw, 96px); }
@@ -202,19 +203,19 @@
   .sec-title.fit { font-size: 10.8cqi; white-space: nowrap; }
   .services .lead { margin: 18px 0 0; color: var(--dim); max-width: 38ch; }
   .pillars { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
-  .pillars button { display: inline-flex; align-items: center; gap: 10px; background: none; border: 1px solid rgba(241,241,236,.35); border-radius: 999px; padding: 11px 20px; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  .pillars button { display: inline-flex; align-items: center; gap: 10px; background: none; border: 1px solid rgba(241,241,236,.35); border-radius: 999px; padding: 11px 20px; cursor: pointer; font-size: 16.6px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); transition: background .2s ease, color .2s ease, border-color .2s ease; }
   .pillars button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1px solid currentColor; transition: background .2s ease; }
   .pillars button:hover { border-color: var(--lime); color: var(--lime); }
   .pillars button[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: var(--bg); }
   .pillars button[aria-pressed="true"]::before { background: var(--bg); border-color: var(--bg); }
   .card { position: relative; border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: var(--panel); padding: clamp(22px, 3.4vw, 40px); display: grid; gap: 24px; min-height: 420px; align-content: space-between; }
-  .card-top { display: flex; justify-content: space-between; gap: 16px; font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .card-top { display: flex; justify-content: space-between; gap: 16px; font-size: 15.4px; color: var(--dim); font-variant-numeric: tabular-nums; }
   .card h3 { margin: 0; font-size: clamp(48px, 7vw, 104px); line-height: 1.15; font-weight: 800; text-transform: uppercase; letter-spacing: -.03em; font-stretch: 75%; color: var(--lime); }
   .card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
   .card li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; }
   .card li::before { content: "→"; color: var(--lime); }
   .card-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  .card-nav button { background: none; border: 0; cursor: pointer; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; padding: 6px 0; }
+  .card-nav button { background: none; border: 0; cursor: pointer; font-size: 15.4px; text-transform: uppercase; letter-spacing: .08em; padding: 6px 0; }
   .card-nav button:hover { color: var(--lime); }
   .progress { flex: 1; height: 1px; background: var(--line); position: relative; }
   .progress i { position: absolute; left: 0; top: -1px; height: 3px; background: var(--lime); transition: width .5s ease, left .5s ease; }
@@ -232,9 +233,9 @@
     transition: background .25s ease, color .25s ease, padding .25s ease;
   }
   .rowx > button:hover, .rowx.open > button { background: var(--lime); color: var(--bg); padding-inline: 20px; }
-  .rowx .n { font-size: 12px; font-variant-numeric: tabular-nums; }
+  .rowx .n { font-size: 15.4px; font-variant-numeric: tabular-nums; }
   .rowx .t { font-size: clamp(20px, 2.8vw, 38px); font-weight: 700; text-transform: uppercase; line-height: 1.25; letter-spacing: -.02em; font-stretch: 87.5%; }
-  .rowx .c, .rowx .y, .rowx .s { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .rowx .c, .rowx .y, .rowx .s { font-size: 14.1px; text-transform: uppercase; letter-spacing: .08em; }
   .rowx .x { font-size: 20px; transition: transform .3s ease; justify-self: end; }
   .rowx.open .x { transform: rotate(45deg); }
   .detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.8,.2,1); }
@@ -244,7 +245,7 @@
   .detail-in p { margin: 0; color: var(--dim); max-width: 56ch; grid-column: 2; }
   .detail-in .txt { grid-column: 2; display: grid; gap: 14px; max-width: 62ch; }
   .detail-in .txt p { grid-column: auto; max-width: none; line-height: 1.6; }
-  .detail-in ul { margin: 0; padding: 0; list-style: none; grid-column: 3; display: grid; gap: 6px; align-self: start; align-content: start; font-size: 12px; }
+  .detail-in ul { margin: 0; padding: 0; list-style: none; grid-column: 3; display: grid; gap: 6px; align-self: start; align-content: start; font-size: 15.4px; }
   .detail-in li::before { content: "+ "; color: var(--lime); }
 
   /* FOOTER */
@@ -253,9 +254,9 @@
   .foot h2 { margin: 0; font-size: clamp(32px, 5.4vw, 80px); line-height: 1.2; font-weight: 700; text-transform: uppercase; letter-spacing: -.02em; font-stretch: 87.5%; text-wrap: balance; }
   .foot h2 em { font-style: normal; color: var(--lime); }
   .contact-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
-  .contact-list > * { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13px; text-decoration: none; }
+  .contact-list > * { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16.6px; text-decoration: none; }
   .contact-list a:hover { color: var(--lime); }
-  .contact-list .k { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .contact-list .k { color: var(--dim); font-size: 14.1px; text-transform: uppercase; letter-spacing: .08em; }
   .mega { color: var(--lime); }
   .foot { container-type: inline-size; }
   .mega { display: block; width: 100%; margin: 0; text-align: left; overflow: visible; font-family: var(--display); font-weight: 700; font-size: 6.85cqi; line-height: 1; min-width: 0; letter-spacing: -0.025em; white-space: nowrap; text-transform: uppercase; }
@@ -264,19 +265,28 @@
   .foot-brand { display: inline-flex; align-items: center; gap: 18px; }
   .foot-logo { color: var(--ink); display: inline-flex; transition: color .2s ease; }
   .foot-logo:hover { color: var(--lime); }
-  .foot-bar { align-items: center; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
+  .foot-bar { align-items: center; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14.1px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
 
-  /* DISPLAY HEADINGS: Bricolage Grotesque Bold */
+  /* TYPE: Big Shoulders — condensed, squared letterforms in the spirit of the JΛNKOVICS logotype.
+     Display cut for headings, Text cut for running copy. */
   .hero-copy h1, .shift-lines, .sec-title, .card h3, .rowx .t, .foot h2 {
-    font-family: var(--display); font-weight: 700; font-optical-sizing: auto;
+    font-family: var(--display); font-weight: 800; font-optical-sizing: auto;
     font-kerning: normal; font-feature-settings: "kern" 1, "liga" 1; text-rendering: optimizeLegibility;
   }
-  .hero-copy h1 { letter-spacing: -0.03em; line-height: 1.0; }
-  .shift-lines { letter-spacing: -0.012em; line-height: 1.1; }
-  .sec-title { letter-spacing: -0.012em; line-height: 1.1; }
-  .card h3 { letter-spacing: -0.015em; line-height: 1.05; }
-  .rowx .t { letter-spacing: -0.008em; line-height: 1.15; }
-  .foot h2 { letter-spacing: -0.012em; line-height: 1.1; }
+  .hero-copy h1 { text-transform: uppercase; letter-spacing: -.005em; line-height: .92; font-size: min(clamp(60px, 10.5vw, 180px), 16svh); }
+  /* all-caps display lines: slightly open tracking, tight leading, one modest size */
+  .shift-lines { letter-spacing: -.005em; line-height: 1; gap: 0; font-size: clamp(34px, 5.2vw, 80px); }
+  .shift-lines > span { line-height: .92; }
+  .sec-title { letter-spacing: .005em; line-height: 1; font-size: clamp(44px, 6.4vw, 96px); }
+  .card h3 { letter-spacing: 0; line-height: 1; }
+  .rowx .t { letter-spacing: .01em; line-height: 1.1; font-size: clamp(24px, 3.4vw, 46px); }
+  .foot h2 { letter-spacing: .005em; line-height: 1; font-size: clamp(42px, 7vw, 108px); }
+  .mega, .scard .no, .scard .front h3, .scard .back h3, .shot h3, .steps b { font-weight: 800; letter-spacing: 0; }
+  .scard .front h3 { font-size: 16cqh; }
+  .shot h3 { font-size: clamp(26px, 2.7vw, 40px); }
+  /* the display face has no Greek Λ: an upside-down V in the same font gives the logo's Λ */
+  .lam { display: inline-block; transform: translateY(-.087em) scaleY(-1); }
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
   /* CONTACT PAGE */
   .contact { margin-inline: calc(-1 * var(--gut)); padding: clamp(48px, 6vw, 88px) var(--gut); display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 5vw, 64px); align-items: start; scroll-margin-top: 60px; }
@@ -294,12 +304,12 @@
   .steps li { display: grid; grid-template-columns: clamp(64px, 6vw, 92px) 1fr; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
   .steps b { color: var(--lime); font-family: var(--display); font-weight: 700; font-size: clamp(36px, 3.6vw, 56px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .steps strong { display: block; font-weight: 700; }
-  .steps span { color: var(--dim); font-size: 14px; }
+  .steps span { color: var(--dim); font-size: 17.9px; }
   .steps strong { color: var(--ink); font-size: 15px; }
   .cform { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: var(--panel); border: 1px solid var(--line); padding: clamp(22px, 3.4vw, 44px); display: grid; gap: 20px; }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .field { display: grid; gap: 8px; min-width: 0; border: 0; margin: 0; padding: 0; }
-  .field > span, .field legend { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 0; }
+  .field > span, .field legend { font-size: 14.1px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 0; }
   .field input, .field select, .field textarea {
     width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid rgba(241,241,236,.25);
     padding: 10px 0; border-radius: 0; outline: none; transition: border-color .2s ease; resize: vertical; }
@@ -308,23 +318,23 @@
   .field input::placeholder, .field textarea::placeholder { color: #5b5b58; }
   .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--lime); }
   .field.bad input, .field.bad textarea { border-bottom-color: #ff7a59; }
-  .field .err { font-size: 13px; color: #ff9b80; text-transform: none; letter-spacing: 0; font-weight: 500; }
+  .field .err { font-size: 16.6px; color: #ff9b80; text-transform: none; letter-spacing: 0; font-weight: 500; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chips legend { width: 100%; margin-bottom: 8px; }
   .chips label { cursor: pointer; }
   .chips input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .chips span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(241,241,236,.3); font-size: 13px; font-weight: 600; transition: all .2s ease; }
+  .chips span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(241,241,236,.3); font-size: 16.6px; font-weight: 600; transition: all .2s ease; }
   .chips span::before { content: "+"; color: var(--lime); font-weight: 400; }
   .chips label:hover span { border-color: var(--lime); }
   .chips input:checked + span { background: var(--lime); border-color: var(--lime); color: var(--bg); }
   .chips input:checked + span::before { content: "✓"; color: var(--bg); }
   .chips input:focus-visible + span { outline: 2px solid var(--lime); outline-offset: 3px; }
   .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; padding-top: 6px; }
-  .send { display: inline-flex; align-items: center; gap: 12px; background: var(--lime); color: var(--bg); border: 0; border-radius: 999px; padding: 15px 16px 15px 26px; font-size: 14px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; transition: background .2s ease; }
+  .send { display: inline-flex; align-items: center; gap: 12px; background: var(--lime); color: var(--bg); border: 0; border-radius: 999px; padding: 15px 16px 15px 26px; font-size: 17.9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; transition: background .2s ease; }
   .send b { width: 28px; height: 28px; border-radius: 50%; background: var(--bg); color: var(--lime); display: grid; place-items: center; font-weight: 400; transition: transform .3s ease; }
   .send:hover { background: var(--ink); }
   .send:hover b { transform: rotate(-45deg); }
-  .form-note { margin: 0; font-size: 13px; color: var(--dim); flex: 1; min-width: 200px; }
+  .form-note { margin: 0; font-size: 16.6px; color: var(--dim); flex: 1; min-width: 200px; }
   .form-note.ok { color: var(--ink); }
   .form-note.ok b { color: var(--lime); }
 
@@ -356,7 +366,7 @@
   /* title turned 90°, reading bottom-to-top along the left edge */
   .scard .front h3 { position: absolute; left: 7cqw; bottom: 6cqh; margin: 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
     font-family: var(--display); font-weight: 700; font-size: 13.5cqh; line-height: .9; letter-spacing: -0.025em; color: var(--ink); }
-  .scard .hint { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); opacity: 0; transition: opacity .5s ease .3s; }
+  .scard .hint { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 14.1px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); opacity: 0; transition: opacity .5s ease .3s; }
   .scard.on .hint { opacity: 1; }
   .scard .front-hint { right: 7cqw; bottom: 4.5cqh; font-size: 7cqh; line-height: 1; letter-spacing: 0; }
   .scard .back { display: flex; flex-direction: column; padding: clamp(20px, 2.2vw, 30px) clamp(16px, 1.8vw, 24px); gap: clamp(14px, 1.6vw, 22px);
@@ -375,9 +385,9 @@
   .art-c { background: repeating-radial-gradient(circle at 70% 25%, #d6e031 0 6px, #231a55 6px 22px, #0e0b1f 22px 40px); filter: blur(2px); }
   .art-d { background: linear-gradient(160deg, #0e0b1f 10%, #49479d 45%, #b8a6ff 60%, #0e0b1f 85%), radial-gradient(40% 30% at 70% 30%, #d6e031, transparent); background-blend-mode: screen; filter: blur(10px); }
   .deck-nav { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; max-width: 560px; width: 100%; justify-self: center; }
-  .deck-nav button { background: none; border: 0; cursor: pointer; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 6px 0; color: var(--ink); }
+  .deck-nav button { background: none; border: 0; cursor: pointer; font-size: 15.4px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 6px 0; color: var(--ink); }
   .deck-nav button:hover { color: var(--lime); }
-  .deck-count { font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .deck-count { font-size: 15.4px; color: var(--dim); font-variant-numeric: tabular-nums; }
 
   /* hero reel tiles share the service-card look */
   .tile { grid-template-rows: auto; }
@@ -390,11 +400,11 @@
   .shot .pic { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s ease; }
   .tile:hover .shot .pic, .tile.lift .shot .pic { transform: scale(1.05); }
   .shot::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(8,8,10,.25) 0%, rgba(8,8,10,0) 30%, rgba(8,8,10,.35) 55%, rgba(8,8,10,.9) 100%); }
-  .shot .top { position: absolute; left: 16px; right: 16px; top: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(241,241,236,.85); }
+  .shot .top { position: absolute; left: 16px; right: 16px; top: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 14.1px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(241,241,236,.85); }
   .shot .top i { width: 34px; height: 5px; border-radius: 3px; background: rgba(241,241,236,.35); }
   .shot .inner { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 16px; display: grid; gap: 6px; }
   .shot h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(22px, 2.2vw, 32px); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
-  .shot .cat { font-size: 12px; color: rgba(241,241,236,.75); }
+  .shot .cat { font-size: 15.4px; color: rgba(241,241,236,.75); }
 
   @media (max-width: 900px) {
     .services, .foot-top, .contact { grid-template-columns: 1fr; }
@@ -422,7 +432,7 @@
 </style>
 </head>
 <body>
-<div class="gate" id="gate" role="dialog" aria-label="Belépés">
+<div class="gate" id="gate" role="dialog" aria-label="Enter">
   <span class="gate-count" id="count" aria-hidden="true">000</span>
   <div class="gate-inner">
     <div class="gate-logo"><span class="logo-mark" role="img" aria-label="JΛNKOVICS" style="height:clamp(40px, 7vw, 84px)"></span></div>
@@ -431,53 +441,53 @@
   </div>
 </div>
 
-<nav class="nav" aria-label="Fő navigáció">
-  <a href="#top" class="logo" aria-label="JΛNKOVICS – vissza a tetejére"><span class="logo-mark" style="height:32px"></span></a>
+<nav class="nav" aria-label="Main navigation">
+  <a href="#top" class="logo" aria-label="JΛNKOVICS – back to top"><span class="logo-mark" style="height:32px"></span></a>
   <ul>
-    <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
-    <li><a href="#munkak">Projektek</a></li>
-    <li><a href="#kapcsolat">Kapcsolat</a></li>
+    <li><a href="#szolgaltatasok">Services</a></li>
+    <li><a href="#munkak">Projects</a></li>
+    <li><a href="#kapcsolat">Contact</a></li>
   </ul>
-  <a class="cta" href="#kapcsolat">Írj nekem <b aria-hidden="true">→</b></a>
+  <a class="cta" href="#kapcsolat">Get in touch <b aria-hidden="true">→</b></a>
 </nav>
 
 <main>
   <header class="hero" id="top">
-    <div class="reel" aria-label="Projektek">
+    <div class="reel" aria-label="Projects">
       <div class="reel-track">
-        <a class="tile" href="#munkak" aria-label="BP Lions SC projekt">
-          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="BP Lions Sport Club logó neon zöld színben, kék alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Arculat · Logó</span></div></div>
+        <a class="tile" href="#munkak" aria-label="BP Lions SC project">
+          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="BP Lions Sport Club logo in neon lime on blue" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Identity · Logo</span></div></div>
         </a>
-        <a class="tile" href="#munkak" aria-label="VAYA Kopi Luwak projekt">
-          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="VAYA Kopi Luwak kávésdobozok bordó háttér előtt" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Arculat · Csomagolás</span></div></div>
+        <a class="tile" href="#munkak" aria-label="VAYA Kopi Luwak project">
+          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="VAYA Kopi Luwak coffee boxes on a burgundy background" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Identity · Packaging</span></div></div>
         </a>
-        <a class="tile" href="#munkak" aria-label="Dorian Gray arcképe projekt">
-          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="Oscar Wilde: Dorian Gray arcképe, könyvborító szemből" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Dorian Gray arcképe</h3><span class="cat">Könyvborító</span></div></div>
+        <a class="tile" href="#munkak" aria-label="The Picture of Dorian Gray project">
+          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="Oscar Wilde: The Picture of Dorian Gray, book cover, front view" width="960" height="600" decoding="async"></picture><div class="inner"><h3>The Picture of Dorian Gray</h3><span class="cat">Book cover</span></div></div>
         </a>
-        <a class="tile" href="#munkak" aria-label="Saját arculat projekt">
-          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="JΛNKOVICS logó és jel neon zöld színben, sötét alapon" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
-        </a>
-        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
-          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Arculat · Logó</span></div></div>
+        <a class="tile" href="#munkak" aria-label="Personal brand project">
+          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="JΛNKOVICS logo and mark in neon lime on a dark background" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Personal brand</h3><span class="cat">JΛNKOVICS · Logo</span></div></div>
         </a>
         <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
-          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Arculat · Csomagolás</span></div></div>
+          <div class="shot"><picture><source type="image/webp" srcset="img/bp-lions-640.webp 640w, img/bp-lions-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/bp-lions-960.jpg" srcset="img/bp-lions-640.jpg 640w, img/bp-lions-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>BP Lions SC</h3><span class="cat">Identity · Logo</span></div></div>
         </a>
         <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
-          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Dorian Gray arcképe</h3><span class="cat">Könyvborító</span></div></div>
+          <div class="shot"><picture><source type="image/webp" srcset="img/vaya-640.webp 640w, img/vaya-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/vaya-960.jpg" srcset="img/vaya-640.jpg 640w, img/vaya-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>VAYA Kopi Luwak</h3><span class="cat">Identity · Packaging</span></div></div>
         </a>
         <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
-          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Saját arculat</h3><span class="cat">JΛNKOVICS · Logó</span></div></div>
+          <div class="shot"><picture><source type="image/webp" srcset="img/dorian-borito-640.webp 640w, img/dorian-borito-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/dorian-borito-960.jpg" srcset="img/dorian-borito-640.jpg 640w, img/dorian-borito-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>The Picture of Dorian Gray</h3><span class="cat">Book cover</span></div></div>
+        </a>
+        <a class="tile" href="#munkak" aria-hidden="true" tabindex="-1">
+          <div class="shot"><picture><source type="image/webp" srcset="img/sajat-arculat-640.webp 640w, img/sajat-arculat-960.webp 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px"><img class="pic" src="img/sajat-arculat-960.jpg" srcset="img/sajat-arculat-640.jpg 640w, img/sajat-arculat-960.jpg 960w" sizes="(max-width: 1000px) 250px, (max-width: 1520px) 25vw, 380px" alt="" width="960" height="600" decoding="async"></picture><div class="inner"><h3>Personal brand</h3><span class="cat">JΛNKOVICS · Logo</span></div></div>
         </a>
       </div>
     </div>
     <div class="hero-copy">
-      <h1 lang="en">Let’s make<br>some <span class="lime">noise.</span></h1>
+      <h1>Let’s make<br>some <span class="lime">noise.</span></h1>
       <div class="hero-row">
-        <p>Bátor, egyedi arculatok logótól a social médiáig, olyan márkáknak, amelyeket nem lehet nem észrevenni.</p>
+        <p>Bold, distinctive identities from logo to social media, for brands that are impossible to ignore.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#munkak">Projektek <b aria-hidden="true">→</b></a>
-          <a class="btn ghost" href="#kapcsolat">Írj nekem <b aria-hidden="true">→</b></a>
+          <a class="btn primary" href="#munkak">Projects <b aria-hidden="true">→</b></a>
+          <a class="btn ghost" href="#kapcsolat">Get in touch <b aria-hidden="true">→</b></a>
         </div>
       </div>
     </div>
@@ -486,37 +496,37 @@
     </div>
   </header>
 
-  <section class="shift" id="shift" aria-label="Bemutatkozás">
-    <p class="sr-only">Minden márkának van egy hangja. Én felhangosítom, hogy megmaradjon.</p>
+  <section class="shift" id="shift" aria-label="About">
+    <p class="sr-only">Every brand has a voice. I turn it up, so it stays with you.</p>
     <div class="shift-lines" id="lines" aria-hidden="true">
-      <span class="l1" data-k="-1">Minden márkának</span>
-      <span class="l2" data-k="1.4">van egy hangja.</span>
-      <span class="l3" data-k="-2">Én felhangosítom,</span>
-      <span class="l4" data-k="1">hogy megmaradjon.</span>
+      <span class="l1" data-k="-1">Every brand</span>
+      <span class="l2" data-k="1.4">has a voice.</span>
+      <span class="l3" data-k="-2">I turn it up,</span>
+      <span class="l4" data-k="1">so it stays with you.</span>
     </div>
     <div class="shift-meta">
-      <p><b>Arculat, social media és print</b>, üzleti szemlélettel. Vezetőként tanultam meg, mit akar az ügyfél; grafikusként megmutatom neki.</p>
+      <p><b>Identity, social media and print</b>, with a business mindset. As a manager I learned what clients want; as a designer I show it to them.</p>
     </div>
   </section>
 
   <div class="motion" aria-hidden="true">
-    <div class="mrow"><span>Branding</span><span class="o">Print</span><span class="b">Arculat</span><span class="g">Logó</span><span class="o">Tipográfia</span><span class="b">Social</span><span>Branding</span><span class="o">Print</span><span class="b">Arculat</span><span class="g">Logó</span><span class="o">Tipográfia</span><span class="b">Social</span></div>
-    <div class="mrow rev"><span class="b">Csomagolás</span><span>Plakát</span><span class="o">Web / UX</span><span class="g">Branding</span><span class="b">Merch</span><span class="o">Kiadvány</span><span class="b">Csomagolás</span><span>Plakát</span><span class="o">Web / UX</span><span class="g">Branding</span><span class="b">Merch</span><span class="o">Kiadvány</span></div>
+    <div class="mrow"><span>Branding</span><span class="o">Print</span><span class="b">Identity</span><span class="g">Logo</span><span class="o">Typography</span><span class="b">Social</span><span>Branding</span><span class="o">Print</span><span class="b">Identity</span><span class="g">Logo</span><span class="o">Typography</span><span class="b">Social</span></div>
+    <div class="mrow rev"><span class="b">Packaging</span><span>Poster</span><span class="o">Web / UX</span><span class="g">Branding</span><span class="b">Merch</span><span class="o">Editorial</span><span class="b">Packaging</span><span>Poster</span><span class="o">Web / UX</span><span class="g">Branding</span><span class="b">Merch</span><span class="o">Editorial</span></div>
   </div>
 
   <section class="services" id="szolgaltatasok">
     <div>
-      <h2 class="sec-title fit">Szolgáltatások</h2>
-      <p class="lead">Egy projekt a brieftől az átadásig: arculat, social media, print és web egy kézben.</p>
+      <h2 class="sec-title fit">Services</h2>
+      <p class="lead">One project from brief to handover: identity, social media, print and web in one pair of hands.</p>
     </div>
-    <div class="deck" id="deck" aria-roledescription="körhinta" aria-label="Szolgáltatások">
+    <div class="deck" id="deck" aria-roledescription="carousel" aria-label="Services">
       <div class="deck-track" id="deck-track"></div>
     </div>
   </section>
 
   <section class="work" id="munkak">
     <div class="work-head">
-      <h2 class="sec-title">Projektek</h2>
+      <h2 class="sec-title">Projects</h2>
     </div>
     <div class="rows" id="rows"></div>
   </section>
@@ -524,53 +534,53 @@
 
 <section class="contact" id="kapcsolat" aria-labelledby="contact-title">
   <div class="contact-info">
-    <h2 id="contact-title" class="sec-title ctitle"><span>Új márkát indítasz?</span> <em>Dolgozzunk együtt.</em></h2>
-    <p class="contact-lead">Írd le pár mondatban, mit szeretnél. Nem kell kész brief: a részleteket az első beszélgetésen közösen tisztázzuk.</p>
+    <h2 id="contact-title" class="sec-title ctitle"><span>Launching a new brand?</span> <em>Let’s work together.</em></h2>
+    <p class="contact-lead">Tell me in a few sentences what you need. No finished brief required: we’ll work out the details together on our first call.</p>
     <ol class="steps">
-      <li><b>01</b><span><strong>Üzenet</strong>Kitöltöd az űrlapot vagy írsz e-mailt.</span></li>
-      <li><b>02</b><span><strong>Egyeztetés</strong>Rövid hívás vagy brief-kérdőív a céljaidról.</span></li>
-      <li><b>03</b><span><strong>Ajánlat</strong>Ütemezett árajánlatot küldök a projektre.</span></li>
+      <li><b>01</b><span><strong>Message</strong>Fill in the form or send me an email.</span></li>
+      <li><b>02</b><span><strong>Alignment</strong>A short call or a brief questionnaire about your goals.</span></li>
+      <li><b>03</b><span><strong>Proposal</strong>I send a quote with a timeline for the project.</span></li>
     </ol>
   </div>
 
   <form class="cform" id="cform" novalidate>
     <div class="row2">
-      <label class="field"><span>Név *</span><input id="c-name" name="name" type="text" autocomplete="name" required placeholder="Kovács Anna"></label>
-      <label class="field"><span>E-mail *</span><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="anna@marka.hu"></label>
+      <label class="field"><span>Name *</span><input id="c-name" name="name" type="text" autocomplete="name" required placeholder="Anna Smith"></label>
+      <label class="field"><span>Email *</span><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="anna@brand.com"></label>
     </div>
-    <label class="field"><span>Cég / márka</span><input id="c-company" name="company" type="text" autocomplete="organization" placeholder="pl. Kávézó, webshop, sportklub"></label>
+    <label class="field"><span>Company / brand</span><input id="c-company" name="company" type="text" autocomplete="organization" placeholder="e.g. café, online shop, sports club"></label>
     <fieldset class="field chips" id="c-types">
-      <legend>Miben segíthetek?</legend>
-      <label><input type="checkbox" id="c-t1" value="Arculat"><span>Arculat</span></label>
+      <legend>How can I help?</legend>
+      <label><input type="checkbox" id="c-t1" value="Identity"><span>Identity</span></label>
       <label><input type="checkbox" id="c-t2" value="Social media"><span>Social media</span></label>
       <label><input type="checkbox" id="c-t3" value="Print"><span>Print</span></label>
-      <label><input type="checkbox" id="c-t4" value="Csomagolás"><span>Csomagolás</span></label>
+      <label><input type="checkbox" id="c-t4" value="Packaging"><span>Packaging</span></label>
       <label><input type="checkbox" id="c-t5" value="Web / UX"><span>Web / UX</span></label>
-      <label><input type="checkbox" id="c-t6" value="Egyéb"><span>Egyéb</span></label>
+      <label><input type="checkbox" id="c-t6" value="Other"><span>Other</span></label>
     </fieldset>
     <div class="row2">
-      <label class="field"><span>Költségkeret</span>
+      <label class="field"><span>Budget</span>
         <select id="c-budget" name="budget">
-          <option value="">Még nem tudom</option>
-          <option>200 000 Ft alatt</option>
-          <option>200 000 – 500 000 Ft</option>
-          <option>500 000 – 1 000 000 Ft</option>
-          <option>1 000 000 Ft felett</option>
+          <option value="">Not sure yet</option>
+          <option>Under 200,000 HUF</option>
+          <option>200,000 – 500,000 HUF</option>
+          <option>500,000 – 1,000,000 HUF</option>
+          <option>Over 1,000,000 HUF</option>
         </select>
       </label>
-      <label class="field"><span>Határidő</span><input id="c-deadline" name="deadline" type="text" placeholder="pl. november vége"></label>
+      <label class="field"><span>Deadline</span><input id="c-deadline" name="deadline" type="text" placeholder="e.g. end of November"></label>
     </div>
-    <label class="field"><span>Üzenet *</span><textarea id="c-msg" name="message" rows="5" required placeholder="Mesélj a márkádról és arról, mire van szükséged."></textarea></label>
+    <label class="field"><span>Message *</span><textarea id="c-msg" name="message" rows="5" required placeholder="Tell me about your brand and what you need."></textarea></label>
     <div class="form-foot">
-      <button class="send" type="submit">Üzenet küldése <b aria-hidden="true">→</b></button>
+      <button class="send" type="submit">Send message <b aria-hidden="true">→</b></button>
       <p class="form-note" id="c-status" role="status"></p>
     </div>
   </form>
 </section>
 
 <footer class="foot">
-  <p class="mega">A jövő arculatait építjük.</p>
-  <div class="foot-bar"><span class="foot-brand"><a href="#top" class="foot-logo" aria-label="JΛNKOVICS – vissza a tetejére"><span class="logo-mark" style="height:34px"></span></a></span><span>© 2026 JΛNKOVICS · Minden jog fenntartva</span><a class="totop" href="#top" aria-label="Vissza az oldal tetejére">↑</a></div>
+  <p class="mega">Building the brands of tomorrow.</p>
+  <div class="foot-bar"><span class="foot-brand"><a href="#top" class="foot-logo" aria-label="JΛNKOVICS – back to top"><span class="logo-mark" style="height:34px"></span></a></span><span>© 2026 JΛNKOVICS · All rights reserved</span><a class="totop" href="#top" aria-label="Back to top">↑</a></div>
 </footer>
 
 <script>
@@ -591,18 +601,19 @@
   /* ---------- Services: infinite card carousel (centre card grows, auto-advances) ---------- */
   (() => {
     const svcs = [
-      { name: "Arculat", art: "art-a", list: ["Márka- és versenytárs-elemzés", "Logó és logórendszer", "Színek, tipográfia", "Arculati kézikönyv"] },
-      { name: "Social media", art: "art-b", list: ["Instagram-audit", "Követőszám-növelési roadmap", "Tartalom- és posztsablonok", "Versenytárs-benchmark"] },
-      { name: "Print", art: "art-c", list: ["Névjegy és irodai anyagok", "Plakát, szórólap", "Csomagolás és címke", "Merch"] },
-      { name: "Web / UX", art: "art-d", list: ["Weboldal-benchmark", "Wireframe", "Felhasználói út", "Landing page koncepció"] }
+      { name: "Identity", art: "art-a", list: ["Brand and competitor analysis", "Logo and logo system", "Colours and typography", "Brand guidelines"] },
+      { name: "Social media", art: "art-b", list: ["Instagram audit", "Follower growth roadmap", "Content and post templates", "Competitor benchmark"] },
+      { name: "Print", art: "art-c", list: ["Business cards and stationery", "Posters and flyers", "Packaging and labels", "Merch"] },
+      { name: "Web / UX", art: "art-d", list: ["Website benchmark", "Wireframes", "User journey", "Landing page concept"] }
     ];
+
     const N = svcs.length, COPIES = 3, $ = id => document.getElementById(id);
     const deck = $("deck"), track = $("deck-track");
     const cardHTML = (sv, k, copy) => `
-      <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: kattints a részletekért">
+      <article class="scard" data-k="${k}" tabindex="${copy === 1 ? 0 : -1}" ${copy === 1 ? "" : 'aria-hidden="true"'} aria-label="${sv.name}: click for details">
         <div class="flip">
           <div class="face front"><div class="art ${sv.art}"></div><span class="no">0${k + 1}</span><h3>${sv.name}</h3><span class="hint front-hint" aria-hidden="true">↻</span></div>
-          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Vissza</span></div>
+          <div class="face back"><h3>${sv.name}</h3><ul>${sv.list.map(x => `<li>${x}</li>`).join("")}</ul><span class="hint">↺ Back</span></div>
         </div>
       </article>`;
     let html = ""; for (let c = 0; c < COPIES; c++) svcs.forEach((sv, k) => html += cardHTML(sv, k, c));
@@ -692,24 +703,17 @@
   /* ---------- Work index (text only, expandable rows) ---------- */
   (() => {
     const work = [
-      { t: "BP Lions SC", c: "Arculat · Social · Web", y: "2026", s: "Folyamatban",
-        d: "Egy kickbox klub online jelenlétének újragondolása: Instagram-audittal indultunk, erre épült a növekedési terv, a weboldal-wireframe és a teljes vizuális arculat.",
-        l: ["Instagram-audit és növekedési roadmap", "Versenytárs-benchmark európai prémium termek alapján", "Weboldal-wireframe", "Logófrissítés, színrendszer, print"] },
-      { t: "VAYA Kopi Luwak", c: "Arculat · Csomagolás", y: "2025–26", s: "Kész",
-        d: ["A Vaya márka arculatának tervezésekor a kiindulópont egy szűk, tudatos fogyasztói réteget megszólító prémium kávétermék identitásának megteremtése volt. A koncepció három pillérre épül: a termék indonéz eredetének, a készítési folyamat kulcsszereplőjének – a cibetmacskának – és a különlegesség kommunikációjának vizuális egységbe foglalására.", "A cibetmacska mintázata az arculat generatív elemeként jelenik meg: belőle vezethető le a logó vonalvezetése is, amelynek tudatosan lágy, organikus karaktere biztosítja a vizuális koherenciát az összképen belül. A színpaletta Indonézia jellegzetes színárnyalatait idézi, így a kromatikus identitás és az állatmotívum együttesen egy hiteles, eredethez kötött márkanarratívát épít fel, amely természetközeliséget, egzotikumot és prémium minőséget kommunikál.", "A csomagolás formai koncepciója a funkcionalitást helyezi előtérbe: az egyszerű dobozos kivitel a gyártás, szállítás és tárolás logisztikai szempontjait optimalizálja, miközben minimális anyagfelhasználással és csökkentett papírhulladékkal dolgozik. A grafikai megjelenés a főbb arculati elemeket integrálja, így a csomagolás önálló kommunikációs felületként is működik, első találkozásra is kellő rálátást biztosítva a márka identitására."],
-        l: ["Logó és arculat", "Cibetmacska-mintázat mint generatív elem", "Indonéz színpaletta", "Csomagolás és grafika"] },
-      { t: "Dorian Gray arcképe", c: "Könyvtervezés · Borító", y: "2025–26", s: "Kész",
-        d: ["A könyvborító koncepciójának középpontjában a szépség és a romlás paradoxonja áll. A rózsa itt nem pusztán dekoratív elem, hanem a főszereplő morális hanyatlását megtestesítő szimbólum. Ez egy vizuális metafora arra, hogy a felszín és a mögöttes valóság között áthidalhatatlan ellentét feszül. A kompozíció azt a töréspontot rögzíti, amelyben az esztétikai tökéletesség önmaga ellentétébe fordul: a romlás nem kívülről, hanem belülről történik, immanens folyamatként bontakozik ki.", "A kivitelezés során egy valódi rózsa (egyszerre ép és roncsolt állapotban dokumentált) fotografikus alapanyagát vektorizáltam, így az organikus részletgazdagság megőrzése mellett egy stilizált, festői karakterű illusztráció jött létre. Ez a technikai megközelítés egyúttal tartalmi utalás is: tudatosan reflektál a regény központi motívumára, ahol a festmény, mint médium és a valóság viszonya maga a mű tétje."],
-        l: ["Borítókoncepció", "Vektorizált rózsa-illusztráció", "Borító, gerinc, belív"] },
-      { t: "JΛNKOVICS", c: "Saját arculat", y: "2025–26", s: "Kész",
-        d: ["A saját brand tervezésénél az volt az elsődleges szempont, hogy mind a formavilág, mind a színhasználat a személyiségemet tükrözze. A logotípia és az embléma vonalvezetése egyszerre lágy és éles, ami az identitás kettősségére hivatott referálni.", "A brand fiatalos, energikus karakterét az élénk, neonos színek közvetítik, a komolyságot és a céltudatosságot pedig a fekete erőteljes jelenléte horgonyozza le. A firkaszerű grafikai elemek lazaságot és játékosságot visznek az összképbe, megakadályozva, hogy a design túl statikussá váljon."],
-        l: ["Logotípia és embléma", "Neon színek fekete alapon", "Firkaszerű grafikai elemek", "Portfólió weboldal"] }
+      { "t": "BP Lions SC", "c": "Identity · Social · Web", "y": "2026", "s": "In progress", "d": "Rethinking the online presence of a kickboxing club: we started with an Instagram audit, which shaped the growth plan, the website wireframe and the full visual identity.", "l": ["Instagram audit and growth roadmap", "Competitor benchmark of premium European gyms", "Website wireframe", "Logo refresh, colour system, print"]},
+      { "t": "VAYA Kopi Luwak", "c": "Identity · Packaging", "y": "2025–26", "s": "Done", "d": ["The starting point for the Vaya identity was to create a premium coffee product that speaks to a narrow, conscious group of consumers. The concept rests on three pillars, brought together in one visual system: the product’s Indonesian origin, the key player in how it is made – the civet – and the communication of its rarity.", "The civet’s pattern is the generative element of the identity: the lines of the logo derive from it too, and its deliberately soft, organic character keeps the whole visually coherent. The colour palette recalls Indonesia’s characteristic hues, so the colours and the animal motif together build an authentic, origin-led brand story that communicates closeness to nature, the exotic and premium quality.", "The form of the packaging puts function first: the simple box optimises production, shipping and storage, while using minimal material and reducing paper waste. The graphics integrate the main brand elements, so the packaging works as a communication surface in its own right and gives a clear sense of the brand at first encounter."], "l": ["Logo and identity", "Civet pattern as a generative element", "Indonesian colour palette", "Packaging and graphics"]},
+      { "t": "The Picture of Dorian Gray", "c": "Book design · Cover", "y": "2025–26", "s": "Done", "d": ["At the heart of the cover concept is the paradox of beauty and decay. The rose here is not merely decorative: it is a symbol of the protagonist’s moral decline. It is a visual metaphor for the unbridgeable contrast between the surface and the reality behind it. The composition captures the breaking point at which aesthetic perfection turns into its opposite: the decay does not come from outside but unfolds from within.", "For the execution I vectorised photographs of a real rose, documented both intact and damaged, creating a stylised, painterly illustration that keeps the organic richness of detail. The technique is also a nod to the content: it deliberately reflects the novel’s central motif, where the relationship between the painting as a medium and reality is the very stake of the work."], "l": ["Cover concept", "Vectorised rose illustration", "Cover, spine, interior"]},
+      { "t": "JΛNKOVICS", "c": "Personal brand", "y": "2025–26", "s": "Done", "d": ["In designing my own brand, the main aim was for both the forms and the colours to reflect my personality. The lines of the logotype and the emblem are soft and sharp at once, referring to the duality of the identity.", "The brand’s youthful, energetic character comes from the vivid neon colours, while the strong presence of black anchors its seriousness and sense of purpose. The scribble-like graphic elements bring ease and playfulness, keeping the design from becoming too static."], "l": ["Logotype and emblem", "Neon colours on black", "Scribble-like graphic elements", "Portfolio website"]}
     ];
+
     const rows = document.getElementById("rows");
     rows.innerHTML = work.map((w, k) => `
       <div class="rowx">
         <button type="button" id="work-${k}" aria-expanded="false" aria-controls="wd-${k}">
-          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t}</span>
+          <span class="n">${String(k + 1).padStart(3, "0")}</span><span class="t">${w.t.replace(/Λ/g, '<span class="lam" aria-hidden="true">V</span><span class="sr-only">Λ</span>')}</span>
           <span class="c">${w.c}</span><span class="y">${w.y}</span><span class="s">[${w.s}]</span><span class="x" aria-hidden="true">+</span>
         </button>
         <div class="detail" id="wd-${k}"><div><div class="detail-in"><div class="txt">${[].concat(w.d).map(p => `<p>${p}</p>`).join("")}</div><ul>${w.l.map(x => `<li>${x}</li>`).join("")}</ul></div></div></div>
@@ -725,7 +729,7 @@
   (() => {
     const form = document.getElementById("cform"), status = document.getElementById("c-status");
     const TO = "jankovicsreka25@gmail.com";
-    const need = [["c-name", "Add meg a neved."], ["c-email", "Adj meg egy érvényes e-mail-címet."], ["c-msg", "Írj pár szót a projektről."]];
+    const need = [["c-name", "Please enter your name."], ["c-email", "Please enter a valid email address."], ["c-msg", "Please write a few words about the project."]];
     function mark(id, msg) {
       const input = document.getElementById(id), field = input.closest(".field");
       let err = field.querySelector(".err");
@@ -741,22 +745,22 @@
         const bad = !v || (el.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
         mark(id, bad ? msg : ""); if (bad && !first) first = el;
       }
-      if (first) { first.focus(); status.className = "form-note"; status.textContent = "Néhány kötelező mező hiányzik."; return; }
+      if (first) { first.focus(); status.className = "form-note"; status.textContent = "Some required fields are missing."; return; }
       const val = id => document.getElementById(id).value.trim();
       const types = [...form.querySelectorAll("#c-types input:checked")].map(i => i.value).join(", ");
       const body = [
-        "Név: " + val("c-name"),
-        "E-mail: " + val("c-email"),
-        val("c-company") && "Cég / márka: " + val("c-company"),
-        types && "Terület: " + types,
-        "Költségkeret: " + (val("c-budget") || "Még nem tudom"),
-        val("c-deadline") && "Határidő: " + val("c-deadline"),
+        "Name: " + val("c-name"),
+        "Email: " + val("c-email"),
+        val("c-company") && "Company / brand: " + val("c-company"),
+        types && "Area: " + types,
+        "Budget: " + (val("c-budget") || "Not sure yet"),
+        val("c-deadline") && "Deadline: " + val("c-deadline"),
         "", val("c-msg")
       ].filter(x => x !== "" && x !== false && x != null || x === "").join("\n");
-      const subject = "Projekt megkeresés – " + (val("c-company") || val("c-name"));
+      const subject = "Project enquiry – " + (val("c-company") || val("c-name"));
       location.href = "mailto:" + TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       status.className = "form-note ok";
-      status.innerHTML = "Az üzenet elkészült. Ha nem nyílt meg a levelező, írj közvetlenül: <b></b>";
+      status.innerHTML = "Your message is ready. If your mail app didn’t open, write to me directly: <b></b>";
       status.querySelector("b").textContent = TO;
     });
   })();
@@ -790,7 +794,7 @@
     }
     fit();
     if (document.fonts) {
-      document.fonts.load('700 100px "Bricolage Grotesque"').then(fit, fit);
+      document.fonts.load('800 100px "Big Shoulders Display"').then(fit, fit);
       document.fonts.ready.then(fit);
     }
     if ("ResizeObserver" in window) new ResizeObserver(fit).observe(box);
@@ -821,23 +825,9 @@
       line.appendChild(fit);
     });
 
-    /* every line spans the full content width: the size that would fill it, made ~18px smaller,
-       with the leftover width shared out as letter-spacing so the edges stay flush */
+    /* one modest size for all four lines, tight display tracking and leading (set in CSS) */
     function fitLines() {
-      const W = box.clientWidth;
-      lines.forEach(line => {
-        const fit = line.firstChild, n = fit.textContent.length;
-        line.style.letterSpacing = ""; fit.style.marginRight = "";
-        line.style.fontSize = "100px";
-        const full = 100 * W / fit.getBoundingClientRect().width;
-        const fs = full - Math.min(18, full * 0.14);
-        line.style.fontSize = fs + "px";
-        const base = parseFloat(getComputedStyle(line).letterSpacing) || 0;
-        const w0 = fit.getBoundingClientRect().width;
-        const ls = base + (W - w0) / Math.max(1, n - 1);
-        line.style.letterSpacing = ls + "px";
-        fit.style.marginRight = -ls + "px";   /* the last letter's trailing spacing hangs outside */
-      });
+      lines.forEach(line => { line.style.letterSpacing = ""; line.style.fontSize = ""; line.firstChild.style.marginRight = ""; });
       measure();
     }
     /* cache each letter's resting centre relative to the section */
