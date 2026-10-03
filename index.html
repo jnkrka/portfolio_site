@@ -464,7 +464,7 @@
   .scard .front-hint { right: 7cqw; bottom: 6cqw; font-size: 12cqw; }
   .scard .back { padding: clamp(17px, 1.7vw, 25px) clamp(17px, 1.7vw, 25px) clamp(15px, 1.4vw, 21px); gap: clamp(9px, 1vw, 14px); }
   .scard .back h3 { font-size: clamp(26px, 13cqw, 46px); }
-  .scard ul { gap: clamp(5px, 2.6cqw, 10px); }
+  .scard ul { gap: clamp(5px, 2.6cqw, 10px); margin-top: clamp(17px, 7.3cqw, 26px); }
   .scard li { font-size: clamp(14px, 6cqw, 21px); line-height: 1.22; gap: 8px; }
   .scard .back .hint { position: absolute; right: 6cqw; bottom: 5cqw; margin: 0; font-size: 12px; }
 
@@ -473,11 +473,15 @@
     --steel: linear-gradient(180deg, #ffffff 0%, #eef0f4 22%, #aeb2bf 47%, #6f7482 53%, #d9dce4 64%, #f7f8fa 78%, #9da1ae 100%);
     --lime-metal: linear-gradient(180deg, #fbffc0 0%, #e6f04a 22%, #b9c41f 47%, #7d8510 53%, #d6e031 64%, #f1f98a 78%, #a3ad1a 100%);
   }
-  .hero-copy h1, .sec-title, .rowx .t, .rowx .t .lam, .ctitle span, .shift-lines .ch, .scard .front h3, .scard .back h3, .shot h3 {
+  .hero-copy h1, .sec-title, .ctitle span, .shift-lines .ch, .scard .front h3, .scard .back h3, .shot h3 {
     background: var(--steel); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
   .hero-copy h1 .lime, .ctitle em, .mega, .shift-lines .l3 .ch, .steps b {
     background: var(--lime-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
   .hero-copy h1, .sec-title, .mega { filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)); }
+
+  /* project names in the brand lime-yellow */
+  .rowx .t, .rowx .t .lam { color: var(--lime); -webkit-text-fill-color: currentColor; }
+  .rowx > button:hover .t, .rowx.open > button .t, .rowx > button:hover .t .lam, .rowx.open > button .t .lam { color: var(--bg); }
 </style>
 </head>
 <body>
