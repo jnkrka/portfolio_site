@@ -346,7 +346,7 @@
   .deck-track { display: flex; align-items: center; gap: clamp(14px, 1.6vw, 22px); width: max-content; will-change: transform; transition: transform .95s cubic-bezier(.65, 0, .35, 1); }
   .deck-track.jump, .deck-track.jump .scard { transition: none !important; }
   /* service card: outer box scales in the carousel, inner .flip turns over on click (front: vertical title, back: details) */
-  .scard { --w: clamp(190px, 19vw, 270px); --r: clamp(16px, 1.6vw, 24px); flex: none; width: var(--w); aspect-ratio: 9 / 16; position: relative;
+  .scard { --w: clamp(247px, 24.7vw, 351px); --r: clamp(16px, 1.6vw, 24px); flex: none; width: var(--w); aspect-ratio: 9 / 16; position: relative;
     transform: scale(.84); opacity: .55; filter: saturate(.8); cursor: pointer;
     transition: transform .95s cubic-bezier(.65, 0, .35, 1), opacity .95s ease, filter .95s ease; }
   .scard.on { transform: scale(1.14); opacity: 1; filter: none; z-index: 2; }
@@ -462,11 +462,22 @@
   .scard .no { top: 6cqw; right: 7cqw; font-size: 15cqw; }
   .scard .front h3 { left: 6cqw; bottom: 7cqw; font-size: 17cqw; }
   .scard .front-hint { right: 7cqw; bottom: 6cqw; font-size: 12cqw; }
-  .scard .back { padding: clamp(13px, 1.3vw, 19px) clamp(13px, 1.3vw, 19px) clamp(12px, 1.1vw, 16px); gap: clamp(7px, .75vw, 11px); }
-  .scard .back h3 { font-size: clamp(22px, 13cqw, 36px); }
-  .scard ul { gap: clamp(4px, 2.6cqw, 8px); }
-  .scard li { font-size: clamp(12px, 6cqw, 16.5px); line-height: 1.22; gap: 7px; }
-  .scard .back .hint { position: absolute; right: 6cqw; bottom: 5cqw; margin: 0; font-size: 10px; }
+  .scard .back { padding: clamp(17px, 1.7vw, 25px) clamp(17px, 1.7vw, 25px) clamp(15px, 1.4vw, 21px); gap: clamp(9px, 1vw, 14px); }
+  .scard .back h3 { font-size: clamp(26px, 13cqw, 46px); }
+  .scard ul { gap: clamp(5px, 2.6cqw, 10px); }
+  .scard li { font-size: clamp(14px, 6cqw, 21px); line-height: 1.22; gap: 8px; }
+  .scard .back .hint { position: absolute; right: 6cqw; bottom: 5cqw; margin: 0; font-size: 12px; }
+
+  /* ---------- metallic headings: brushed-steel gradient clipped to the letters (lime-metal for the accent words) ---------- */
+  :root {
+    --steel: linear-gradient(180deg, #ffffff 0%, #eef0f4 22%, #aeb2bf 47%, #6f7482 53%, #d9dce4 64%, #f7f8fa 78%, #9da1ae 100%);
+    --lime-metal: linear-gradient(180deg, #fbffc0 0%, #e6f04a 22%, #b9c41f 47%, #7d8510 53%, #d6e031 64%, #f1f98a 78%, #a3ad1a 100%);
+  }
+  .hero-copy h1, .sec-title, .rowx .t, .rowx .t .lam, .ctitle span, .shift-lines .ch, .scard .front h3, .scard .back h3, .shot h3 {
+    background: var(--steel); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+  .hero-copy h1 .lime, .ctitle em, .mega, .shift-lines .l3 .ch, .steps b {
+    background: var(--lime-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+  .hero-copy h1, .sec-title, .mega { filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)); }
 </style>
 </head>
 <body>
