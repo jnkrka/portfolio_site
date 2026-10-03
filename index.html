@@ -456,6 +456,17 @@
 
   .shift-meta { display: block; }
   .shift-meta p { max-width: none; text-wrap: wrap; }
+
+  /* service cards at half their former length: 9:8 instead of 9:16, with the contents re-proportioned to fit */
+  .scard { aspect-ratio: 9 / 8; }
+  .scard .no { top: 6cqw; right: 7cqw; font-size: 15cqw; }
+  .scard .front h3 { left: 6cqw; bottom: 7cqw; font-size: 17cqw; }
+  .scard .front-hint { right: 7cqw; bottom: 6cqw; font-size: 12cqw; }
+  .scard .back { padding: clamp(13px, 1.3vw, 19px) clamp(13px, 1.3vw, 19px) clamp(12px, 1.1vw, 16px); gap: clamp(7px, .75vw, 11px); }
+  .scard .back h3 { font-size: clamp(22px, 13cqw, 36px); }
+  .scard ul { gap: clamp(4px, 2.6cqw, 8px); }
+  .scard li { font-size: clamp(12px, 6cqw, 16.5px); line-height: 1.22; gap: 7px; }
+  .scard .back .hint { position: absolute; right: 6cqw; bottom: 5cqw; margin: 0; font-size: 10px; }
 </style>
 </head>
 <body>
