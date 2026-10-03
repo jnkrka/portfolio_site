@@ -529,24 +529,6 @@
   .mt-cap b { font-family: var(--display); font-weight: 800; font-size: clamp(17px, 1.7vw, 24px); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em; }
   .mt-cap small { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--lime); }
   @media (max-width: 820px) { .more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
-
-  /* About: background timeline */
-  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .facts li:nth-child(even) { padding-left: 0; border-left: 0; }
-  .facts li + li { padding-left: 24px; border-left: 1px solid var(--line); }
-  .bg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 80px); margin-top: clamp(40px, 5vw, 72px); }
-  .bg h3 { margin: 0 0 14px; font-family: var(--display); font-weight: 800; font-size: clamp(24px, 2.6vw, 38px); line-height: 1; text-transform: uppercase; letter-spacing: .01em; background: var(--lime-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
-  .tl { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .tl li { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
-  .tl time { color: var(--dim); font-size: 12px; letter-spacing: .08em; font-variant-numeric: tabular-nums; text-transform: uppercase; }
-  .tl strong { display: block; color: var(--ink); font-weight: 600; font-size: 16px; }
-  .tl span { display: block; margin-top: 4px; color: var(--dim); font-size: 14px; line-height: 1.5; }
-  @media (max-width: 820px) {
-    .facts { grid-template-columns: 1fr; }
-    .facts li + li { padding-left: 0; border-left: 0; }
-    .bg { grid-template-columns: 1fr; }
-    .tl li { grid-template-columns: 92px minmax(0, 1fr); }
-  }
 </style>
 </head>
 <body>
@@ -661,29 +643,13 @@
         <ul class="facts">
           <li><small>Focus</small><span>Brand identity · Editorial design · Packaging · Print</span></li>
           <li><small>Tools</small><span>Adobe Creative Cloud · Figma · Leonardo AI · Claude · ChatGPT</span></li>
+          <li><small>Education</small><span>Hollóka Grafikai Műhely · Graphic design, 2025–2026</span></li>
           <li><small>Languages</small><span>Hungarian (native) · English (conversational)</span></li>
         </ul>
         <div class="socials">
           <a class="btn ghost" href="https://www.instagram.com/jankovics_art/" target="_blank" rel="noopener">Instagram <b aria-hidden="true">→</b></a>
           <a class="btn ghost" href="https://www.behance.net/jankovicsrka" target="_blank" rel="noopener">Behance <b aria-hidden="true">→</b></a>
         </div>
-      </div>
-    </div>
-    <div class="bg">
-      <div class="bg-col">
-        <h3>Education</h3>
-        <ol class="tl">
-          <li><time>2025–2026</time><div><strong>Graphic design</strong><span>Hollóka Grafikai Műhely · Adult education certificate</span></div></li>
-          <li><time>2023–2024</time><div><strong>Graphic design</strong><span>Számalk-Szalézi Vocational Secondary School</span></div></li>
-        </ol>
-      </div>
-      <div class="bg-col">
-        <h3>Experience</h3>
-        <ol class="tl">
-          <li><time>2025–now</time><div><strong>Deputy store manager</strong><span>Fashion retail · Team lead, reporting, action plans</span></div></li>
-          <li><time>2024–2025</time><div><strong>Webshop administrator</strong><span>E-commerce · Football fan shop</span></div></li>
-          <li><time>2018–2023</time><div><strong>Restaurant manager</strong><span>Hospitality · KPIs, P&amp;L, recruitment</span></div></li>
-        </ol>
       </div>
     </div>
   </section>
