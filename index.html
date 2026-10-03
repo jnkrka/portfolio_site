@@ -518,6 +518,17 @@
   .lb-x { top: 16px; right: 16px; }
   .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
   .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+  /* Playground */
+  .more { padding-block: clamp(44px, 5.5vw, 76px); scroll-margin-top: 60px; }
+  .more .lead { margin: 18px 0 0; max-width: min(100%, 64ch); color: var(--dim); font-size: clamp(16px, 1.45vw, 21px); line-height: 1.42; font-weight: 300; letter-spacing: .01em; }
+  .more-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: clamp(28px, 3.5vw, 48px); }
+  .mt { position: relative; aspect-ratio: 1; padding: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #141414 center / cover no-repeat; cursor: zoom-in; font: inherit; color: var(--ink); text-align: left; transition: border-color .2s ease, transform .3s ease; }
+  .mt:hover, .mt:focus-visible { border-color: var(--lime); transform: translateY(-3px); outline: none; }
+  .mt-cap { position: absolute; inset: auto 0 0 0; display: grid; gap: 2px; padding: 34px 14px 12px; background: linear-gradient(180deg, rgba(8, 8, 10, 0), rgba(8, 8, 10, .86)); }
+  .mt-cap b { font-family: var(--display); font-weight: 800; font-size: clamp(17px, 1.7vw, 24px); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em; }
+  .mt-cap small { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--lime); }
+  @media (max-width: 820px) { .more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
 </style>
 </head>
 <body>
@@ -614,6 +625,12 @@
       <h2 class="sec-title">Projects</h2>
     </div>
     <div class="rows" id="rows"></div>
+  </section>
+
+  <section class="more" id="more" aria-labelledby="more-title">
+    <h2 class="sec-title" id="more-title">Playground</h2>
+    <p class="lead">Study and self-initiated pieces: labels, posters, editorial design and pictograms.</p>
+    <div class="more-grid" id="more-grid"></div>
   </section>
 
   <section class="about" id="about" aria-labelledby="about-title">
@@ -838,14 +855,20 @@
       row.classList.toggle("open", open); b.setAttribute("aria-expanded", String(open));
       if (open) row.querySelectorAll(".gi:not([data-on])").forEach(el => { el.dataset.on = "1"; el.style.backgroundImage = `url('${work[el.dataset.k].g[el.dataset.i][0]}')`; });
     });
+    const gals = [...work, { t: "Playground", g: [["img/cs/more-1.jpg", 1080, 1080, "Lesna Sova – Wine label"], ["img/cs/more-2.jpg", 1080, 1080, "Eluna Sol – Dynamic logo"], ["img/cs/more-3.jpg", 1080, 1080, "Annihilation – Film poster"], ["img/cs/more-4.jpg", 1080, 1080, "Album cover – Vinyl sleeve"], ["img/cs/more-5.jpg", 1080, 1080, "Groundless – Magazine design"], ["img/cs/more-6.jpg", 1080, 1080, "Dahlia – Logo"], ["img/cs/more-7.jpg", 1080, 1080, "Science – Pictograms"], ["img/cs/more-8.jpg", 1080, 1080, "Animals – Pictograms"]], n: [["Lesna Sova", "Wine label"], ["Eluna Sol", "Dynamic logo"], ["Annihilation", "Film poster"], ["Album cover", "Vinyl sleeve"], ["Groundless", "Magazine design"], ["Dahlia", "Logo"], ["Science", "Pictograms"], ["Animals", "Pictograms"]] }];
+    const MK = gals.length - 1, mgrid = document.getElementById("more-grid");
+    mgrid.innerHTML = gals[MK].g.map((x, i) => `<button type="button" class="mt" data-i="${i}" aria-label="${x[3]} – enlarge"><span class="mt-cap"><b>${gals[MK].n[i][0]}</b><small>${gals[MK].n[i][1]}</small></span></button>`).join("");
+    const loadMore = () => mgrid.querySelectorAll(".mt:not([data-on])").forEach(el => { el.dataset.on = "1"; el.style.backgroundImage = `url('${gals[MK].g[el.dataset.i][0]}')`; });
+    if ("IntersectionObserver" in window) { const io = new IntersectionObserver(en => { if (en.some(x => x.isIntersecting)) { loadMore(); io.disconnect(); } }, { rootMargin: "600px" }); io.observe(mgrid); } else loadMore();
+    mgrid.addEventListener("click", e => { const m = e.target.closest(".mt"); if (m) show(MK, +m.dataset.i); });
     /* Lightbox */
     const lb = document.getElementById("lb"), lbPic = lb.querySelector(".lb-pic"), lbCap = lb.querySelector(".lb-cap");
     let cur = [0, 0], last = null;
     function show(k, i) {
-      const g = work[k].g, n = g.length; i = (i + n) % n; cur = [k, i];
+      const g = gals[k].g, n = g.length; i = (i + n) % n; cur = [k, i];
       if (!lb.classList.contains("on")) last = document.activeElement;
       lbPic.style.backgroundImage = `url('${g[i][0]}')`; lbPic.setAttribute("aria-label", g[i][3]);
-      lbCap.textContent = `${work[k].t} · ${g[i][3]} · ${i + 1}/${n}`;
+      lbCap.textContent = `${gals[k].t} · ${g[i][3]} · ${i + 1}/${n}`;
       lb.classList.add("on"); lb.setAttribute("aria-hidden", "false"); lb.querySelector(".lb-x").focus();
     }
     function hide() { lb.classList.remove("on"); lb.setAttribute("aria-hidden", "true"); if (last) last.focus(); }
