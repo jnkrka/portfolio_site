@@ -157,7 +157,7 @@
   .hero-text { padding-top: clamp(48px, 7vw, 80px); display: flex; flex-direction: column; gap: clamp(14px, 2vw, 24px); }
   .hero-title-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; padding-bottom: clamp(48px, 7vw, 80px); }
   .hero h1 { font: 800 clamp(52px, 9.2vw, 108px)/1.11 var(--display); letter-spacing: -.02em; }
-  .hero h1 span { display: block; }
+  .hero h1 > span { display: block; }
   .hl { color: var(--lime); }
   [data-theme="light"] .hl { color: var(--fg); background: linear-gradient(transparent 60%, var(--lime) 60%, var(--lime) 90%, transparent 90%); }
   .scroll-btn { width: 56px; height: 56px; border-radius: 9999px; background: var(--btn-bg); color: var(--btn-fg); flex: none;
@@ -471,7 +471,7 @@
     <div class="hero-text">
       <p class="eyebrow">Réka Jankovics — Graphic designer</p>
       <div class="hero-title-row">
-        <h1 id="hero-title"><span>Let’s make</span><span>some</span><span class="hl-line"><span class="hl" style="display:inline">noise.</span></span></h1>
+        <h1 id="hero-title"><span>Let’s make</span><span>some <span class="hl">noise.</span></span></h1>
         <a class="scroll-btn" href="#work" aria-label="Scroll to projects">Scroll<svg><use href="#i-down"/></svg></a>
       </div>
     </div>
