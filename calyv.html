@@ -358,6 +358,53 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .rv { opacity: 1; transform: none; }
   }
+  /* ===== Contact page ===== */
+  .nav-links a[aria-current="page"] { color: var(--fg); }
+  .back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; line-height: 20px; color: var(--fg2); transition: color .2s; }
+  .back:hover { color: var(--fg); }
+  .back svg { width: 16px; height: 16px; }
+  .chead { padding-block: clamp(48px, 7vw, 80px) clamp(40px, 5vw, 64px); display: flex; flex-direction: column; gap: 24px; border-bottom: 1px solid var(--line); }
+  .chead h1 { font: 800 clamp(36px, 7.4vw, 96px)/1.11 var(--display); letter-spacing: -.02em; max-width: 1100px; }
+  .chead h1 em { font-style: normal; color: var(--lime); }
+  [data-theme="light"] .chead h1 em { color: var(--fg); background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 90%, transparent 90%); }
+  .cbody { padding-block: clamp(48px, 7vw, 100px) var(--sec-y-sm); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
+  .cinfo { display: flex; flex-direction: column; gap: 32px; position: sticky; top: 96px; }
+  .cinfo > p { font-size: 20px; line-height: 28px; color: var(--fg2); max-width: 440px; }
+  .mail { font: 700 clamp(18px, 1.8vw, 24px)/1.3 var(--display); border-bottom: 1px solid var(--outline); padding-bottom: 6px; align-self: flex-start; overflow-wrap: anywhere; transition: color .2s, border-color .2s; }
+  .mail:hover { border-color: var(--fg); }
+  .csteps { border-top: 1px solid var(--line); }
+  .csteps li { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .csteps b { font: 800 24px/32px var(--display); color: var(--fg3); }
+  .csteps strong { display: block; font: 700 18px/26px var(--display); margin-bottom: 4px; }
+  .csteps span { color: var(--fg2); }
+  .cform { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2xl); padding: clamp(24px, 3.4vw, 48px); display: flex; flex-direction: column; gap: 24px; box-shadow: var(--shadow); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field { display: flex; flex-direction: column; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+  .field > span, .field legend { font: 500 12px/16px var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--fg2); padding: 0; }
+  .field input, .field select, .field textarea { font: 400 16px/24px var(--text); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; width: 100%; transition: border-color .2s; }
+  .field select { -webkit-appearance: none; appearance: none; padding-right: 40px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--fg2) 50%), linear-gradient(135deg, var(--fg2) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+  .field textarea { resize: vertical; min-height: 140px; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--fg2); opacity: .6; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--fg); }
+  [data-theme="dark"] .field input:focus, [data-theme="dark"] .field select:focus, [data-theme="dark"] .field textarea:focus { border-color: var(--lime); }
+  .field.bad input, .field.bad textarea { border-color: #e5484d; }
+  .err { font-size: 13px; line-height: 18px; color: #e5484d; }
+  .chips { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .chips legend { width: 100%; margin-bottom: 8px; }
+  .chips label { position: relative; cursor: pointer; }
+  .chips input { position: absolute; inset: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .chips label span { display: inline-block; border: 1px solid var(--line); border-radius: 9999px; padding: 6px 14px; font-size: 14px; line-height: 20px; color: var(--fg2); transition: all .2s; }
+  .chips label:hover span { border-color: var(--outline); color: var(--fg); }
+  .chips input:checked + span { background: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-fg); }
+  .chips input:focus-visible + span { outline: 2px solid var(--lime); outline-offset: 2px; }
+  .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .form-note { font-size: 14px; color: var(--fg2); }
+  .form-note.ok b { color: var(--fg); font-weight: 500; }
+  @media (max-width: 899px) { .cbody { grid-template-columns: 1fr; gap: 48px; } .cinfo { position: static; } }
+  @media (max-width: 599px) { .row2 { grid-template-columns: 1fr; } .cinfo > p { font-size: 18px; line-height: 26px; } }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
@@ -373,6 +420,7 @@
   <symbol id="i-ig" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="2.8" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="11.6" cy="4.4" r=".8" fill="currentColor"/></symbol>
   <symbol id="i-be" viewBox="0 0 16 16"><path d="M1.5 4.2h3.3c1.3 0 2.1.6 2.1 1.7 0 .8-.5 1.3-1.1 1.5.9.2 1.4.8 1.4 1.8 0 1.3-1 2-2.4 2H1.5V4.2Zm1.5 2.6h1.6c.6 0 .9-.3.9-.7 0-.5-.3-.7-.9-.7H3v1.4Zm0 2.9h1.8c.6 0 1-.3 1-.8s-.4-.8-1-.8H3v1.6ZM10 5h3.4v.9H10V5Zm4.5 4.4h-4c.1.8.6 1.2 1.3 1.2.5 0 .9-.2 1.1-.6h1.4c-.4 1.1-1.3 1.7-2.5 1.7-1.6 0-2.8-1.1-2.8-2.8S10.2 6 11.8 6c1.6 0 2.7 1.1 2.7 2.8v.6Zm-1.5-1c-.1-.7-.5-1.1-1.2-1.1s-1.1.4-1.3 1.1H13Z" fill="currentColor"/></symbol>
   <symbol id="i-mail" viewBox="0 0 16 16"><rect x="2" y="3.5" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="m2.8 4.6 5.2 4 5.2-4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 16 16"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-right" viewBox="0 0 20 20"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -382,13 +430,13 @@
     <a href="#work">Projects</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
-    <a href="calyv-contact.html">Contact</a>
+    <a href="#contact" data-nav="contact">Contact</a>
   </nav>
   <div class="nav-side">
     <button class="toggle" id="theme" type="button" aria-label="Switch to light mode">
       <span class="knob"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg></span>
     </button>
-    <a class="btn btn-solid btn-sm" href="calyv-contact.html">Let’s talk <svg><use href="#i-up"/></svg></a>
+    <a class="btn btn-solid btn-sm" href="#contact">Let’s talk <svg><use href="#i-up"/></svg></a>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg><use href="#i-menu"/></svg></button>
   </div>
 </header>
@@ -401,13 +449,13 @@
       <a href="#work" data-close>Projects</a>
       <a href="#services" data-close>Services</a>
       <a href="#about" data-close>About</a>
-      <a href="calyv-contact.html">Contact</a>
+      <a href="#contact" data-close>Contact</a>
     </nav>
-    <a class="btn btn-solid" href="calyv-contact.html">Let’s talk <svg><use href="#i-up"/></svg></a>
+    <a class="btn btn-solid" href="#contact" data-close>Let’s talk <svg><use href="#i-up"/></svg></a>
   </div>
 </div>
 
-<main>
+<main id="home-view">
   <!-- Hero -->
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-text">
@@ -451,7 +499,7 @@
   <section class="services wrap" id="services" aria-labelledby="services-title">
     <div class="sec-head rv">
       <div><p class="eyebrow">What I do</p><h2 class="h2" id="services-title">Services.</h2></div>
-      <a class="btn btn-outline" href="calyv-contact.html">Start a project <svg><use href="#i-up"/></svg></a>
+      <a class="btn btn-outline" href="#contact">Start a project <svg><use href="#i-up"/></svg></a>
     </div>
     <ul class="slist rv" id="slist"></ul>
   </section>
@@ -505,11 +553,65 @@
 
 </main>
 
+<main id="contact-view" hidden>
+  <section class="chead wrap" aria-labelledby="contact-title">
+    <a class="back" href="#top"><svg><use href="#i-back"/></svg> Back to the portfolio</a>
+    <p class="eyebrow">Contact</p>
+    <h1 id="contact-title">Launching a new brand? <em>Let’s work together.</em></h1>
+  </section>
+
+  <section class="cbody wrap" aria-label="Contact form">
+    <div class="cinfo">
+      <p>Tell me in a few sentences what you need. No finished brief required: we’ll work out the details together on our first call.</p>
+      <a class="mail" href="mailto:jankovicsreka25@gmail.com">jankovicsreka25@gmail.com</a>
+      <ol class="csteps">
+        <li><b>01</b><div><strong>Message</strong><span>Fill in the form or send me an email.</span></div></li>
+        <li><b>02</b><div><strong>Alignment</strong><span>A short call or a brief questionnaire about your goals.</span></div></li>
+        <li><b>03</b><div><strong>Proposal</strong><span>I send a quote with a timeline for the project.</span></div></li>
+      </ol>
+    </div>
+
+    <form class="cform" id="cform" novalidate>
+      <div class="row2">
+        <label class="field"><span>Name *</span><input id="c-name" name="name" type="text" autocomplete="name" required placeholder="Anna Smith"></label>
+        <label class="field"><span>Email *</span><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="anna@brand.com"></label>
+      </div>
+      <label class="field"><span>Company / brand</span><input id="c-company" name="company" type="text" autocomplete="organization" placeholder="e.g. café, online shop, sports club"></label>
+      <fieldset class="field chips" id="c-types">
+        <legend>How can I help?</legend>
+        <label><input type="checkbox" value="Identity"><span>Identity</span></label>
+        <label><input type="checkbox" value="Social media"><span>Social media</span></label>
+        <label><input type="checkbox" value="Print"><span>Print</span></label>
+        <label><input type="checkbox" value="Packaging"><span>Packaging</span></label>
+        <label><input type="checkbox" value="Web / UX"><span>Web / UX</span></label>
+        <label><input type="checkbox" value="Other"><span>Other</span></label>
+      </fieldset>
+      <div class="row2">
+        <label class="field"><span>Budget</span>
+          <select id="c-budget" name="budget">
+            <option value="">Not sure yet</option>
+            <option>Under 200,000 HUF</option>
+            <option>200,000 – 500,000 HUF</option>
+            <option>500,000 – 1,000,000 HUF</option>
+            <option>Over 1,000,000 HUF</option>
+          </select>
+        </label>
+        <label class="field"><span>Deadline</span><input id="c-deadline" name="deadline" type="text" placeholder="e.g. end of November"></label>
+      </div>
+      <label class="field"><span>Message *</span><textarea id="c-msg" name="message" rows="6" required placeholder="Tell me about your brand and what you need."></textarea></label>
+      <div class="form-foot">
+        <button class="btn btn-solid" type="submit">Send message <svg><use href="#i-up"/></svg></button>
+        <p class="form-note" id="c-status" role="status"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
 <!-- Footer (Calyv structure) -->
 <footer class="foot" aria-labelledby="foot-title">
-  <div class="foot-cta wrap">
+  <div class="foot-cta wrap" id="foot-cta">
     <div><p class="eyebrow">Ready to start?</p><h2 class="mega" id="foot-title">Launching a new brand? <em>Let’s work together.</em></h2></div>
-    <a class="btn btn-invert" href="calyv-contact.html">Start a project <svg><use href="#i-up"/></svg></a>
+    <a class="btn btn-invert" href="#contact">Start a project <svg><use href="#i-up"/></svg></a>
   </div>
   <div class="foot-main wrap">
     <div class="foot-grid">
@@ -523,7 +625,7 @@
         </div>
       </div>
       <nav class="fcol" aria-label="Footer: pages"><h3>Portfolio</h3><ul>
-        <li><a href="#work">Projects</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="calyv-contact.html">Contact</a></li>
+        <li><a href="#work">Projects</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact" data-nav="contact">Contact</a></li>
       </ul></nav>
       <nav class="fcol" aria-label="Footer: services"><h3>Services</h3><ul>
         <li><a href="#services">Identity</a></li><li><a href="#services">Social media</a></li><li><a href="#services">Print</a></li><li><a href="#services">Web / UX</a></li>
@@ -707,6 +809,52 @@
     if (!lb.classList.contains("on")) return;
     if (e.key === "Escape") { e.preventDefault(); hide(); } else if (e.key === "ArrowLeft") show(cur, ci - 1); else if (e.key === "ArrowRight") show(cur, ci + 1);
   });
+
+  /* contact form: validates, then opens the visitor's mail app with a pre-filled message */
+  const form = $("cform"), status = $("c-status"), TO = "jankovicsreka25@gmail.com";
+  const need = [["c-name", "Please enter your name."], ["c-email", "Please enter a valid email address."], ["c-msg", "Please write a few words about the project."]];
+  function mark(id, msg) {
+    const input = $(id), field = input.closest(".field"); let err = field.querySelector(".err");
+    if (msg) { field.classList.add("bad"); if (!err) { err = document.createElement("span"); err.className = "err"; field.appendChild(err); } err.textContent = msg; input.setAttribute("aria-invalid", "true"); }
+    else { field.classList.remove("bad"); if (err) err.remove(); input.removeAttribute("aria-invalid"); }
+  }
+  form.addEventListener("input", e => { if (e.target.closest(".field.bad")) mark(e.target.id, ""); });
+  form.addEventListener("submit", e => {
+    e.preventDefault(); let first = null;
+    for (const [id, msg] of need) {
+      const el = $(id), v = el.value.trim();
+      const bad = !v || (el.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+      mark(id, bad ? msg : ""); if (bad && !first) first = el;
+    }
+    if (first) { first.focus(); status.className = "form-note"; status.textContent = "Some required fields are missing."; return; }
+    const val = id => $(id).value.trim();
+    const types = [...form.querySelectorAll("#c-types input:checked")].map(i => i.value).join(", ");
+    const body = ["Name: " + val("c-name"), "Email: " + val("c-email"), val("c-company") && "Company / brand: " + val("c-company"), types && "Area: " + types, "Budget: " + (val("c-budget") || "Not sure yet"), val("c-deadline") && "Deadline: " + val("c-deadline"), "", val("c-msg")].filter(x => x || x === "").join("\n");
+    location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Project enquiry – " + (val("c-company") || val("c-name"))) + "&body=" + encodeURIComponent(body);
+    status.className = "form-note ok"; status.innerHTML = "Your message is ready. If your mail app didn’t open, write to me directly: <b></b>"; status.querySelector("b").textContent = TO;
+  });
+
+  /* ---------- Two views in one file: #contact opens the contact page, everything else the portfolio ---------- */
+  const homeV = $("home-view"), contactV = $("contact-view"), cta = $("foot-cta");
+  const navC = [...document.querySelectorAll('[data-nav="contact"]')];
+  let wasContact = null;
+  function route() {
+    const c = location.hash === "#contact";
+    if (c !== wasContact) {
+      homeV.hidden = c; contactV.hidden = !c; cta.hidden = c;
+      navC.forEach(a => c ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+      document.title = c ? "Contact · JΛNKOVICS" : "JΛNKOVICS Portfolio · Calyv layout";
+      document.querySelectorAll("#home-view .rv:not(.in)").forEach(el => { if (!c) { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add("in"); } });
+    }
+    if (c) { if (wasContact !== true) { scrollTo({ top: 0, behavior: "instant" }); requestAnimationFrame(() => scrollTo({ top: 0, behavior: "instant" })); } }
+    else {
+      const id = location.hash.slice(1), el = id && id !== "top" && document.getElementById(id);
+      if (wasContact === true || !el) requestAnimationFrame(() => el ? el.scrollIntoView() : scrollTo({ top: 0, behavior: "instant" }));
+    }
+    wasContact = c;
+  }
+  addEventListener("hashchange", route);
+  route();
 
   /* ---------- Scroll reveal ---------- */
   const rv = document.querySelectorAll(".rv");
