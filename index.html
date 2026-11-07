@@ -580,6 +580,7 @@
     </div>
 
     <form class="cform" id="cform" novalidate>
+      <input type="text" name="_honey" id="c-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="row2">
         <label class="field"><span>Name *</span><input id="c-name" name="name" type="text" autocomplete="name" required placeholder="Anna Smith"></label>
         <label class="field"><span>Email *</span><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="anna@brand.com"></label>
@@ -856,10 +857,34 @@
     }
     if (first) { first.focus(); status.className = "form-note"; status.textContent = "Some required fields are missing."; return; }
     const val = id => $(id).value.trim();
+    if ($("c-honey").value) return;                       // a bot filled the hidden field
     const types = [...form.querySelectorAll("#c-types input:checked")].map(i => i.value).join(", ");
-    const body = ["Name: " + val("c-name"), "Email: " + val("c-email"), val("c-company") && "Company / brand: " + val("c-company"), types && "Area: " + types, "", val("c-msg")].filter(x => x || x === "").join("\n");
-    location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Project enquiry – " + (val("c-company") || val("c-name"))) + "&body=" + encodeURIComponent(body);
-    status.className = "form-note ok"; status.innerHTML = "Your message is ready. If your mail app didn’t open, write to me directly: <b></b>"; status.querySelector("b").textContent = TO;
+    const btn = form.querySelector('button[type="submit"]'), label = btn.innerHTML;
+    btn.disabled = true; btn.style.opacity = ".6"; btn.textContent = "Sending…";
+    status.className = "form-note"; status.textContent = "";
+    /* sent straight to the inbox through FormSubmit (no mail app needed); replies go to the visitor's address */
+    fetch("https://formsubmit.co/ajax/" + TO, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "Project enquiry – " + (val("c-company") || val("c-name")),
+        _replyto: val("c-email"), _template: "table", _captcha: "false",
+        Name: val("c-name"), Email: val("c-email"), "Company / brand": val("c-company") || "–",
+        "How can I help": types || "–", Message: val("c-msg")
+      })
+    }).then(r => r.json().then(d => ({ ok: r.ok && String(d.success) === "true", d })))
+      .then(({ ok, d }) => {
+        if (!ok) throw new Error(d && d.message || "send failed");
+        form.reset();
+        status.className = "form-note ok";
+        status.innerHTML = "<b>Thank you!</b> Your message has arrived, I’ll get back to you soon.";
+      })
+      .catch(() => {
+        status.className = "form-note";
+        status.innerHTML = "Something went wrong, the message wasn’t sent. Please try again, or <a href=\"\" style=\"text-decoration:underline\">write me an email</a>.";
+        status.querySelector("a").href = "mailto:" + TO + "?subject=" + encodeURIComponent("Project enquiry") + "&body=" + encodeURIComponent(val("c-msg"));
+      })
+      .finally(() => { btn.disabled = false; btn.style.opacity = ""; btn.innerHTML = label; });
   });
 
   /* ---------- Two views in one file: #contact opens the contact page, everything else the portfolio ---------- */
