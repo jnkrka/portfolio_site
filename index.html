@@ -40,12 +40,12 @@
     --pad: 20px;
     --maxw: 1280px;
     --gutter: max(var(--pad), calc((100% - var(--maxw)) / 2));
-    --sec-y: 64px;
-    --sec-y-sm: 48px;
+    --sec-y: 48px;
+    --sec-y-sm: 40px;
     --r-sm: 8px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 24px;
   }
-  @media (min-width: 600px) { :root { --pad: 32px; --sec-y: 80px; --sec-y-sm: 64px; } }
-  @media (min-width: 1024px) { :root { --pad: 80px; --sec-y: 180px; --sec-y-sm: 120px; } }
+  @media (min-width: 600px) { :root { --pad: 32px; --sec-y: 64px; --sec-y-sm: 56px; } }
+  @media (min-width: 1024px) { :root { --pad: 80px; --sec-y: 104px; --sec-y-sm: 88px; } }
 
   [data-theme="light"] {
     color-scheme: light;
@@ -191,7 +191,7 @@
   @media (min-width: 600px) and (max-width: 1023px) { .stats ul { gap: 40px; } }
 
   /* ===== Featured projects ===== */
-  .work { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: 64px; }
+  .work { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 48px); }
   .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
   .pcard { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 300px;
     padding: clamp(28px, 3.4vw, 48px); background: var(--card); color: #fff; border: 1px solid var(--card-line); border-radius: var(--r-2xl);
@@ -210,7 +210,7 @@
   @media (max-width: 767px) { .cards { grid-template-columns: 1fr; gap: 16px; } .pcard { min-height: 220px; gap: 32px; } }
 
   /* ===== Services list ===== */
-  .services { background: var(--bg2); padding-block: var(--sec-y-sm); display: flex; flex-direction: column; gap: 64px; }
+  .services { background: var(--bg2); padding-block: var(--sec-y-sm); display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 48px); }
   .slist > li { border-bottom: 1px solid var(--line); border-radius: var(--r-lg); transition: background-color .25s; }
   .slist > li:hover, .slist > li.open { background: var(--surface); }
   .srow { width: 100%; display: flex; align-items: center; gap: 80px; padding: 32px 24px; text-align: left; }
@@ -237,7 +237,7 @@
   }
 
   /* ===== Process ===== */
-  .process { background: var(--bg2); padding-block: var(--sec-y); display: flex; flex-direction: column; gap: 64px; }
+  .process { background: var(--bg2); padding-block: var(--sec-y); display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 48px); }
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .steps li { background: var(--surface); border-bottom: 1px solid var(--line); border-radius: var(--r-xl); padding: 32px; display: flex; flex-direction: column; gap: 32px; }
   .steps b { font: 800 clamp(44px, 5.6vw, 72px)/1.22 var(--display); color: var(--num); transition: color .3s; }
@@ -249,7 +249,7 @@
   @media (max-width: 599px) { .steps { grid-template-columns: 1fr; gap: 14px; } .steps li { padding: 24px; gap: 24px; } .steps h3 { font-size: 20px; line-height: 28px; margin-bottom: 24px; } }
 
   /* ===== About ===== */
-  .about { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: 64px; }
+  .about { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 48px); }
   .about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
   .about-pic { border-radius: var(--r-2xl); overflow: hidden; aspect-ratio: 1; background: var(--bg2); }
   .about-pic img { width: 100%; height: 100%; object-fit: cover; }
@@ -267,7 +267,7 @@
   .stats .statement span { font: inherit; color: var(--fg2); }
 
   /* ===== Reviews (running cards) ===== */
-  .reviews { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: 64px; overflow: hidden; }
+  .reviews { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 48px); overflow: hidden; }
   .rrows { display: flex; flex-direction: column; gap: 24px;
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
   .rrow { display: flex; width: max-content; animation: marquee 60s linear infinite; }
