@@ -225,15 +225,25 @@
   .sbody { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.4,0,.2,1); }
   .slist > li.open .sbody { grid-template-rows: 1fr; }
   .sbody > div { overflow: hidden; }
-  .sbody ul { display: flex; flex-wrap: wrap; gap: 12px; padding: 0 24px 32px calc(24px + 80px + 2ch); }
-  .sbody li { border: 1px solid var(--line); border-radius: 9999px; padding: 6px 14px; font-size: 14px; line-height: 20px; }
-  @media (max-width: 1023px) { .srow { gap: 32px; } .srow .side { gap: 32px; } .srow .sd { width: 260px; } .sbody ul { padding-left: calc(24px + 32px + 2ch); } }
+  .sbody ul, .tipwrap { padding: 0 24px 32px calc(24px + 80px + 2ch); }
+  .sbody ul { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { border: 1px solid var(--line); border-radius: 9999px; padding: 6px 14px; font-size: 14px; line-height: 20px; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s; display: inline-flex; align-items: center; gap: 6px; }
+  .chip::after { content: "?"; display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; border: 1px solid currentColor; font-size: 10px; line-height: 1; opacity: .55; }
+  .chip:hover { border-color: var(--outline); }
+  .chip[aria-expanded="true"] { background: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-fg); }
+  .chip[aria-expanded="true"]::after { content: "×"; opacity: .8; }
+  .tipwrap { display: grid; grid-template-rows: 0fr; padding-bottom: 0; margin-top: -20px; transition: grid-template-rows .3s ease, padding-bottom .3s ease, margin-top .3s ease; }
+  .tipwrap.on { grid-template-rows: 1fr; padding-bottom: 32px; margin-top: -12px; }
+  .tipbox { overflow: hidden; }
+  .tipbox p { position: relative; margin-top: 10px; max-width: 560px; transition: margin-left .25s ease; background: var(--btn-bg); color: var(--btn-fg); border-radius: 14px; padding: 14px 18px; font-size: 15px; line-height: 22px; }
+  .tipbox p::before { content: ""; position: absolute; top: -6px; left: calc(var(--ax, 40px) - 7px); width: 14px; height: 14px; background: inherit; transform: rotate(45deg); border-radius: 2px; }
+  @media (max-width: 1023px) { .srow { gap: 32px; } .srow .side { gap: 32px; } .srow .sd { width: 260px; } .sbody ul, .tipwrap { padding-left: calc(24px + 32px + 2ch); } }
   @media (max-width: 767px) {
     .srow { flex-wrap: wrap; gap: 8px 16px; padding: 24px 16px; }
     .srow .nm { flex: 1; font-size: 20px; line-height: 28px; }
     .srow .side { display: contents; }
     .srow .sd { order: 5; width: 100%; padding-left: calc(2ch + 16px); }
-    .sbody ul { padding: 0 16px 24px calc(16px + 2ch + 16px); }
+    .sbody ul, .tipwrap { padding-left: calc(16px + 2ch + 16px); padding-right: 16px; } .sbody ul { padding-bottom: 24px; } .tipwrap.on { padding-bottom: 24px; }
   }
 
   /* ===== Process ===== */
@@ -330,9 +340,10 @@
   .case-body h4 { margin: 0 0 12px; }
   .case-body ul li { padding: 14px 0; border-bottom: 1px solid var(--line); }
   .case-body ul li:first-child { border-top: 1px solid var(--line); }
-  .gal { columns: 3 220px; column-gap: 16px; }
-  .gal button { display: block; width: 100%; margin-bottom: 16px; border-radius: var(--r-lg); overflow: hidden; break-inside: avoid; background: var(--bg2); }
-  .gal img { width: 100%; height: auto; transition: transform .6s; }
+  .gal { display: flex; gap: 16px; align-items: flex-start; }
+  .gal .gcol { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  .gal button { display: block; width: 100%; border-radius: var(--r-lg); overflow: hidden; background: var(--bg2); }
+  .gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
   .gal button:hover img { transform: scale(1.03); }
   @media (max-width: 767px) { .case-body { grid-template-columns: 1fr; gap: 32px; } }
 
@@ -363,7 +374,7 @@
   .back:hover { color: var(--fg); }
   .back svg { width: 16px; height: 16px; }
   .chead { padding-block: clamp(48px, 7vw, 80px) clamp(40px, 5vw, 64px); display: flex; flex-direction: column; gap: 24px; border-bottom: 1px solid var(--line); }
-  .chead h1 { font: 800 clamp(36px, 7.4vw, 96px)/1.11 var(--display); letter-spacing: -.02em; max-width: 1100px; }
+  .chead h1 { font: 800 clamp(28px, 3.7vw, 48px)/1.15 var(--display); letter-spacing: -.02em; max-width: 1100px; }
   .chead h1 em { font-style: normal; color: var(--lime); }
   [data-theme="light"] .chead h1 em { color: var(--fg); background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 90%, transparent 90%); }
   .cbody { padding-block: clamp(48px, 7vw, 100px) var(--sec-y-sm); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
@@ -680,15 +691,32 @@
       l: ["Instagram audit and growth roadmap", "Competitor benchmark of premium European gyms", "Website wireframe", "Logo refresh, colour system, print"] },
     { t: "VAYA Kopi Luwak", cover: "img/vaya-960", c: "Identity · Packaging", y: "2025–26", s: "Done",
       sum: "A premium coffee identity built on three pillars: Indonesian origin, the civet, and the rarity of the product.",
-      g: [["img/cs/vaya-1.jpg", 1080, 1080, "Packaging, front"], ["img/cs/vaya-2.jpg", 1080, 1080, "Packaging in use"], ["img/cs/vaya-3.jpg", 1080, 1080, "Packaging detail"], ["img/cs/vaya-4.jpg", 1100, 825, "Tote bag"], ["img/cs/vaya-5.jpg", 794, 1100, "T-shirt"], ["img/cs/vaya-6.jpg", 745, 1100, "Brand poster"]],
+      g: [["img/cs/vaya-1.jpg", 1080, 1080, "Packaging, front"], ["img/cs/vaya-2.jpg", 1080, 1080, "Packaging in use"], ["img/cs/vaya-3.jpg", 1080, 1080, "Packaging detail"], ["img/cs/vaya-4.jpg", 1100, 825, "Tote bag"], ["img/cs/vaya-5.jpg", 794, 1100, "T-shirt"], ["img/cs/vaya-6.jpg", 745, 1100, "Brand poster"], ["img/cs/vaya-7.jpg", 1600, 1029, "Stationery"], ["img/cs/vaya-8.jpg", 1600, 900, "Website on desktop and mobile"], ["img/cs/vaya-9.jpg", 1600, 1029, "Packaging, back"]],
       d: ["The starting point for the Vaya identity was to create a premium coffee product that speaks to a narrow, conscious group of consumers. The concept rests on three pillars, brought together in one visual system: the product’s Indonesian origin, the key player in how it is made – the civet – and the communication of its rarity.", "The civet’s pattern is the generative element of the identity: the lines of the logo derive from it too, and its deliberately soft, organic character keeps the whole visually coherent. The colour palette recalls Indonesia’s characteristic hues, so the colours and the animal motif together build an authentic, origin-led brand story that communicates closeness to nature, the exotic and premium quality.", "The form of the packaging puts function first: the simple box optimises production, shipping and storage, while using minimal material and reducing paper waste. The graphics integrate the main brand elements, so the packaging works as a communication surface in its own right and gives a clear sense of the brand at first encounter."],
       l: ["Logo and identity", "Civet pattern as a generative element", "Indonesian colour palette", "Packaging and graphics"] },
   ];
+  /* services: each chip carries a short explanation that pops up when it is clicked */
   const svcs = [
-    { name: "Identity", d: "Logos and visual systems that make a brand recognisable at a glance.", list: ["Brand and competitor analysis", "Logo and logo system", "Colours and typography", "Brand guidelines"] },
-    { name: "Social media", d: "A feed with a plan behind it: audit, roadmap and templates that keep you consistent.", list: ["Instagram audit", "Follower growth roadmap", "Content and post templates", "Competitor benchmark"] },
-    { name: "Print", d: "From business cards to packaging: the brand in hands, on shelves and on walls.", list: ["Business cards and stationery", "Posters and flyers", "Packaging and labels", "Merch"] },
-    { name: "Web / UX", d: "Benchmarks, wireframes and landing page concepts built around the user journey.", list: ["Website benchmark", "Wireframes", "User journey", "Landing page concept"] }
+    { name: "Identity", d: "Logos and visual systems that make a brand recognisable at a glance.", list: [
+      ["Brand and competitor analysis", "We map your market, your competitors and your audience, so the new identity has a clear place to stand out from."],
+      ["Logo and logo system", "A main logo plus the versions it needs: horizontal, stacked, icon-only and single-colour, ready for every surface."],
+      ["Colours and typography", "A defined colour palette and type pairing with exact codes (HEX, RGB, CMYK), so the brand looks the same everywhere."],
+      ["Brand guidelines", "A compact manual on using the logo, colours, fonts and imagery, so anyone can apply the brand consistently."]] },
+    { name: "Social media", d: "A feed with a plan behind it: audit, roadmap and templates that keep you consistent.", list: [
+      ["Instagram audit", "A review of your current profile: bio, grid, content mix and engagement, with clear points on what to keep and what to change."],
+      ["Follower growth roadmap", "A step-by-step plan with posting rhythm, content pillars and goals, so growth is planned rather than left to chance."],
+      ["Content and post templates", "Ready-to-edit templates for posts, stories and highlight covers in your brand style, so you can publish quickly and consistently."],
+      ["Competitor benchmark", "A look at how similar brands present themselves online, what works for them and where your brand can stand apart."]] },
+    { name: "Print", d: "From business cards to packaging: the brand in hands, on shelves and on walls.", list: [
+      ["Business cards and stationery", "Business cards, letterheads, envelopes and email signatures that carry the identity into everyday communication."],
+      ["Posters and flyers", "Event, promo and information pieces designed to be read at a glance and prepared to the printer’s specifications."],
+      ["Packaging and labels", "Boxes, labels and die-cut shapes designed around the product, the shelf and the production process."],
+      ["Merch", "T-shirts, hoodies, caps and tote bags people actually want to wear, prepared for printing or embroidery."]] },
+    { name: "Web / UX", d: "Benchmarks, wireframes and landing page concepts built around the user journey.", list: [
+      ["Website benchmark", "An analysis of competitor and reference websites: structure, content and user experience, as the basis for yours."],
+      ["Wireframes", "Simple page layouts that fix the structure and content order before the visual design, so key decisions are made early."],
+      ["User journey", "The path a visitor takes from the first click to an enquiry or purchase, mapped out to remove friction along the way."],
+      ["Landing page concept", "A designed single page focused on one goal, such as sign-ups or bookings, ready to hand over for development."]] }
   ];
   /* Reviews: replace these placeholders with real quotes from clients (and set ph: false).
      q = quote, n = name, r = role / brand, i = initials for the avatar */
@@ -714,9 +742,27 @@
         <span class="n">0${k + 1}</span><span class="nm">${s.name}</span>
         <span class="side"><span class="sd">${s.d}</span><span class="arrow" aria-hidden="true">${up}</span></span>
       </button>
-      <div class="sbody" id="sv-${k}"><div><ul>${s.list.map(x => `<li>${x}</li>`).join("")}</ul></div></div>
+      <div class="sbody" id="sv-${k}"><div><ul>${s.list.map((x, n) => `<li><button class="chip" type="button" data-s="${k}" data-n="${n}" aria-expanded="false" aria-controls="tip-${k}">${x[0]}</button></li>`).join("")}</ul><div class="tipwrap"><div class="tipbox" id="tip-${k}" role="region" aria-live="polite"><p></p></div></div></div></div>
     </li>`).join("");
   $("slist").addEventListener("click", e => {
+    const chip = e.target.closest(".chip");
+    if (chip) {
+      const li = chip.closest(".slist > li"), wrap = li.querySelector(".tipwrap"), box = wrap.querySelector(".tipbox");
+      const on = chip.getAttribute("aria-expanded") !== "true";
+      li.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-expanded", "false"));
+      if (on) {
+        chip.setAttribute("aria-expanded", "true");
+        box.querySelector("p").textContent = svcs[chip.dataset.s].list[chip.dataset.n][1];
+        /* the bubble slides under the chip; its little arrow points at the chip's centre */
+        const pad = parseFloat(getComputedStyle(wrap).paddingLeft), avail = wrap.clientWidth - pad - parseFloat(getComputedStyle(wrap).paddingRight);
+        const cx = chip.getBoundingClientRect().left + chip.offsetWidth / 2 - wrap.getBoundingClientRect().left - pad;
+        const bw = Math.min(560, avail), off = Math.max(0, Math.min(avail - bw, cx - 60));
+        const pEl = box.querySelector("p"); pEl.style.marginLeft = off + "px";
+        box.style.setProperty("--ax", Math.max(22, Math.min(bw - 22, cx - off)) + "px");
+      }
+      wrap.classList.toggle("on", on);
+      return;
+    }
     const b = e.target.closest(".srow"); if (!b) return;
     const li = b.parentElement, open = !li.classList.contains("open");
     li.classList.toggle("open", open); b.setAttribute("aria-expanded", String(open));
@@ -737,15 +783,34 @@
 
   /* ---------- Case study dialog ---------- */
   const dlg = $("case");
+  /* gallery: images split into columns so every column ends at (nearly) the same height; order is kept top to bottom */
+  let curGal = null, galCols = 0;
+  function layoutGal(force) {
+    if (!curGal) return;
+    const box = $("case-gal"), W = box.clientWidth || 900, n = W < 520 ? 1 : W < 820 ? 2 : 3;
+    if (!force && n === galCols && box.childElementCount) return; galCols = n;
+    const g = curGal.g, gap = 16 / (W / n), h = g.map(x => x[2] / x[1] + gap);
+    let best = null, bestMax = Infinity;
+    const assign = new Array(g.length);
+    (function rec(i, sums) {
+      if (Math.max(...sums) >= bestMax) return;
+      if (i === g.length) { bestMax = Math.max(...sums); best = assign.slice(); return; }
+      for (let c = 0; c < n; c++) { if (c > 0 && sums[c] === sums[c - 1] && sums[c] === 0) break; assign[i] = c; sums[c] += h[i]; rec(i + 1, sums); sums[c] -= h[i]; }
+    })(0, new Array(n).fill(0));
+    const cols = Array.from({ length: n }, () => []);
+    g.forEach((x, i) => cols[best[i]].push(i));
+    box.innerHTML = cols.map(col => `<div class="gcol">${col.map(i => `<button type="button" data-i="${i}" aria-label="${g[i][3]} – enlarge" style="aspect-ratio:${g[i][1]}/${g[i][2]}"><img src="${g[i][0]}" alt="${g[i][3]}" width="${g[i][1]}" height="${g[i][2]}" loading="lazy"></button>`).join("")}</div>`).join("");
+  }
+  addEventListener("resize", () => { if (dlg.open) layoutGal(); });
   function openCase(k) {
     const w = work[k];
     $("case-eyebrow").textContent = `${w.c} — ${w.y} · ${w.s}`;
     $("case-title").innerHTML = lam(w.t);
     $("case-txt").innerHTML = w.d.map(p => `<p>${p}</p>`).join("");
     $("case-list").innerHTML = w.l.map(x => `<li>${x}</li>`).join("");
-    $("case-gal").innerHTML = w.g.map((g, i) => `<button type="button" data-i="${i}" aria-label="${g[3]} – enlarge"><img src="${g[0]}" alt="${g[3]}" width="${g[1]}" height="${g[2]}" loading="lazy"></button>`).join("");
+    curGal = w; layoutGal();
     $("case-gal").onclick = e => { const b = e.target.closest("button"); if (b) show(w, +b.dataset.i); };
-    dlg.showModal(); dlg.querySelector(".case-in").scrollTop = 0;
+    dlg.showModal(); galCols = 0; layoutGal(true); dlg.querySelector(".case-in").scrollTop = 0;
   }
   document.addEventListener("click", e => { const t = e.target.closest("[data-case]"); if (t) openCase(+t.dataset.case); });
   $("case-x").addEventListener("click", () => dlg.close());
