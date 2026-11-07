@@ -15,7 +15,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>
   /* theme before first paint: saved choice, otherwise the brand's dark look */
-  try { const t = localStorage.getItem("jk-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+  /* theme follows the visitor's own clock: dark 17:00–07:00, light 07:00–17:00.
+     A click on the switch overrides it for the rest of the visit (this tab only). */
+  window.jkAutoTheme = () => { const h = new Date().getHours(); return h >= 7 && h < 17 ? "light" : "dark"; };
+  (() => {
+    let t = null;
+    try { localStorage.removeItem("jk-theme"); t = sessionStorage.getItem("jk-theme"); } catch (e) {}
+    document.documentElement.dataset.theme = t === "light" || t === "dark" ? t : jkAutoTheme();
+  })();
 </script>
 <script>
   /* a picture that can't load from here (e.g. the file opened on its own) is fetched from the live site */
@@ -667,7 +674,10 @@
   /* ---------- Theme toggle (Calyv light/dark switch) ---------- */
   const root = document.documentElement, tbtn = $("theme"), meta = document.querySelector('meta[name="theme-color"]');
   const syncTheme = () => { const dark = root.dataset.theme === "dark"; tbtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode"); meta.content = dark ? "#080808" : "#ffffff"; };
-  tbtn.addEventListener("click", () => { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark"; try { localStorage.setItem("jk-theme", root.dataset.theme); } catch (e) {} syncTheme(); });
+  let manual = false; try { manual = !!sessionStorage.getItem("jk-theme"); } catch (e) {}
+  tbtn.addEventListener("click", () => { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark"; manual = true; try { sessionStorage.setItem("jk-theme", root.dataset.theme); } catch (e) {} syncTheme(); });
+  /* if the page stays open across 07:00 or 17:00, switch over (unless the visitor picked a theme) */
+  setInterval(() => { if (!manual && root.dataset.theme !== jkAutoTheme()) { root.dataset.theme = jkAutoTheme(); syncTheme(); } }, 60000);
   syncTheme();
 
   /* ---------- Mobile drawer ---------- */
