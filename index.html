@@ -562,7 +562,6 @@
   <section class="cbody wrap" aria-label="Contact form">
     <div class="cinfo">
       <p>Tell me in a few sentences what you need. No finished brief required: we’ll work out the details together on our first call.</p>
-      <a class="mail" href="mailto:jankovicsreka25@gmail.com">jankovicsreka25@gmail.com</a>
       <ol class="csteps">
         <li><b>01</b><div><strong>Message</strong><span>Fill in the form or send me an email.</span></div></li>
         <li><b>02</b><div><strong>Alignment</strong><span>A short call or a brief questionnaire about your goals.</span></div></li>
@@ -585,18 +584,6 @@
         <label><input type="checkbox" value="Web / UX"><span>Web / UX</span></label>
         <label><input type="checkbox" value="Other"><span>Other</span></label>
       </fieldset>
-      <div class="row2">
-        <label class="field"><span>Budget</span>
-          <select id="c-budget" name="budget">
-            <option value="">Not sure yet</option>
-            <option>Under 200,000 HUF</option>
-            <option>200,000 – 500,000 HUF</option>
-            <option>500,000 – 1,000,000 HUF</option>
-            <option>Over 1,000,000 HUF</option>
-          </select>
-        </label>
-        <label class="field"><span>Deadline</span><input id="c-deadline" name="deadline" type="text" placeholder="e.g. end of November"></label>
-      </div>
       <label class="field"><span>Message *</span><textarea id="c-msg" name="message" rows="6" required placeholder="Tell me about your brand and what you need."></textarea></label>
       <div class="form-foot">
         <button class="btn btn-solid" type="submit">Send message <svg><use href="#i-up"/></svg></button>
@@ -806,7 +793,7 @@
     if (first) { first.focus(); status.className = "form-note"; status.textContent = "Some required fields are missing."; return; }
     const val = id => $(id).value.trim();
     const types = [...form.querySelectorAll("#c-types input:checked")].map(i => i.value).join(", ");
-    const body = ["Name: " + val("c-name"), "Email: " + val("c-email"), val("c-company") && "Company / brand: " + val("c-company"), types && "Area: " + types, "Budget: " + (val("c-budget") || "Not sure yet"), val("c-deadline") && "Deadline: " + val("c-deadline"), "", val("c-msg")].filter(x => x || x === "").join("\n");
+    const body = ["Name: " + val("c-name"), "Email: " + val("c-email"), val("c-company") && "Company / brand: " + val("c-company"), types && "Area: " + types, "", val("c-msg")].filter(x => x || x === "").join("\n");
     location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Project enquiry – " + (val("c-company") || val("c-name"))) + "&body=" + encodeURIComponent(body);
     status.className = "form-note ok"; status.innerHTML = "Your message is ready. If your mail app didn’t open, write to me directly: <b></b>"; status.querySelector("b").textContent = TO;
   });
