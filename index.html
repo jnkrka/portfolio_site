@@ -173,7 +173,9 @@
   .scroll-btn:hover { transform: translateY(2px); }
   @keyframes nudge { 50% { transform: translateY(3px); } }
   .hero-foot { border-top: 1px solid var(--line); padding-block: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
-  .hero-foot p { max-width: 540px; font-size: 20px; line-height: 28px; color: var(--fg2); }
+  .hero-foot p .ln { display: block; }
+  @media (max-width: 599px) { .hero-foot p .ln { display: inline; } }
+  .hero-foot p { max-width: 560px; font-size: 20px; line-height: 28px; color: var(--fg2); }
   @media (max-width: 599px) { .hero-foot p { font-size: 18px; line-height: 24px; } .scroll-btn { order: 2; } }
 
   /* ===== Marquee strip ===== */
@@ -481,7 +483,7 @@
       </div>
     </div>
     <div class="hero-foot">
-      <p>Graphic designer creating bold, distinctive identities from logo to social media, for brands that are impossible to ignore.</p>
+      <p><span class="ln">Graphic designer creating bold, distinctive</span> <span class="ln">identities from logo to social media, for brands</span> <span class="ln">that are impossible to ignore.</span></p>
       <a class="btn btn-solid" href="#work">View projects <svg><use href="#i-up"/></svg></a>
     </div>
   </section>
