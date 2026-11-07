@@ -189,26 +189,22 @@
 
   /* ===== Featured projects ===== */
   .work { padding-block: var(--sec-y); display: flex; flex-direction: column; gap: 64px; }
-  .cards { display: flex; flex-direction: column; gap: 32px; padding-inline: clamp(0px, 1.1vw, 14px); }
-  .pcard { display: flex; flex-wrap: wrap; background: var(--card); color: #fff; border: 1px solid var(--card-line); border-radius: var(--r-2xl); overflow: hidden; }
-  .pcard .txt { flex: 1 1 0; min-width: min(350px, 100%); max-width: 540px; padding: clamp(28px, 4.5vw, 64px); display: flex; flex-direction: column; justify-content: space-between; gap: clamp(48px, 9vw, 180px); }
-  .pcard .ttl { display: flex; flex-direction: column; gap: 32px; }
-  .pcard .ttl > div { display: flex; flex-direction: column; gap: 24px; }
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .pcard { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 300px;
+    padding: clamp(28px, 3.4vw, 48px); background: var(--card); color: #fff; border: 1px solid var(--card-line); border-radius: var(--r-2xl);
+    text-align: left; overflow: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s; }
+  .pcard:hover { transform: translateY(-4px); border-color: var(--lime); }
   .pcard .eyebrow { color: #888; }
-  .pcard h3 { font: 800 clamp(30px, 3.3vw, 40px)/1.35 var(--display); }
-  .pcard .desc { color: #888; max-width: 350px; }
-  .pcard .act { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
-  .tags { display: flex; flex-wrap: wrap; gap: 12px 24px; }
-  .tag { border: 1px solid #e6e6e6; border-radius: 9999px; padding: 4px 8px; font-size: 14px; line-height: 20px; color: #888; white-space: nowrap; }
-  [data-theme="dark"] .pcard .tag { border-color: #3a3a3a; }
+  .pcard .pname { display: block; font: 800 clamp(30px, 3.6vw, 48px)/1.2 var(--display); margin-top: 16px; }
+  .pcard .ptop { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .pcard .no { font: 800 clamp(32px, 3.4vw, 48px)/1 var(--display); color: rgba(255,255,255,.14); transition: color .3s; flex: none; }
+  .pcard:hover .no { color: var(--lime); }
   .pcard .view { display: inline-flex; align-items: center; gap: 8px; font: 500 14px/20px var(--text); color: #fff; }
   .pcard .view svg { width: 16px; height: 16px; transition: transform .25s; }
-  .pcard .view:hover { color: var(--lime); }
-  .pcard .view:hover svg { transform: translate(2px, -2px); }
-  .pcard .pic { position: relative; flex: 1 1 350px; min-width: min(350px, 100%); min-height: 286px; aspect-ratio: 712 / 582; overflow: hidden; cursor: pointer; }
-  .pcard .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-  .pcard:hover .pic img { transform: scale(1.04); }
-  .pcard .no { position: absolute; top: 0; right: 0; font: 800 clamp(64px, 7.5vw, 108px)/1.11 var(--display); color: rgba(255,255,255,.16); pointer-events: none; padding-right: 8px; }
+  .pcard:hover .view { color: var(--lime); }
+  .pcard:hover .view svg { transform: translate(2px, -2px); }
+  .tag { border: 1px solid #e6e6e6; border-radius: 9999px; padding: 4px 8px; font-size: 14px; line-height: 20px; color: #888; white-space: nowrap; }
+  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; gap: 16px; } .pcard { min-height: 220px; gap: 32px; } }
 
   /* ===== Services list ===== */
   .services { background: var(--bg2); padding-block: var(--sec-y-sm); display: flex; flex-direction: column; gap: 64px; }
@@ -480,7 +476,7 @@
   <section class="stats wrap" aria-label="At a glance">
     <p class="statement rv">Every brand has a voice. <span>I turn it up, so it stays with you.</span></p>
     <ul>
-      <li class="rv"><b>12<em>+</em></b><span>Projects in this portfolio</span></li>
+      <li class="rv"><b>2</b><span>Branding case studies here, more on Behance</span></li>
       <li class="rv"><b>4</b><span>Disciplines: identity, social, print, web</span></li>
       <li class="rv"><b>1</b><span>Pair of hands from brief to handover</span></li>
     </ul>
@@ -697,16 +693,6 @@
       g: [["img/cs/vaya-1.jpg", 1080, 1080, "Packaging, front"], ["img/cs/vaya-2.jpg", 1080, 1080, "Packaging in use"], ["img/cs/vaya-3.jpg", 1080, 1080, "Packaging detail"], ["img/cs/vaya-4.jpg", 1100, 825, "Tote bag"], ["img/cs/vaya-5.jpg", 794, 1100, "T-shirt"], ["img/cs/vaya-6.jpg", 745, 1100, "Brand poster"]],
       d: ["The starting point for the Vaya identity was to create a premium coffee product that speaks to a narrow, conscious group of consumers. The concept rests on three pillars, brought together in one visual system: the product’s Indonesian origin, the key player in how it is made – the civet – and the communication of its rarity.", "The civet’s pattern is the generative element of the identity: the lines of the logo derive from it too, and its deliberately soft, organic character keeps the whole visually coherent. The colour palette recalls Indonesia’s characteristic hues, so the colours and the animal motif together build an authentic, origin-led brand story that communicates closeness to nature, the exotic and premium quality.", "The form of the packaging puts function first: the simple box optimises production, shipping and storage, while using minimal material and reducing paper waste. The graphics integrate the main brand elements, so the packaging works as a communication surface in its own right and gives a clear sense of the brand at first encounter."],
       l: ["Logo and identity", "Civet pattern as a generative element", "Indonesian colour palette", "Packaging and graphics"] },
-    { t: "The Picture of Dorian Gray", cover: "img/dorian-borito-960", c: "Book design · Cover", y: "2025–26", s: "Done",
-      sum: "A cover built on the paradox of beauty and decay, with a vectorised rose as the symbol of moral decline.",
-      g: [["img/cs/dorian-1.jpg", 1080, 1080, "Front cover"], ["img/cs/dorian-2.jpg", 1080, 1080, "Cover and spine"], ["img/cs/dorian-3.jpg", 1080, 1080, "Dust jacket"], ["img/cs/dorian-4.jpg", 1080, 1080, "Full jacket layout"], ["img/cs/dorian-5.jpg", 1080, 1080, "Binding"], ["img/cs/dorian-6.jpg", 1080, 1080, "Inside pages"]],
-      d: ["At the heart of the cover concept is the paradox of beauty and decay. The rose here is not merely decorative: it is a symbol of the protagonist’s moral decline. It is a visual metaphor for the unbridgeable contrast between the surface and the reality behind it. The composition captures the breaking point at which aesthetic perfection turns into its opposite: the decay does not come from outside but unfolds from within.", "For the execution I vectorised photographs of a real rose, documented both intact and damaged, creating a stylised, painterly illustration that keeps the organic richness of detail. The technique is also a nod to the content: it deliberately reflects the novel’s central motif, where the relationship between the painting as a medium and reality is the very stake of the work."],
-      l: ["Cover concept", "Vectorised rose illustration", "Cover, spine, interior"] },
-    { t: "JΛNKOVICS", cover: "img/sajat-arculat-960", c: "Personal brand", y: "2025–26", s: "Done",
-      sum: "My own brand: soft and sharp forms at once, vivid neon anchored by a strong presence of black.",
-      g: [["img/cs/jankovics-1.jpg", 1080, 1080, "Logotype and emblem"], ["img/cs/jankovics-2.jpg", 1080, 1080, "Colours and typeface"], ["img/cs/jankovics-3.jpg", 1080, 1080, "Business card"], ["img/cs/jankovics-4.jpg", 1080, 1080, "Pattern"], ["img/cs/jankovics-5.jpg", 1080, 1080, "Social media"], ["img/cs/jankovics-6.jpg", 1080, 1080, "Email signature"]],
-      d: ["In designing my own brand, the main aim was for both the forms and the colours to reflect my personality. The lines of the logotype and the emblem are soft and sharp at once, referring to the duality of the identity.", "The brand’s youthful, energetic character comes from the vivid neon colours, while the strong presence of black anchors its seriousness and sense of purpose. The scribble-like graphic elements bring ease and playfulness, keeping the design from becoming too static."],
-      l: ["Logotype and emblem", "Neon colours on black", "Scribble-like graphic elements", "Portfolio website"] }
   ];
   const svcs = [
     { name: "Identity", d: "Logos and visual systems that make a brand recognisable at a glance.", list: ["Brand and competitor analysis", "Logo and logo system", "Colours and typography", "Brand guidelines"] },
@@ -726,22 +712,10 @@
   ];
   /* ---------- Project cards (Calyv Project Card) ---------- */
   $("cards").innerHTML = work.map((w, k) => `
-    <article class="pcard rv">
-      <div class="txt">
-        <div class="ttl">
-          <div><p class="eyebrow">${w.c} — ${w.y}</p><h3>${lam(w.t)}</h3></div>
-          <p class="desc">${w.sum}</p>
-        </div>
-        <div class="act">
-          <div class="tags">${w.c.split(" · ").map(x => `<span class="tag">${x}</span>`).join("")}<span class="tag">${w.s}</span></div>
-          <button class="view" type="button" data-case="${k}" aria-haspopup="dialog">View project ${up}</button>
-        </div>
-      </div>
-      <div class="pic" data-case="${k}" aria-hidden="true">
-        <img src="${w.cover}.jpg" alt="" width="960" height="600" loading="lazy">
-        <span class="no">${String(k + 1).padStart(2, "0")}</span>
-      </div>
-    </article>`).join("");
+    <button class="pcard rv" type="button" data-case="${k}" aria-haspopup="dialog" aria-label="${w.t}: view project">
+      <span><span class="ptop"><span class="eyebrow">${w.c} — ${w.y}</span><span class="no" aria-hidden="true">${String(k + 1).padStart(2, "0")}</span></span><span class="pname">${lam(w.t)}</span></span>
+      <span class="view">View project ${up}</span>
+    </button>`).join("");
 
   /* ---------- Services (Calyv Service List, rows expand) ---------- */
   $("slist").innerHTML = svcs.map((s, k) => `
@@ -758,14 +732,14 @@
     li.classList.toggle("open", open); b.setAttribute("aria-expanded", String(open));
   });
 
-  /* ---------- Reviews: two rows running in opposite directions ---------- */
+  /* ---------- Reviews: one running row ---------- */
   const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const rcard = (x, hide) => `<figure class="rcard"${hide ? ' aria-hidden="true"' : ""} style="margin:0">
       <div class="top"><span class="stars" aria-label="5 out of 5">★★★★★</span>${x.ph ? '<span class="ph">Placeholder</span>' : ""}</div>
       <blockquote>“${esc(x.q)}”</blockquote>
       <figcaption class="who"><span class="av" aria-hidden="true">${esc(x.i)}</span><span><b>${esc(x.n)}</b><span>${esc(x.r)}</span></span></figcaption>
     </figure>`;
-  const half = Math.ceil(reviews.length / 2), rowsData = [reviews.slice(0, half), reviews.slice(half).length ? reviews.slice(half) : reviews.slice(0, half)];
+  const rowsData = [reviews];
   $("rrows").innerHTML = rowsData.map((row, k) => {
     const set = h => `<div class="rset">${row.map(x => rcard(x, h)).join("")}${row.map(x => rcard(x, true)).join("")}</div>`;
     return `<div class="rrow${k ? " rev" : ""}">${set(k > 0)}${set(true)}</div>`;
