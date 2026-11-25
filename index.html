@@ -85,19 +85,21 @@ section{scroll-margin-top:16px}
 .tl.js .tl-step.on .tl-text{opacity:1;transform:none}
 .tl.js .tl-step.on .tl-dot{background:var(--accent);border-color:var(--accent);transform:scale(1.25)}
 @media (min-width:900px){
-  .tl-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto 140px auto;column-gap:32px}
+  .tl-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto 240px auto;column-gap:32px}
+  .tl{padding:40px 0 150px}
   .tl-step{flex-direction:column;align-items:center;text-align:center}
   .tl-text{max-width:300px;align-items:center}
   .tl-s1,.tl-s2,.tl-s3{grid-row:1;flex-direction:column-reverse;justify-content:flex-start}
-  .tl-s1 .tl-text,.tl-s2 .tl-text,.tl-s3 .tl-text{padding-bottom:28px}
+  .tl-s1 .tl-text,.tl-s2 .tl-text,.tl-s3 .tl-text{padding-bottom:40px}
   .tl-s4,.tl-s5,.tl-s6{grid-row:3}
-  .tl-s4 .tl-text,.tl-s5 .tl-text,.tl-s6 .tl-text{padding-top:28px}
+  .tl-s4 .tl-text,.tl-s5 .tl-text,.tl-s6 .tl-text{padding-top:40px}
   .tl-s1{grid-column:1}.tl-s2{grid-column:2}.tl-s3{grid-column:3}
   .tl-s4{grid-column:3}.tl-s5{grid-column:2}.tl-s6{grid-column:1}
   .tl-s1,.tl-s2,.tl-s3{align-self:end}
 }
 @media (max-width:899px){
-  .tl-list{display:flex;flex-direction:column;gap:36px}
+  .tl-list{display:flex;flex-direction:column;gap:56px}
+  .tl{padding:30px 0 50px}
   .tl-step{gap:20px;align-items:flex-start}
   .tl-dot{margin-top:1px}
 }
@@ -430,27 +432,50 @@ section{scroll-margin-top:16px}
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     tl.classList.add("js");
     let total = 1, marks = [];
+    // Catmull-Rom görbe → sima, organikus köbös Bézier-szakaszok a pontokon át
+    function smooth(P) {
+      let d = `M ${P[0].x} ${P[0].y}`;
+      for (let i = 0; i < P.length - 1; i++) {
+        const p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2, t = 6;
+        d += ` C ${p1.x + (p2.x - p0.x) / t} ${p1.y + (p2.y - p0.y) / t} ${p2.x - (p3.x - p1.x) / t} ${p2.y - (p3.y - p1.y) / t} ${p2.x} ${p2.y}`;
+      }
+      return d;
+    }
     function build() {
-      const box = tl.getBoundingClientRect();
+      const box = tl.getBoundingClientRect(), W = box.width;
       const pts = steps.map(st => { const r = st.querySelector(".tl-dot").getBoundingClientRect(); return { x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top }; });
       const multi = Math.abs(pts[0].y - pts[1].y) < 4; // vízszintes sorok = asztali nézet
-      let d = `M ${pts[0].x} ${pts[0].y}`, len = 0; marks = [0];
-      for (let i = 1; i < pts.length; i++) {
-        const a = pts[i - 1], b = pts[i];
-        if (multi && Math.abs(a.y - b.y) > 4) {
-          // sorváltás: kanyar a szélen, a két sor közötti üres sávban
-          const r = (b.y - a.y) / 2, right = a.x > box.width / 2;
-          const edge = right ? Math.max(a.x, box.width - r) : Math.min(a.x, r);
-          d += ` L ${edge} ${a.y} A ${r} ${r} 0 0 ${right ? 1 : 0} ${edge} ${b.y} L ${b.x} ${b.y}`;
-          len += Math.abs(edge - a.x) + Math.PI * r + Math.abs(edge - b.x);
-        } else {
-          d += ` L ${b.x} ${b.y}`; len += Math.hypot(b.x - a.x, b.y - a.y);
-        }
-        marks.push(len);
+      let d;
+      if (multi) {
+        const [d1, d2, d3, d4, d5, d6] = pts, mid = (a, b) => (a + b) / 2;
+        const listBottom = tl.querySelector(".tl-list").getBoundingClientRect().bottom - box.top;
+        const band = d4.y - d1.y, tail = listBottom + 70;
+        d = smooth([
+          { x: 4, y: -24 },                                   // a cím alól indul
+          { x: 12, y: d1.y - 70 },
+          d1, { x: mid(d1.x, d2.x), y: d1.y + 34 },           // finom hullám a sorok közti sáv felé
+          d2, { x: mid(d2.x, d3.x), y: d1.y + 34 },
+          d3,
+          { x: W - 34, y: d3.y + band * 0.12 },               // nagy, lendületes kanyar jobbra
+          { x: W + 6, y: mid(d3.y, d4.y) },
+          { x: W - 44, y: d4.y - band * 0.12 },
+          d4, { x: mid(d4.x, d5.x), y: d4.y - 34 },
+          d5, { x: mid(d5.x, d6.x), y: d4.y - 34 },
+          d6,
+          { x: 14, y: d6.y + 70 },                            // balra le, a szövegek mellett
+          { x: 40, y: tail },
+          { x: W * 0.62, y: tail + 18 },                      // kifut jobbra, mint egy folytatódó út
+          { x: W - 8, y: tail + 70 }
+        ]);
+      } else {
+        d = `M ${pts[0].x} ${pts[0].y - 40} L ${pts[pts.length - 1].x} ${pts[pts.length - 1].y + 60}`;
       }
       track.setAttribute("d", d); line.setAttribute("d", d);
-      total = line.getTotalLength ? line.getTotalLength() : len;
-      const k = total / (len || 1); marks = marks.map(m => m * k);
+      total = line.getTotalLength();
+      // minden lépéshez megkeressük, a vonal mely hosszánál éri el a pontot
+      const samples = [];
+      for (let l = 0; l <= total; l += 4) { const q = line.getPointAtLength(l); samples.push([l, q.x, q.y]); }
+      marks = pts.map(pt => samples.reduce((best, sm) => { const dd = Math.hypot(sm[1] - pt.x, sm[2] - pt.y); return dd < best[0] ? [dd, sm[0]] : best; }, [1e9, 0])[1]);
       line.style.strokeDasharray = `${total} ${total}`;
       update();
     }
