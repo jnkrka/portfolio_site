@@ -31,8 +31,8 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 .cover{width:100%;height:100%;object-fit:cover}
 .hero-img{aspect-ratio:4/3}
 @media (min-width:984px){.hero-img{aspect-ratio:auto;align-self:stretch;position:relative;min-height:300px}.hero-img img{position:absolute;inset:0}}
-.client-logo{height:64px;border-radius:10px;border:1px solid #E7E6E1;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:12px 18px}
-.client-logo img{max-height:34px;width:auto;opacity:.82}
+.client-logo{height:64px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:#1C1C1B;display:flex;align-items:center;justify-content:center;padding:12px 18px}
+.client-logo img{max-height:34px;width:auto;opacity:.9;filter:invert(1);-webkit-filter:invert(1)}
 section{scroll-margin-top:16px}
 #gyik button:focus-visible,#gyik a:focus-visible{outline-color:#FFFFFF}
 .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
@@ -85,9 +85,9 @@ section{scroll-margin-top:16px}
 </section>
 
 <!-- ÜGYFÉL LOGÓK -->
-<section aria-label="Ügyfelek és logótervek" style="background: #F6F5F2; border-top: 1px solid #E7E6E1; border-bottom: 1px solid #E7E6E1;">
+<section aria-label="Ügyfelek és logótervek" style="background: #111111; color: #FFFFFF;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px; display: flex; flex-direction: column; gap: 24px;">
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000000;">Ügyfelek és saját logótervek</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF;">Ügyfelek és saját logótervek</p>
 <div id="logos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px;"></div>
 </div>
 </section>
