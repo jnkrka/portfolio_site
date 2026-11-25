@@ -21,6 +21,7 @@ a{color: #000000}a:hover{color: #000000}
 .btn:hover{filter:brightness(0.9)}
 .ghost:hover{background:#F2F1ED}
 .card:hover .thumb{transform:scale(1.015)}
+@media (hover:hover){.card .thumb{filter:grayscale(1);-webkit-filter:grayscale(1);transition:filter .45s ease,-webkit-filter .45s ease,transform .45s ease}.card:hover .thumb,.card:focus-visible .thumb{filter:none;-webkit-filter:none}}
 .card > div:first-child{-webkit-mask-image:-webkit-radial-gradient(white,black);isolation:isolate}
 .thumb{transition:transform .35s ease}
 select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#5C5B57 50%),linear-gradient(135deg,#5C5B57 50%,transparent 50%)!important;background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%!important;background-size:6px 6px!important;background-repeat:no-repeat!important;padding-right:40px!important}
@@ -64,6 +65,9 @@ section{scroll-margin-top:16px}
 <a href="#kapcsolat" class="ghost" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid #111111; color: #000000; text-decoration: none; font-weight: 600;">Beszéljünk a projektedről</a>
 </div>
 </div>
+<div style="aspect-ratio: 4 / 3; border-radius: 20px; background: #ECEBE6; overflow: hidden; -webkit-mask-image: -webkit-radial-gradient(white, black); isolation: isolate;">
+<img class="cover" src="img/hero-noba.jpg" alt="Noba szérumos üvegek levendulával és kövekkel" width="1600" height="1200" fetchpriority="high">
+</div>
 </section>
 
 <!-- ÜGYFÉL LOGÓK -->
@@ -84,19 +88,19 @@ section{scroll-margin-top:16px}
 <span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">01</span>
 <h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: 26px; letter-spacing: -0.02em; font-weight: 600;">Arculattervezés</h3>
 <p style="margin: 0; color: #000000; flex-grow: 1;">Logó, színpaletta, tipográfia és arculati kézikönyv: egy rendszer, amit minden felületen következetesen használhatsz.</p>
-<a href="#kapcsolat" style="font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Beszéljük át →</a>
+<a href="#kapcsolat" style="align-self: flex-start; font-weight: 600; font-size: 15px; text-decoration: none; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--cta); color: var(--cta-fg); display: inline-flex; align-items: center;">Beszéljük át →</a>
 </article>
 <article style="border: 1px solid #E7E6E1; border-radius: 18px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px;">
 <span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">02</span>
 <h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: 26px; letter-spacing: -0.02em; font-weight: 600;">Kiadvány és print</h3>
 <p style="margin: 0; color: #000000; flex-grow: 1;">Szórólap, katalógus, plakát, csomagolás és névjegy, nyomdakész fájlokkal és gyártási egyeztetéssel.</p>
-<a href="#kapcsolat" style="font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Beszéljük át →</a>
+<a href="#kapcsolat" style="align-self: flex-start; font-weight: 600; font-size: 15px; text-decoration: none; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--cta); color: var(--cta-fg); display: inline-flex; align-items: center;">Beszéljük át →</a>
 </article>
 <article style="border: 1px solid #E7E6E1; border-radius: 18px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px;">
 <span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">03</span>
 <h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: 26px; letter-spacing: -0.02em; font-weight: 600;">Webdesign</h3>
 <p style="margin: 0; color: #000000; flex-grow: 1;">Reszponzív weboldaltervek a struktúrától a kész felületig, amelyek mobilon is ugyanolyan jól működnek.</p>
-<a href="#kapcsolat" style="font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Beszéljük át →</a>
+<a href="#kapcsolat" style="align-self: flex-start; font-weight: 600; font-size: 15px; text-decoration: none; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--cta); color: var(--cta-fg); display: inline-flex; align-items: center;">Beszéljük át →</a>
 </article>
 </div>
 </section>
@@ -130,7 +134,6 @@ section{scroll-margin-top:16px}
 <div><dt style="font-size: 13px; font-weight: 600; color: #000000;">Eszközök</dt><dd style="margin: 4px 0 0; font-weight: 500;">Adobe termékcsalád, Figma, Claude</dd></div>
 <div><dt style="font-size: 13px; font-weight: 600; color: #000000;">Helyszín</dt><dd style="margin: 4px 0 0; font-weight: 500;">Budapest</dd></div>
 </dl>
-<a href="#" style="font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">A teljes történet →</a>
 </div>
 </div>
 </section>
@@ -211,7 +214,6 @@ section{scroll-margin-top:16px}
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px;">
 <span class="logo-mark" role="img" aria-label="JΛNKOVICS" style="align-self: flex-start;"></span>
-<p style="margin: 0; font-size: 15px; color: #000000;">[Egy rövid mondat a stílusodról vagy a szakmai mottódról.]</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 32px 72px; font-size: 15px;">
 <nav aria-label="Lábléc navigáció" style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 13px; font-weight: 600; color: #000000;">Oldal</span><a href="#munkak" style="text-decoration: none;">Munkák</a><a href="#szolgaltatasok" style="text-decoration: none;">Szolgáltatások</a><a href="#rolam" style="text-decoration: none;">Rólam</a><a href="#kapcsolat" style="text-decoration: none;">Kapcsolat</a></nav>
@@ -246,16 +248,13 @@ section{scroll-margin-top:16px}
   const cats = [
     { id: "all", label: "Összes" },
     { id: "arculat", label: "Arculat" },
-    { id: "print", label: "Print" },
-    { id: "web", label: "Web" }
+    { id: "print", label: "Print" }
   ];
   const projects = [
-    { title: "[Projekt neve] 01", tags: "Arculat · Logó · Print", cat: "arculat", img: "img/cs/bplions-mock-3.jpg", alt: "BP Lions stancolt névjegykártya" },
-    { title: "[Projekt neve] 02", tags: "Web · UI design", cat: "web", img: "img/cs/bplions-mock-2.jpg", alt: "BP Lions weboldal laptopon és telefonon" },
-    { title: "[Projekt neve] 03", tags: "Print · Csomagolás", cat: "print", img: "img/cs/vaya-3.jpg", alt: "VAYA Kopi Luwak kávésdobozok" },
-    { title: "[Projekt neve] 04", tags: "Arculat · Social media", cat: "arculat", img: "img/cs/jankovics-5.jpg", alt: "JΛNKOVICS arculat social media felületeken" },
-    { title: "[Projekt neve] 05", tags: "Kiadvány · Katalógus", cat: "print", img: "img/cs/more-5.jpg", alt: "Groundless magazin" },
-    { title: "[Projekt neve] 06", tags: "Web · Arculat", cat: "web", img: "img/cs/vaya-8.jpg", alt: "VAYA weboldal laptopon és telefonon" }
+    { title: "BP Lions SC", tags: "Arculat · Logó · Print", cat: "arculat", img: "img/cs/bplions-mock-3.jpg", alt: "BP Lions stancolt névjegykártya" },
+    { title: "Vaya", tags: "Print · Csomagolás", cat: "print", img: "img/cs/vaya-3.jpg", alt: "VAYA Kopi Luwak kávésdobozok" },
+    { title: "Jankovics", tags: "Arculat · Social media", cat: "arculat", img: "img/cs/jankovics-5.jpg", alt: "JΛNKOVICS arculat social media felületeken" },
+    { title: "Groundless", tags: "Kiadvány · Katalógus", cat: "print", img: "img/cs/more-5.jpg", alt: "Groundless magazin" }
   ];
   let filter = "all";
   function render() {
