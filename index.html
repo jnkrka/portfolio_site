@@ -11,7 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap">
 <style>
-:root{--accent:#2E46FF}
+:root{--accent:#49479D;--cta:#D6E031;--cta-fg:#111111;--head:#49479D}
+h1,h2{color:var(--head)}
 html{scroll-behavior:smooth}
 body{margin:0;background:#FFFFFF}
 *{box-sizing:border-box}
@@ -35,7 +36,7 @@ section{scroll-margin-top:16px}
 <!-- NAV -->
 <header style="border-bottom: 1px solid #E7E6E1;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;">
-<a href="#top" style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; color: #111111;">Jankovics Réka</a>
+<a href="#top" aria-label="JΛNKOVICS – vissza a tetejére" style="display: inline-flex; align-items: center; min-height: 44px;"><span class="logo-mark"></span></a>
 <nav aria-label="Fő navigáció" style="display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: 15px; font-weight: 500;">
 <a href="#munkak" style="text-decoration: none; padding: 10px 0;">Munkák</a>
 <a href="#szolgaltatasok" style="text-decoration: none; padding: 10px 0;">Szolgáltatások</a>
@@ -43,7 +44,7 @@ section{scroll-margin-top:16px}
 <a href="#folyamat" style="text-decoration: none; padding: 10px 0;">Folyamat</a>
 <a href="#gyik" style="text-decoration: none; padding: 10px 0;">GYIK</a>
 </nav>
-<a href="#kapcsolat" class="btn" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px;">Ajánlatkérés</a>
+<a href="#kapcsolat" class="btn" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--cta); color: var(--cta-fg); text-decoration: none; font-weight: 600; font-size: 15px;">Ajánlatkérés</a>
 </div>
 </header>
 
@@ -54,7 +55,7 @@ section{scroll-margin-top:16px}
 <h1 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: clamp(40px, 4.9vw, 70px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700;">Gondosan tervezett arculatok, <span style="font-weight: 400; color: #5C5B57;">amik kiemelnek téged a versenytársak közül.</span></h1>
 <p style="margin: 0; max-width: 520px; font-size: 19px; color: #3D3C39;">Szabadúszó tervezőgrafikus vagyok. A Hollóka Grafikai Műhelyben volt szerencsém elsajátítani a tervezőgrafika alapjait, és felépíteni egy olyan piacképes, stabil tudást, ami a jelenlegi hatalmas zajban és AI-őrületben is segít boldogulni.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-<a href="#munkak" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #FFFFFF; text-decoration: none; font-weight: 600;">Nézd meg a munkáimat</a>
+<a href="#munkak" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--cta); color: var(--cta-fg); text-decoration: none; font-weight: 600;">Nézd meg a munkáimat</a>
 <a href="#kapcsolat" class="ghost" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid #111111; color: #111111; text-decoration: none; font-weight: 600;">Beszéljünk a projektedről</a>
 </div>
 </div>
@@ -196,7 +197,7 @@ section{scroll-margin-top:16px}
 <div style="display: flex; flex-direction: column; gap: 8px;"><label for="email" style="font-size: 14px; font-weight: 600;">E-mail</label><input id="email" type="email" autocomplete="email" style="min-height: 50px; padding: 0 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #111111;"></div>
 <div style="display: flex; flex-direction: column; gap: 8px;"><label for="tipus" style="font-size: 14px; font-weight: 600;">Mire van szükséged?</label><select id="tipus" style="min-height: 50px; padding: 0 12px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #111111;"><option>Arculat / logó</option><option>Kiadvány / print</option><option>Weboldal</option><option>Egyéb</option></select></div>
 <div style="display: flex; flex-direction: column; gap: 8px;"><label for="uzenet" style="font-size: 14px; font-weight: 600;">Üzenet</label><textarea id="uzenet" rows="5" style="padding: 14px 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; resize: vertical; background: #FFFFFF; color: #111111;"></textarea></div>
-<button type="submit" class="btn" style="min-height: 54px; border: 0; border-radius: 999px; background: var(--accent); color: #FFFFFF; font: inherit; font-size: 17px; font-weight: 600; cursor: pointer;">Üzenet küldése</button>
+<button type="submit" class="btn" style="min-height: 54px; border: 0; border-radius: 999px; background: var(--cta); color: var(--cta-fg); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer;">Üzenet küldése</button>
 <p style="margin: 0; font-size: 13px; color: #5C5B57;">Az adataidat csak a válaszadáshoz használom. <a href="#">Adatvédelmi tájékoztató</a></p>
 </form>
 </div>
@@ -207,7 +208,7 @@ section{scroll-margin-top:16px}
 <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 32px; display: flex; flex-direction: column; gap: 48px;">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px;">
-<span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em;">Jankovics Réka</span>
+<span class="logo-mark" role="img" aria-label="JΛNKOVICS" style="align-self: flex-start;"></span>
 <p style="margin: 0; font-size: 15px; color: #5C5B57;">[Egy rövid mondat a stílusodról vagy a szakmai mottódról.]</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 32px 72px; font-size: 15px;">
