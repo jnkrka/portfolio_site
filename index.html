@@ -34,6 +34,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 .client-logo{height:64px;border-radius:10px;border:1px solid #E7E6E1;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:12px 18px}
 .client-logo img{max-height:34px;width:auto;opacity:.82}
 section{scroll-margin-top:16px}
+#gyik button:focus-visible,#gyik a:focus-visible{outline-color:#FFFFFF}
 .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
 @media (max-width:899px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:599px){.pgrid{grid-template-columns:1fr}}
@@ -167,7 +168,7 @@ section{scroll-margin-top:16px}
 </section>
 
 <!-- VÉLEMÉNYEK -->
-<section aria-labelledby="velemenyek-cim" style="background: #111111; color: #F2F2F0;">
+<section aria-labelledby="velemenyek-cim" hidden style="background: #111111; color: #F2F2F0;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 112px 24px; display: flex; flex-direction: column; gap: 48px;">
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 680px;">
 <h2 id="velemenyek-cim" style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: clamp(36px, 4.19vw, 52px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; color: #FFFFFF;">Mit mondanak az ügyfelek?</h2>
@@ -190,12 +191,14 @@ section{scroll-margin-top:16px}
 </section>
 
 <!-- GYIK -->
-<section id="gyik" style="max-width: 1240px; margin: 0 auto; padding: 112px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px 80px; align-items: start;">
+<section id="gyik" style="background: #111111; color: #FFFFFF;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 112px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px 80px; align-items: start;">
 <div style="display: flex; flex-direction: column; gap: 16px;">
-<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: clamp(36px, 4.19vw, 52px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700;">Gyakori kérdések</h2>
-<p style="margin: 0; color: #000000;">Nem találod a választ? <a href="#kapcsolat" style="font-weight: 600;">Írj nyugodtan.</a></p>
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: clamp(36px, 4.19vw, 52px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; color: #FFFFFF;">Gyakori kérdések</h2>
+<p style="margin: 0; color: #FFFFFF;">Nem találod a választ? <a href="#kapcsolat" style="font-weight: 600; color: #FFFFFF;">Írj nyugodtan.</a></p>
 </div>
-<div id="faq" style="display: flex; flex-direction: column; border-top: 1px solid #D9D8D2;"></div>
+<div id="faq" style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.22);"></div>
+</div>
 </section>
 
 <!-- KAPCSOLAT -->
@@ -305,9 +308,9 @@ section{scroll-margin-top:16px}
   let open = 0;
   const words = t => t.split(" ").map((w, j) => `<span class="w" style="--d: ${120 + j * 22}ms">${w}</span>`).join(" ");
   $("faq").innerHTML = faq.map((f, i) => `
-    <div class="faq-item${open === i ? " open" : ""}" style="border-bottom: 1px solid #D9D8D2;">
-      <button type="button" data-i="${i}" aria-expanded="${open === i}" aria-controls="faq-a-${i}" style="width: 100%; min-height: 72px; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: none; border: 0; font: inherit; font-size: 19px; font-weight: 600; color: #000000; text-align: left; cursor: pointer;"><span>${f.q}</span><span class="faq-sign" aria-hidden="true" style="font-size: 24px; font-weight: 400; line-height: 1; color: var(--accent);">${open === i ? "–" : "+"}</span></button>
-      <div class="faq-a" id="faq-a-${i}" role="region"><div><p style="margin: 0; padding: 0 48px 24px 0; color: #000000;">${words(f.a)}</p></div></div>
+    <div class="faq-item${open === i ? " open" : ""}" style="border-bottom: 1px solid rgba(255,255,255,0.22);">
+      <button type="button" data-i="${i}" aria-expanded="${open === i}" aria-controls="faq-a-${i}" style="width: 100%; min-height: 72px; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: none; border: 0; font: inherit; font-size: 19px; font-weight: 600; color: #FFFFFF; text-align: left; cursor: pointer;"><span>${f.q}</span><span class="faq-sign" aria-hidden="true" style="font-size: 24px; font-weight: 400; line-height: 1; color: #FFFFFF;">${open === i ? "–" : "+"}</span></button>
+      <div class="faq-a" id="faq-a-${i}" role="region"><div><p style="margin: 0; padding: 0 48px 24px 0; color: #FFFFFF;">${words(f.a)}</p></div></div>
     </div>`).join("");
   function setFaq() {
     $("faq").querySelectorAll(".faq-item").forEach((el, i) => {
