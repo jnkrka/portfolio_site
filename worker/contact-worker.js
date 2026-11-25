@@ -6,7 +6,7 @@
  * Beállítandó változók a Worker Settings → Variables and Secrets alatt:
  *   RESEND_API_KEY   (Secret)  – a Resend API-kulcs (Sending access elég)
  *   FROM_EMAIL       (Text)    – pl. "Jankovics Réka <hello@jankovicsreka.hu>"  (Resendben hitelesített domain!)
- *   TO_EMAIL         (Text)    – ide érkeznek az ajánlatkérések, pl. hello@jankovicsart.com
+ *   TO_EMAIL         (Text)    – ide érkeznek az ajánlatkérések, pl. jankovicsart@gmail.com
  *   TURNSTILE_SECRET (Secret, opcionális) – Cloudflare Turnstile titkos kulcs a spam ellen
  */
 

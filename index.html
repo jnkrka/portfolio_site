@@ -504,7 +504,7 @@ section{scroll-margin-top:16px}
 
   /* Kapcsolati űrlap → Cloudflare Worker → Resend (worker/contact-worker.js).
      Amíg nincs megadva a Worker címe, az űrlap a látogató levelezőprogramját nyitja meg. */
-  const CONTACT_ENDPOINT = "";
+  const CONTACT_ENDPOINT = "https://kapcsolat-urlap.jankovicsreka25.workers.dev/";
   const CONTACT_EMAIL = "hello@jankovicsreka.hu";
   const cform = $("cform"), cstatus = $("cstatus"), csubmit = $("csubmit");
   const say = (msg, err) => { cstatus.hidden = false; cstatus.style.color = err ? "#B3261E" : "#000000"; cstatus.textContent = msg; };
