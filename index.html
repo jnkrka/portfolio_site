@@ -68,6 +68,40 @@ section{scroll-margin-top:16px}
 .faq-sign{display:inline-block;transition:transform .3s ease}
 .faq-item.open .faq-sign{transform:rotate(180deg)}
 @media (prefers-reduced-motion:reduce){.cta,.cta:hover{transform:none;transition:none}.faq-a{transition:none}.faq-item.open .faq-a .w{animation:none;opacity:1;transform:none}}
+
+/* Folyamat: kígyózó idővonal */
+.tl{position:relative}
+.tl-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.tl-track{fill:none;stroke:#E7E6E1;stroke-width:2}
+.tl-line{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+.tl-list{list-style:none;margin:0;padding:0;position:relative}
+.tl-step{position:relative;display:flex}
+.tl-dot{flex:none;width:20px;height:20px;border-radius:50%;background:#FFFFFF;border:2px solid #C9C8C2;box-sizing:border-box;position:relative;z-index:1;transition:background-color .35s ease,border-color .35s ease,transform .45s cubic-bezier(.34,1.7,.5,1)}
+.tl-text{display:flex;flex-direction:column;gap:8px}
+.tl-num{font-family:'Inter Tight',sans-serif;font-size:15px;font-weight:600;color:var(--accent)}
+.tl-text h3{margin:0;font-size:20px;font-weight:600}
+.tl-text p{margin:0;color:#000000}
+.tl.js .tl-text{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.tl.js .tl-step.on .tl-text{opacity:1;transform:none}
+.tl.js .tl-step.on .tl-dot{background:var(--accent);border-color:var(--accent);transform:scale(1.25)}
+@media (min-width:900px){
+  .tl-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto 140px auto;column-gap:32px}
+  .tl-step{flex-direction:column;align-items:center;text-align:center}
+  .tl-text{max-width:300px;align-items:center}
+  .tl-s1,.tl-s2,.tl-s3{grid-row:1;flex-direction:column-reverse;justify-content:flex-start}
+  .tl-s1 .tl-text,.tl-s2 .tl-text,.tl-s3 .tl-text{padding-bottom:28px}
+  .tl-s4,.tl-s5,.tl-s6{grid-row:3}
+  .tl-s4 .tl-text,.tl-s5 .tl-text,.tl-s6 .tl-text{padding-top:28px}
+  .tl-s1{grid-column:1}.tl-s2{grid-column:2}.tl-s3{grid-column:3}
+  .tl-s4{grid-column:3}.tl-s5{grid-column:2}.tl-s6{grid-column:1}
+  .tl-s1,.tl-s2,.tl-s3{align-self:end}
+}
+@media (max-width:899px){
+  .tl-list{display:flex;flex-direction:column;gap:36px}
+  .tl-step{gap:20px;align-items:flex-start}
+  .tl-dot{margin-top:1px}
+}
+@media (prefers-reduced-motion:reduce){.tl.js .tl-text{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -178,14 +212,17 @@ section{scroll-margin-top:16px}
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 680px;">
 <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: clamp(36px, 4.19vw, 52px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700;">Hogyan fogunk együtt dolgozni?</h2>
 </div>
-<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 32px;">
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Kapcsolatfelvétel</h3><p style="margin: 0; color: #000000;">Írj, vagy foglalj időpontot egy rövid online konzultációra, ahol megbeszéljük az elképzeléseidet.</p></li>
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Igényfelmérés</h3><p style="margin: 0; color: #000000;">Egy kérdőív és a beszélgetésünk alapján tisztázzuk a célokat, a kereteket.</p></li>
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Ajánlat és ütemezés</h3><p style="margin: 0; color: #000000;">Árajánlatot és ütemtervet küldök; ha minden rendben, szerződéssel indulunk.</p></li>
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Vázlatok</h3><p style="margin: 0; color: #000000;">Kutatás és moodboard után elkészülnek az első koncepciók.</p></li>
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">05</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Prezentáció és finomítás</h3><p style="margin: 0; color: #000000;">Bemutatom a terveket, közösen kiválasztjuk az irányt, ami számodra a legszimpatikusabb.</p></li>
-<li style="display: flex; flex-direction: column; gap: 10px; border-top: 2px solid #111111; padding-top: 20px;"><span style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);">06</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Átadás</h3><p style="margin: 0; color: #000000;">Megkapod a végleges fájlokat minden szükséges formátumban, használati útmutatóval, igény szerint komplett brandbookkal.</p></li>
+<div class="tl" id="timeline">
+<svg class="tl-svg" aria-hidden="true" focusable="false"><path class="tl-track"/><path class="tl-line"/></svg>
+<ol class="tl-list">
+<li class="tl-step tl-s1"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">01</span><h3>Kapcsolatfelvétel</h3><p>Írj, vagy foglalj időpontot egy rövid online konzultációra, ahol megbeszéljük az elképzeléseidet.</p></div></li>
+<li class="tl-step tl-s2"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">02</span><h3>Igényfelmérés</h3><p>Egy kérdőív és a beszélgetésünk alapján tisztázzuk a célokat, a kereteket.</p></div></li>
+<li class="tl-step tl-s3"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">03</span><h3>Ajánlat és ütemezés</h3><p>Árajánlatot és ütemtervet küldök; ha minden rendben, szerződéssel indulunk.</p></div></li>
+<li class="tl-step tl-s4"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">04</span><h3>Vázlatok</h3><p>Kutatás és moodboard után elkészülnek az első koncepciók.</p></div></li>
+<li class="tl-step tl-s5"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">05</span><h3>Prezentáció és finomítás</h3><p>Bemutatom a terveket, közösen kiválasztjuk az irányt, ami számodra a legszimpatikusabb.</p></div></li>
+<li class="tl-step tl-s6"><span class="tl-dot" aria-hidden="true"></span><div class="tl-text"><span class="tl-num">06</span><h3>Átadás</h3><p>Megkapod a végleges fájlokat minden szükséges formátumban, használati útmutatóval, igény szerint komplett brandbookkal.</p></div></li>
 </ol>
+</div>
 </section>
 
 <!-- VÉLEMÉNYEK -->
@@ -385,6 +422,53 @@ section{scroll-margin-top:16px}
   $("faq").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) { const i = +b.dataset.i; open = open === i ? -1 : i; setFaq(); } });
 
   /* Az űrlap egyelőre csak sablon: nem küld semmit */
+  /* Kígyózó idővonal: a vonal görgetésre rajzolódik, a lépések akkor jelennek meg, amikor a vonal eléri őket */
+  (() => {
+    const tl = $("timeline"); if (!tl) return;
+    const track = tl.querySelector(".tl-track"), line = tl.querySelector(".tl-line");
+    const steps = [...tl.querySelectorAll(".tl-step")];
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    tl.classList.add("js");
+    let total = 1, marks = [];
+    function build() {
+      const box = tl.getBoundingClientRect();
+      const pts = steps.map(st => { const r = st.querySelector(".tl-dot").getBoundingClientRect(); return { x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top }; });
+      const multi = Math.abs(pts[0].y - pts[1].y) < 4; // vízszintes sorok = asztali nézet
+      let d = `M ${pts[0].x} ${pts[0].y}`, len = 0; marks = [0];
+      for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i];
+        if (multi && Math.abs(a.y - b.y) > 4) {
+          // sorváltás: kanyar a szélen, a két sor közötti üres sávban
+          const r = (b.y - a.y) / 2, right = a.x > box.width / 2;
+          const edge = right ? Math.max(a.x, box.width - r) : Math.min(a.x, r);
+          d += ` L ${edge} ${a.y} A ${r} ${r} 0 0 ${right ? 1 : 0} ${edge} ${b.y} L ${b.x} ${b.y}`;
+          len += Math.abs(edge - a.x) + Math.PI * r + Math.abs(edge - b.x);
+        } else {
+          d += ` L ${b.x} ${b.y}`; len += Math.hypot(b.x - a.x, b.y - a.y);
+        }
+        marks.push(len);
+      }
+      track.setAttribute("d", d); line.setAttribute("d", d);
+      total = line.getTotalLength ? line.getTotalLength() : len;
+      const k = total / (len || 1); marks = marks.map(m => m * k);
+      line.style.strokeDasharray = `${total} ${total}`;
+      update();
+    }
+    function update() {
+      const vh = innerHeight, r = tl.getBoundingClientRect();
+      let p = reduce ? 1 : (vh * 0.85 - r.top) / r.height;
+      p = Math.min(1, Math.max(0, p));
+      const drawn = p * total;
+      line.style.strokeDashoffset = total - drawn;
+      steps.forEach((st, i) => st.classList.toggle("on", drawn >= marks[i] - 1 && p > 0));
+    }
+    let raf = 0;
+    addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); }, { passive: true });
+    addEventListener("resize", build);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    build();
+  })();
+
   /* Adatkezelési tájékoztató felugró ablakban */
   const pv = $("adatvedelem");
   document.querySelectorAll("[data-privacy]").forEach(a => a.addEventListener("click", e => {
