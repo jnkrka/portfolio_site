@@ -222,12 +222,14 @@ section{scroll-margin-top:16px}
 <div style="display: flex; flex-wrap: wrap; gap: 4px 20px; font-weight: 500;"><a href="https://www.instagram.com/jankovics_art/" target="_blank" rel="noopener">Instagram</a><a href="https://www.behance.net/jankovicsrka" target="_blank" rel="noopener">Behance</a><a href="https://www.linkedin.com/in/reka-j-b0a487106/" target="_blank" rel="noopener">LinkedIn</a></div>
 </div>
 </div>
-<form id="cform" style="background: #FFFFFF; border: 1px solid #E7E6E1; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="nev" style="font-size: 14px; font-weight: 600;">Név</label><input id="nev" type="text" autocomplete="name" style="min-height: 50px; padding: 0 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="email" style="font-size: 14px; font-weight: 600;">E-mail</label><input id="email" type="email" autocomplete="email" style="min-height: 50px; padding: 0 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="tipus" style="font-size: 14px; font-weight: 600;">Mire van szükséged?</label><select id="tipus" style="min-height: 50px; padding: 0 12px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"><option>Arculat / logó</option><option>Csomagolás</option><option>Kiadvány / print</option><option>Egyéb</option></select></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="uzenet" style="font-size: 14px; font-weight: 600;">Üzenet</label><textarea id="uzenet" rows="5" style="padding: 14px 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; resize: vertical; background: #FFFFFF; color: #000000;"></textarea></div>
-<button type="submit" class="cta btn" style="min-height: 54px; border: 0; border-radius: 999px; background: var(--cta); color: var(--cta-fg); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer;">Ajánlatot kérek</button>
+<form id="cform" novalidate style="position: relative; background: #FFFFFF; border: 1px solid #E7E6E1; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="nev" style="font-size: 14px; font-weight: 600;">Név</label><input id="nev" name="name" type="text" autocomplete="name" required maxlength="100" style="min-height: 50px; padding: 0 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="email" style="font-size: 14px; font-weight: 600;">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" style="min-height: 50px; padding: 0 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="tipus" style="font-size: 14px; font-weight: 600;">Mire van szükséged?</label><select id="tipus" name="type" style="min-height: 50px; padding: 0 12px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; background: #FFFFFF; color: #000000;"><option>Arculat / logó</option><option>Csomagolás</option><option>Kiadvány / print</option><option>Egyéb</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="uzenet" style="font-size: 14px; font-weight: 600;">Üzenet</label><textarea id="uzenet" name="message" rows="5" required maxlength="5000" style="padding: 14px 16px; border: 1px solid #8F8E89; border-radius: 10px; font-size: 16px; resize: vertical; background: #FFFFFF; color: #000000;"></textarea></div>
+<div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;"><label for="website">Weboldal</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<button type="submit" id="csubmit" class="cta btn" style="min-height: 54px; border: 0; border-radius: 999px; background: var(--cta); color: var(--cta-fg); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer;">Ajánlatot kérek</button>
+<p id="cstatus" role="status" aria-live="polite" style="margin: 0; font-size: 15px; font-weight: 500; color: #000000;" hidden></p>
 <p style="margin: 0; font-size: 13px; color: #000000;">Az adataidat csak a válaszadáshoz használom. <a href="#">Adatvédelmi tájékoztató</a></p>
 </form>
 </div>
@@ -339,7 +341,32 @@ section{scroll-margin-top:16px}
   $("faq").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) { const i = +b.dataset.i; open = open === i ? -1 : i; setFaq(); } });
 
   /* Az űrlap egyelőre csak sablon: nem küld semmit */
-  $("cform").addEventListener("submit", e => e.preventDefault());
+  /* Kapcsolati űrlap → Cloudflare Worker → Resend (worker/contact-worker.js).
+     Amíg nincs megadva a Worker címe, az űrlap a látogató levelezőprogramját nyitja meg. */
+  const CONTACT_ENDPOINT = "";
+  const CONTACT_EMAIL = "hello@jankovicsart.com";
+  const cform = $("cform"), cstatus = $("cstatus"), csubmit = $("csubmit");
+  const say = (msg, err) => { cstatus.hidden = false; cstatus.style.color = err ? "#B3261E" : "#000000"; cstatus.textContent = msg; };
+  cform.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!cform.checkValidity()) { cform.reportValidity(); return; }
+    const d = Object.fromEntries(new FormData(cform));
+    if (!CONTACT_ENDPOINT) {
+      const body = `Név: ${d.name}\nTéma: ${d.type}\n\n${d.message}`;
+      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Ajánlatkérés – " + d.type)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+    csubmit.disabled = true; const label = csubmit.textContent; csubmit.textContent = "Küldés…";
+    try {
+      const r = await fetch(CONTACT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) throw new Error(j.error || r.status);
+      cform.reset();
+      say("Köszönöm, megkaptam az üzeneted! Küldtem egy visszaigazolást az e-mail-címedre, és 48 órán belül válaszolok.");
+    } catch (err) {
+      say(`Sajnos nem sikerült elküldeni. Kérlek, írj közvetlenül: ${CONTACT_EMAIL}`, true);
+    } finally { csubmit.disabled = false; csubmit.textContent = label; }
+  });
 })();
 </script>
 </body>
