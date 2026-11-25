@@ -71,9 +71,9 @@ section{scroll-margin-top:16px}
 </section>
 
 <!-- ÜGYFÉL LOGÓK -->
-<section aria-label="Ügyfelek" style="background: #F6F5F2; border-top: 1px solid #E7E6E1; border-bottom: 1px solid #E7E6E1;">
+<section aria-label="Ügyfelek és logótervek" style="background: #F6F5F2; border-top: 1px solid #E7E6E1; border-bottom: 1px solid #E7E6E1;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px; display: flex; flex-direction: column; gap: 24px;">
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000000;">Akikkel már dolgoztam</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #000000;">Ügyfelek és saját logótervek</p>
 <div id="logos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px;"></div>
 </div>
 </section>
@@ -238,7 +238,12 @@ section{scroll-margin-top:16px}
   const logos = [
     { src: "img/clients/bp-lions.png", alt: "BP Lions Sport Club" },
     { src: "img/clients/rake.svg", alt: "RAKE Coffee Roasters" },
-    null, null, null, null, null, null
+    { src: "img/clients/eluna-sol.png", alt: "Eluna Sol" },
+    { src: "img/clients/vaya.png", alt: "VAYA Kopi Luwak" },
+    { src: "img/clients/noba.png", alt: "Noba" },
+    { src: "img/clients/santela.png", alt: "Santela relax" },
+    { src: "img/clients/opslaan.png", alt: "Opslaan" },
+    { src: "img/clients/symbol.png", alt: "Logóterv (szimbólum)" }
   ];
   $("logos").innerHTML = logos.map(l => l
     ? `<div class="client-logo"><img src="${l.src}" alt="${l.alt}" loading="lazy"></div>`
