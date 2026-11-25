@@ -21,7 +21,9 @@ a{color: #000000}a:hover{color: #000000}
 .btn:hover{filter:brightness(0.9)}
 .ghost:hover{background:#F2F1ED}
 .card:hover .thumb{transform:scale(1.015)}
-@media (hover:hover){.card .thumb{filter:grayscale(1);-webkit-filter:grayscale(1);transition:filter .45s ease,-webkit-filter .45s ease,transform .45s ease}.card:hover .thumb,.card:focus-visible .thumb{filter:none;-webkit-filter:none}}
+.card .thumb{filter:grayscale(1);-webkit-filter:grayscale(1);transition:filter .5s ease,-webkit-filter .5s ease,transform .45s ease}
+@media (hover:hover){.card:hover .thumb,.card:focus-visible .thumb{filter:none;-webkit-filter:none}}
+@media (hover:none){.card.in-view .thumb{filter:none;-webkit-filter:none}}
 .card > div:first-child{-webkit-mask-image:-webkit-radial-gradient(white,black);isolation:isolate}
 .thumb{transition:transform .35s ease}
 select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#5C5B57 50%),linear-gradient(135deg,#5C5B57 50%,transparent 50%)!important;background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%!important;background-size:6px 6px!important;background-repeat:no-repeat!important;padding-right:40px!important}
@@ -293,7 +295,12 @@ section{scroll-margin-top:16px}
           <p style="margin: 0; font-size: 15px; color: #000000;">${p.tags}</p>
         </div>
       </a>`).join("");
+    if (io) $("projects").querySelectorAll(".card").forEach(c => io.observe(c));
   }
+  /* Érintőképernyőn nincs hover: a képernyő közepén lévő kártya vált színesre */
+  const io = window.matchMedia("(hover: none)").matches && "IntersectionObserver" in window
+    ? new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("in-view", e.isIntersecting)), { rootMargin: "-35% 0px -35% 0px" })
+    : null;
   $("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; render(); } });
   $("projects").addEventListener("click", e => { if (e.target.closest(".card")) e.preventDefault(); });
   render();
