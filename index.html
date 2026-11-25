@@ -42,6 +42,17 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 .client-logo{height:64px;border-radius:10px;border:1px solid #E7E6E1;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:12px 18px}
 .client-logo img{max-height:34px;width:auto;opacity:.82}
 section{scroll-margin-top:16px}
+#adatvedelem{font-family:'Inter',system-ui,sans-serif;width:min(720px,calc(100% - 32px));max-height:min(86vh,900px);padding:0;border:0;border-radius:20px;background:#FFFFFF;color:#000000;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+#adatvedelem::backdrop{background:rgba(17,17,17,.6)}
+#adatvedelem[open]{animation:pvIn .3s ease-out}
+@keyframes pvIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.pv-body{padding:40px 40px 32px;font-size:15px;line-height:1.6}
+.pv-body h2{margin:0 0 6px;font-family:'Inter Tight',sans-serif;font-size:30px;line-height:1.1;letter-spacing:-.02em;color:var(--head)}
+.pv-body h3{margin:26px 0 6px;font-family:'Inter Tight',sans-serif;font-size:17px;letter-spacing:-.01em}
+.pv-body p,.pv-body ul{margin:0 0 8px}
+.pv-body ul{padding-left:20px}
+.pv-close{position:sticky;top:0;float:right;margin:14px 14px 0 0;width:44px;height:44px;border-radius:999px;border:1px solid #E7E6E1;background:#FFFFFF;font:inherit;font-size:22px;line-height:1;cursor:pointer;color:#000000}
+@media (max-width:599px){.pv-body{padding:28px 22px 24px}.pv-body h2{font-size:24px}}
 #gyik button:focus-visible,#gyik a:focus-visible{outline-color:#FFFFFF}
 .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
 @media (max-width:899px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -230,7 +241,7 @@ section{scroll-margin-top:16px}
 <div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;"><label for="website">Weboldal</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
 <button type="submit" id="csubmit" class="cta btn" style="min-height: 54px; border: 0; border-radius: 999px; background: var(--cta); color: var(--cta-fg); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer;">Ajánlatot kérek</button>
 <p id="cstatus" role="status" aria-live="polite" style="margin: 0; font-size: 15px; font-weight: 500; color: #000000;" hidden></p>
-<p style="margin: 0; font-size: 13px; color: #000000;">Az adataidat csak a válaszadáshoz használom. <a href="#">Adatvédelmi tájékoztató</a></p>
+<p style="margin: 0; font-size: 13px; color: #000000;">Az adataidat csak a válaszadáshoz használom. <a href="#adatvedelem" data-privacy>Adatvédelmi tájékoztató</a></p>
 </form>
 </div>
 </section>
@@ -245,18 +256,51 @@ section{scroll-margin-top:16px}
 <div style="display: flex; flex-wrap: wrap; gap: 32px 72px; font-size: 15px;">
 <nav aria-label="Lábléc navigáció" style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 13px; font-weight: 600; color: #000000;">Oldal</span><a href="#munkak" style="text-decoration: none;">Munkák</a><a href="#szolgaltatasok" style="text-decoration: none;">Szolgáltatások</a><a href="#rolam" style="text-decoration: none;">Rólam</a><a href="#kapcsolat" style="text-decoration: none;">Kapcsolat</a></nav>
 <div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 13px; font-weight: 600; color: #000000;">Közösség</span><a href="https://www.instagram.com/jankovics_art/" target="_blank" rel="noopener" style="text-decoration: none;">Instagram</a><a href="https://www.behance.net/jankovicsrka" target="_blank" rel="noopener" style="text-decoration: none;">Behance</a><a href="https://www.linkedin.com/in/reka-j-b0a487106/" target="_blank" rel="noopener" style="text-decoration: none;">LinkedIn</a></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 13px; font-weight: 600; color: #000000;">Kapcsolat</span><a href="mailto:hello@jankovicsart.com" style="text-decoration: none;">hello@jankovicsart.com</a></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 13px; font-weight: 600; color: #000000;">Kapcsolat</span><a href="mailto:hello@jankovicsreka.hu" style="text-decoration: none;">hello@jankovicsreka.hu</a></div>
 </div>
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid #E7E6E1; padding-top: 24px; font-size: 14px; color: #000000;">
 <span>© 2026 Jankovics Réka. Minden jog fenntartva.</span>
-<span style="display: flex; gap: 20px;"><a href="#" style="color: #000000;">Adatvédelem</a><a href="#" style="color: #000000;">Impresszum</a><a href="#top" style="color: #000000;">Vissza a tetejére ↑</a></span>
+<span style="display: flex; gap: 20px;"><a href="#adatvedelem" data-privacy style="color: #000000;">Adatvédelem</a><a href="#" style="color: #000000;">Impresszum</a><a href="#top" style="color: #000000;">Vissza a tetejére ↑</a></span>
 </div>
 </div>
 </footer>
 
 </div>
 
+<dialog id="adatvedelem" aria-labelledby="pv-title">
+<button type="button" class="pv-close" aria-label="Bezárás" data-close>×</button>
+<div class="pv-body">
+<h2 id="pv-title">Adatkezelési tájékoztató</h2>
+<p style="font-size: 13px;">Hatályos: 2026. november 25-től</p>
+<p>Ez a tájékoztató azt írja le, hogyan kezelem a személyes adataidat, amikor a weboldal kapcsolatfelvételi űrlapján üzenetet küldesz nekem.</p>
+<h3>1. Az adatkezelő</h3>
+<p>Jankovics Réka tervezőgrafikus<br>E-mail: <a href="mailto:hello@jankovicsreka.hu">hello@jankovicsreka.hu</a><br>Weboldal: jankovicsreka.hu</p>
+<h3>2. Milyen adatokat kezelek?</h3>
+<ul><li>név,</li><li>e-mail-cím,</li><li>a kiválasztott szolgáltatás (pl. arculat, csomagolás),</li><li>az üzenet tartalma.</li></ul>
+<h3>3. Mi az adatkezelés célja és jogalapja?</h3>
+<p>Az adatokat kizárólag arra használom, hogy válaszoljak a megkeresésedre, és szükség esetén árajánlatot küldjek. Az adatkezelés jogalapja a GDPR 6. cikk (1) bekezdés b) pontja: a szerződés megkötését megelőzően, a te kérésedre tett lépések. Az adatokat nem használom hírlevélre vagy reklámcélra, és nem adom el senkinek.</p>
+<h3>4. Meddig őrzöm az adatokat?</h3>
+<p>A megkeresés lezárását követő 1 évig. Ha a megkeresésből megbízás lesz, az adatokat a szerződésre és a számvitelre vonatkozó jogszabályokban előírt ideig őrzöm meg.</p>
+<h3>5. Kik férnek hozzá az adatokhoz (adatfeldolgozók)?</h3>
+<p>Az adataidhoz rajtam kívül csak azok a szolgáltatók férnek hozzá, amelyek az űrlap működéséhez technikailag szükségesek:</p>
+<ul>
+<li><strong>Cloudflare, Inc.</strong> – az űrlap adatainak továbbítása,</li>
+<li><strong>Resend</strong> – az értesítő és a visszaigazoló e-mail kézbesítése,</li>
+<li><strong>GitHub, Inc.</strong> – a weboldal tárhelye, amely a látogatások technikai naplóiban (pl. IP-cím) adatokat rögzíthet,</li>
+<li><strong>Google</strong> – a betűtípusok betöltésekor az IP-címed a Google szervereihez kerül.</li>
+</ul>
+<p>E szolgáltatók részben az Európai Unión kívül (az Egyesült Államokban) működnek. Az adattovábbítás az Európai Bizottság által elfogadott garanciák (megfelelőségi határozat vagy általános szerződési feltételek) alapján történik.</p>
+<h3>6. Sütik</h3>
+<p>Az oldal nem használ sütiket, és nem követi a látogatók viselkedését (nincs analitika, nincs hirdetési követés).</p>
+<h3>7. Milyen jogaid vannak?</h3>
+<p>Bármikor kérheted, hogy:</p>
+<ul><li>tájékoztassalak, milyen adataidat kezelem (hozzáférés),</li><li>javítsam a pontatlan adatokat (helyesbítés),</li><li>töröljem az adataidat (törlés),</li><li>korlátozzam az adatkezelést (korlátozás),</li><li>géppel olvasható formában kiadjam az adataidat (adathordozhatóság).</li></ul>
+<p>Tiltakozhatsz is az adatkezelés ellen. Kérésedet a <a href="mailto:hello@jankovicsreka.hu">hello@jankovicsreka.hu</a> címre küldheted, és legkésőbb egy hónapon belül válaszolok.</p>
+<h3>8. Jogorvoslat</h3>
+<p>Ha úgy érzed, hogy megsértettem az adatvédelmi jogaidat, panaszt tehetsz a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH, 1055 Budapest, Falk Miksa utca 9–11., postacím: 1363 Budapest, Pf. 9., e-mail: ugyfelszolgalat@naih.hu, web: naih.hu), vagy bírósághoz fordulhatsz.</p>
+</div>
+</dialog>
 <script>
 (() => {
   const $ = id => document.getElementById(id);
@@ -341,6 +385,14 @@ section{scroll-margin-top:16px}
   $("faq").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) { const i = +b.dataset.i; open = open === i ? -1 : i; setFaq(); } });
 
   /* Az űrlap egyelőre csak sablon: nem küld semmit */
+  /* Adatkezelési tájékoztató felugró ablakban */
+  const pv = $("adatvedelem");
+  document.querySelectorAll("[data-privacy]").forEach(a => a.addEventListener("click", e => {
+    if (typeof pv.showModal !== "function") return; // nagyon régi böngésző: marad a sima horgony
+    e.preventDefault(); pv.showModal(); pv.scrollTop = 0;
+  }));
+  pv.addEventListener("click", e => { if (e.target === pv || e.target.closest("[data-close]")) pv.close(); });
+
   /* Kapcsolati űrlap → Cloudflare Worker → Resend (worker/contact-worker.js).
      Amíg nincs megadva a Worker címe, az űrlap a látogató levelezőprogramját nyitja meg. */
   const CONTACT_ENDPOINT = "";
