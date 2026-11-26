@@ -21,6 +21,10 @@ a{color: #000000}a:hover{color: #000000}
 .btn:hover{filter:brightness(0.9)}
 .ghost:hover{background:#F2F1ED}
 .card:hover .thumb{transform:scale(1.015)}
+.sticker{position:absolute;top:14px;left:14px;z-index:2;width:96px;height:96px;border-radius:50%;background:var(--cta);color:#000000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;padding:10px;box-sizing:border-box;font-family:'Inter Tight',sans-serif;font-size:12px;font-weight:700;line-height:1.1;letter-spacing:-.01em;transform:rotate(-10deg);box-shadow:0 6px 16px rgba(0,0,0,.25);transition:transform .45s cubic-bezier(.34,1.7,.5,1)}
+.sticker small{font-family:'Inter',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.card:hover .sticker{transform:rotate(-4deg) scale(1.06)}
+@media (max-width:599px){.sticker{width:84px;height:84px;font-size:11px;top:12px;left:12px}}
 .card .thumb{filter:grayscale(1);-webkit-filter:grayscale(1);transition:filter .5s ease,-webkit-filter .5s ease,transform .45s ease}
 @media (hover:hover){.card:hover .thumb,.card:focus-visible .thumb{filter:none;-webkit-filter:none}}
 @media (hover:none){.card.in-view .thumb{filter:none;-webkit-filter:none}}
@@ -363,7 +367,7 @@ section{scroll-margin-top:16px}
     { id: "print", label: "Print" }
   ];
   const projects = [
-    { title: "Vaya", tags: "Print · Csomagolás", cat: "print", img: "img/cs/vaya-3.jpg", alt: "VAYA Kopi Luwak kávésdobozok" },
+    { title: "Vaya", tags: "Print · Csomagolás", cat: "print", img: "img/cs/vaya-3.jpg", alt: "VAYA Kopi Luwak kávésdobozok", link: "https://packagingoftheworld.com/2026/10/vaya-premium-indonesian-coffee.html", badge: "Packaging of the World" },
     { title: "Groundless", tags: "Kiadvány · Katalógus", cat: "print", img: "img/cs/more-5.jpg", alt: "Groundless magazin" },
     { title: "Noba", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/noba.jpg", alt: "Noba szérumos üvegek kövekkel, levendulával és jojobával" },
     { title: "Eluna Sol", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/eluna-sol.jpg", alt: "Eluna Sol szójagyertyák uszadékfán" },
@@ -376,9 +380,10 @@ section{scroll-margin-top:16px}
       ? `<button type="button" data-f="${c.id}" aria-pressed="true" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--accent); background: var(--accent); color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">${c.label}</button>`
       : `<button type="button" data-f="${c.id}" aria-pressed="false" class="ghost" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #8F8E89; background: #FFFFFF; color: #000000; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;">${c.label}</button>`).join("");
     $("projects").innerHTML = projects.filter(p => filter === "all" || p.cat === filter).map(p => `
-      <a href="#" class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #000000;">
-        <div style="aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: #ECEBE6;">
+      <a href="${p.link || "#"}"${p.link ? ` target="_blank" rel="noopener" aria-label="${p.title} – megjelent a ${p.badge} oldalán (új lapon nyílik)"` : ""} class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #000000;">
+        <div style="position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: #ECEBE6;">
           <img class="thumb cover" src="${p.img}" alt="${p.alt}" loading="lazy">
+          ${p.badge ? `<span class="sticker" aria-hidden="true"><small>Megjelent</small>${p.badge}</span>` : ""}
         </div>
         <div style="display: flex; flex-direction: column; gap: 4px;">
           <h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-size: 22px; letter-spacing: -0.015em; font-weight: 600;">${p.title}</h3>
@@ -392,7 +397,7 @@ section{scroll-margin-top:16px}
     ? new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("in-view", e.isIntersecting)), { rootMargin: "-35% 0px -35% 0px" })
     : null;
   $("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; render(); } });
-  $("projects").addEventListener("click", e => { if (e.target.closest(".card")) e.preventDefault(); });
+  $("projects").addEventListener("click", e => { const c = e.target.closest(".card"); if (c && c.getAttribute("href") === "#") e.preventDefault(); });
   render();
 
   /* GYIK lenyíló */
