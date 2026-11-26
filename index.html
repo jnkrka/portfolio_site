@@ -368,10 +368,10 @@ section{scroll-margin-top:16px}
   ];
   const projects = [
     { title: "Vaya", tags: "Print · Csomagolás", cat: "print", img: "img/cs/vaya-3.jpg", alt: "VAYA Kopi Luwak kávésdobozok", link: "https://packagingoftheworld.com/2026/10/vaya-premium-indonesian-coffee.html", badge: "Packaging of the World" },
-    { title: "Groundless", tags: "Kiadvány · Katalógus", cat: "print", img: "img/cs/more-5.jpg", alt: "Groundless magazin" },
-    { title: "Noba", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/noba.jpg", alt: "Noba szérumos üvegek kövekkel, levendulával és jojobával" },
-    { title: "Eluna Sol", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/eluna-sol.jpg", alt: "Eluna Sol szójagyertyák uszadékfán" },
-    { title: "Dorian Gray arcképe", tags: "Könyvborító · Print", cat: "print", img: "img/cs/dorian-gray.jpg", alt: "Dorian Gray arcképe könyvborító és gerinc" },
+    { title: "Groundless", tags: "Kiadvány · Katalógus", cat: "print", img: "img/cs/more-5.jpg", alt: "Groundless magazin", link: "https://www.behance.net/gallery/251911185/GROUNDLESS-magazine" },
+    { title: "Noba", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/noba.jpg", alt: "Noba szérumos üvegek kövekkel, levendulával és jojobával", link: "https://www.behance.net/gallery/259014273/NOBA-packaging-design" },
+    { title: "Eluna Sol", tags: "Arculat · Csomagolás", cat: "arculat", img: "img/cs/eluna-sol.jpg", alt: "Eluna Sol szójagyertyák uszadékfán", link: "https://www.behance.net/gallery/259014397/Eluna-Sol-candles" },
+    { title: "Dorian Gray arcképe", tags: "Könyvborító · Print", cat: "print", img: "img/cs/dorian-gray.jpg", alt: "Dorian Gray arcképe könyvborító és gerinc", link: "https://www.behance.net/gallery/251911749/BOOK-COVER-design" },
     { title: "American Psycho", tags: "Könyvborító · Print", cat: "print", img: "img/cs/american-psycho.jpg", alt: "American Psycho könyvborító és gerinc" }
   ];
   let filter = "all";
@@ -380,7 +380,7 @@ section{scroll-margin-top:16px}
       ? `<button type="button" data-f="${c.id}" aria-pressed="true" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--accent); background: var(--accent); color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">${c.label}</button>`
       : `<button type="button" data-f="${c.id}" aria-pressed="false" class="ghost" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #8F8E89; background: #FFFFFF; color: #000000; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;">${c.label}</button>`).join("");
     $("projects").innerHTML = projects.filter(p => filter === "all" || p.cat === filter).map(p => `
-      <a href="${p.link || "#"}"${p.link ? ` target="_blank" rel="noopener" aria-label="${p.title} – megjelent a ${p.badge} oldalán (új lapon nyílik)"` : ""} class="card" style="position: relative; display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #000000;">
+      <a href="${p.link || "#"}"${p.link ? ` target="_blank" rel="noopener" aria-label="${p.title} – ${p.badge ? `megjelent a ${p.badge} oldalán` : "megnyitás a Behance-en"} (új lapon nyílik)"` : ""} class="card" style="position: relative; display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #000000;">
         <div style="position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: #ECEBE6;">
           <img class="thumb cover" src="${p.img}" alt="${p.alt}" loading="lazy">
         </div>
